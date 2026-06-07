@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learn Networking — OSI Model, TCP/IP, DNS, Routers &amp; IP Addressing | CODEZZY</title>
+  <meta name="description" content="Free networking tutorials covering the OSI model, TCP/IP, DNS, routers, switches, and IP addressing. Clear diagrams and beginner-friendly explanations for IT students.">
+  <meta name="keywords" content="networking, OSI model, TCP/IP, DNS, routers, switches, IP addressing, subnetting, network fundamentals, CODEZZY">
+  <meta name="author" content="CODEZZY">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.codezzy.com/networking.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Learn Networking — CODEZZY">
+  <meta property="og:description" content="Master networking fundamentals — OSI model, TCP/IP, DNS, routers, switches, and IP addressing.">
+  <meta property="og:url" content="https://www.codezzy.com/networking.html">
+  <meta property="og:site_name" content="CODEZZY">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Learn Networking — CODEZZY">
+  <meta name="twitter:description" content="Free networking tutorials with roadmaps for OSI, TCP/IP, DNS, and more.">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "Computer Networking — OSI, TCP/IP, DNS & IP Addressing",
+    "description": "Free networking course covering OSI model, TCP/IP, DNS, routers, switches, and IP addressing.",
+    "provider": { "@type": "EducationalOrganization", "name": "CODEZZY", "url": "https://www.codezzy.com" },
+    "url": "https://www.codezzy.com/networking.html",
+    "isAccessibleForFree": true,
+    "educationalLevel": "Beginner",
+    "teaches": ["OSI Model", "TCP/IP", "DNS", "Routers", "Switches", "IP Addressing"]
+  }
+  </script>
+</head>
+<body>
+  <div id="page-loader"><div class="loader-content"><div class="loader-logo">CODEZZY</div><div class="loader-spinner"></div></div></div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo" aria-label="CODEZZY Home">
+        <div class="logo-icon">CZ</div>
+        <div><span class="logo-text">CODEZZY</span><span class="logo-tagline">Learn. Build. Grow.</span></div>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="tutorials.html" class="nav-link active">Tutorials</a>
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-btn" aria-haspopup="true">Categories &#9662;</button>
+          <div class="nav-dropdown-menu">
+            <a href="programming.html">Programming</a>
+            <a href="web-development.html">Web Development</a>
+            <a href="cyber-security.html">Cyber Security</a>
+            <a href="ai-ml.html">AI &amp; Machine Learning</a>
+            <a href="networking.html">Networking</a>
+            <a href="linux.html">Linux</a>
+            <a href="cloud-computing.html">Cloud Computing</a>
+            <a href="domain-hosting.html">Domain &amp; Hosting</a>
+          </div>
+        </div>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="tools.html" class="nav-link">Tools</a>
+        <a href="resources.html" class="nav-link">Resources</a>
+      </nav>
+      <div class="header-actions">
+        <div class="search-box">
+          <span class="search-icon">&#128269;</span>
+          <input type="search" placeholder="Search tutorials..." aria-label="Search">
+          <div class="search-results"></div>
+        </div>
+        <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark mode">&#9790;</button>
+        <button id="mobile-toggle" class="mobile-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation">
+    <div class="mobile-nav-section">Main</div>
+    <a href="index.html">Home</a>
+    <a href="tutorials.html">Tutorials</a>
+    <a href="blog.html">Blog</a>
+    <a href="tools.html">Tools</a>
+    <a href="resources.html">Resources</a>
+    <div class="mobile-nav-section">Categories</div>
+    <a href="programming.html">Programming</a>
+    <a href="web-development.html">Web Development</a>
+    <a href="cyber-security.html">Cyber Security</a>
+    <a href="ai-ml.html">AI &amp; ML</a>
+    <a href="networking.html">Networking</a>
+    <a href="linux.html">Linux</a>
+    <a href="cloud-computing.html">Cloud Computing</a>
+    <a href="domain-hosting.html">Domain &amp; Hosting</a>
+    <div class="mobile-nav-section">More</div>
+    <a href="career-guidance.html">Career Guidance</a>
+    <a href="projects.html">Projects</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <main>
+    <div class="container"><div class="ad-placeholder ad-header">Google AdSense Header Ad — 728×90</div></div>
+
+    <section class="page-header">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <span>&#8250;</span>
+          <a href="tutorials.html">Tutorials</a>
+          <span>&#8250;</span>
+          <span>Networking</span>
+        </nav>
+        <h1>Learn Networking</h1>
+        <p>Understand how data travels across the internet — from the OSI model and TCP/IP to DNS, routers, switches, and IP addressing.</p>
+      </div>
+    </section>
+
+    <div class="container content-layout">
+      <div class="content-main">
+        <p>Computer networking connects devices so they can share information. Every email, video call, and webpage load depends on networks working correctly. Whether you are preparing for CompTIA Network+, a CCNA certification, or simply want to troubleshoot your home Wi-Fi, this guide gives you a solid foundation.</p>
+
+        <div class="info-box tip">
+          <strong>&#128161; Tip:</strong> Think of networking like a postal system — IP addresses are street addresses, routers are sorting facilities, and protocols are the rules for how mail (data packets) is handled and delivered.
+        </div>
+
+        <h2 style="margin:2rem 0 1rem">OSI Model — 7 Layers Roadmap</h2>
+        <div class="roadmap">
+          <div class="roadmap-item">
+            <span class="roadmap-level">Layer 7–6</span>
+            <h3>Application &amp; Presentation</h3>
+            <p>HTTP, FTP, SMTP at Layer 7. Encryption and data formatting at Layer 6. This is what users interact with directly.</p>
+          </div>
+          <div class="roadmap-item">
+            <span class="roadmap-level">Layer 5</span>
+            <h3>Session Layer</h3>
+            <p>Manages connections between applications — establishing, maintaining, and terminating sessions.</p>
+          </div>
+          <div class="roadmap-item">
+            <span class="roadmap-level">Layer 4</span>
+            <h3>Transport Layer (TCP/UDP)</h3>
+            <p>TCP provides reliable, ordered delivery. UDP is faster but connectionless. Ports identify specific services.</p>
+          </div>
+          <div class="roadmap-item">
+            <span class="roadmap-level">Layer 3</span>
+            <h3>Network Layer (IP)</h3>
+            <p>IP addressing, routing, and packet forwarding. Routers operate at this layer to connect different networks.</p>
+          </div>
+          <div class="roadmap-item">
+            <span class="roadmap-level">Layer 2–1</span>
+            <h3>Data Link &amp; Physical</h3>
+            <p>MAC addresses, switches, Ethernet frames at Layer 2. Cables, Wi-Fi signals, and hardware at Layer 1.</p>
+          </div>
+        </div>
+
+        <h2 style="margin:2.5rem 0 1rem">TCP/IP Protocol Suite Roadmap</h2>
+        <div class="roadmap">
+          <div class="roadmap-item">
+            <span class="roadmap-level">Phase 1</span>
+            <h3>TCP/IP Overview</h3>
+            <p>The four layers: Link, Internet, Transport, Application. How TCP/IP maps to the OSI model in practice.</p>
+          </div>
+          <div class="roadmap-item">
+            <span class="roadmap-level">Phase 2</span>
+            <h3>Key Protocols</h3>
+            <p>HTTP/HTTPS, FTP, SSH, ICMP (ping), ARP, and DHCP — what each does and when it is used.</p>
+          </div>
+          <div class="roadmap-item">
+            <span class="roadmap-level">Phase 3</span>
+            <h3>Packet Analysis</h3>
+            <p>Use Wireshark to capture and inspect real packets. Trace a web request from DNS lookup to HTTP response.</p>
+          </div>
+        </div>
+
+        <h2 style="margin:2.5rem 0 1rem">DNS, Routers &amp; Switches</h2>
+        <div class="roadmap">
+          <div class="roadmap-item">
+            <span class="roadmap-level">DNS</span>
+            <h3>Domain Name System</h3>
+            <p>How DNS resolves domain names to IP addresses. A, AAAA, CNAME, MX records, and the DNS lookup process.</p>
+          </div>
+          <div class="roadmap-item">
+            <span class="roadmap-level">Routers</span>
+            <h3>Routing &amp; Gateways</h3>
+            <p>Default gateways, static vs. dynamic routing, NAT, and how home routers connect your LAN to the internet.</p>
+          </div>
+          <div class="roadmap-item">
+            <span class="roadmap-level">Switches</span>
+            <h3>Switching &amp; VLANs</h3>
+            <p>MAC address tables, switch vs. hub vs. router, VLAN segmentation, and basic switch configuration concepts.</p>
+          </div>
+        </div>
+
+        <h2 style="margin:2.5rem 0 1rem">IP Addressing Roadmap</h2>
+        <div class="roadmap">
+          <div class="roadmap-item">
+            <span class="roadmap-level">Phase 1</span>
+            <h3>IPv4 Fundamentals</h3>
+            <p>32-bit addresses, dotted decimal notation, public vs. private IPs, and common ranges (10.x, 172.16.x, 192.168.x).</p>
+          </div>
+          <div class="roadmap-item">
+            <span class="roadmap-level">Phase 2</span>
+            <h3>Subnetting</h3>
+            <p>Subnet masks, CIDR notation (/24, /16), calculating network and broadcast addresses, and dividing networks.</p>
+          </div>
+          <div class="roadmap-item">
+            <span class="roadmap-level">Phase 3</span>
+            <h3>IPv6 Introduction</h3>
+            <p>128-bit addresses, hexadecimal notation, why IPv6 matters, and dual-stack deployment basics.</p>
+          </div>
+        </div>
+
+        <div class="info-box note">
+          <strong>&#128221; Note:</strong> Hands-on practice beats memorization. Set up a home lab with a router, run <code>ping</code> and <code>traceroute</code>, and configure a simple network in Cisco Packet Tracer or GNS3.
+        </div>
+
+        <h2 style="margin:2.5rem 0 1rem">Featured Networking Tutorials</h2>
+        <div class="card-grid">
+          <article class="tutorial-card">
+            <div class="tutorial-thumb">&#128246;</div>
+            <div class="tutorial-body">
+              <span class="tutorial-category">OSI Model</span>
+              <h3>OSI Model — 7 Layers Explained</h3>
+              <p>Break down each layer with real packet flow examples you can visualize.</p>
+              <div class="tutorial-meta"><span>&#128337; 35 min</span><a href="tutorials.html" class="btn btn-ghost btn-sm">Start</a></div>
+            </div>
+          </article>
+          <article class="tutorial-card">
+            <div class="tutorial-thumb">&#128225;</div>
+            <div class="tutorial-body">
+              <span class="tutorial-category">TCP/IP</span>
+              <h3>TCP vs UDP — When to Use Each</h3>
+              <p>Compare reliability, speed, and use cases for TCP and UDP protocols.</p>
+              <div class="tutorial-meta"><span>&#128337; 30 min</span><a href="tutorials.html" class="btn btn-ghost btn-sm">Start</a></div>
+            </div>
+          </article>
+          <article class="tutorial-card">
+            <div class="tutorial-thumb">&#127760;</div>
+            <div class="tutorial-body">
+              <span class="tutorial-category">DNS</span>
+              <h3>How DNS Resolution Works</h3>
+              <p>Follow a domain lookup from browser to nameserver and back in milliseconds.</p>
+              <div class="tutorial-meta"><span>&#128337; 25 min</span><a href="tutorials.html" class="btn btn-ghost btn-sm">Start</a></div>
+            </div>
+          </article>
+          <article class="tutorial-card">
+            <div class="tutorial-thumb">&#128290;</div>
+            <div class="tutorial-body">
+              <span class="tutorial-category">IP Addressing</span>
+              <h3>Subnetting Made Easy</h3>
+              <p>Learn subnet masks and CIDR with step-by-step practice problems.</p>
+              <div class="tutorial-meta"><span>&#128337; 45 min</span><a href="tutorials.html" class="btn btn-ghost btn-sm">Start</a></div>
+            </div>
+          </article>
+        </div>
+
+        <div class="ad-placeholder ad-article" style="margin-top:2rem">Google AdSense Article Ad — 336×280</div>
+      </div>
+
+      <aside class="content-sidebar">
+        <div class="sidebar-widget">
+          <h3>Topics Covered</h3>
+          <a href="#osi">OSI Model</a>
+          <a href="#tcpip">TCP/IP</a>
+          <a href="#dns">DNS</a>
+          <a href="#routers">Routers &amp; Switches</a>
+          <a href="#ip">IP Addressing</a>
+        </div>
+        <div class="sidebar-widget">
+          <h3>Popular Tutorials</h3>
+          <a href="tutorials.html">What Is a MAC Address?</a>
+          <a href="tutorials.html">Ping and Traceroute Explained</a>
+          <a href="tutorials.html">NAT — Network Address Translation</a>
+          <a href="tutorials.html">Wi-Fi Standards (802.11)</a>
+          <a href="tutorials.html">Home Network Setup Guide</a>
+        </div>
+        <div class="ad-placeholder ad-sidebar">Google AdSense Sidebar Ad — 300×250</div>
+        <div class="sidebar-widget">
+          <h3>Related Categories</h3>
+          <a href="cyber-security.html">Cyber Security</a>
+          <a href="domain-hosting.html">Domain &amp; Hosting</a>
+          <a href="cloud-computing.html">Cloud Computing</a>
+          <a href="linux.html">Linux</a>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <div class="container"><div class="ad-placeholder ad-footer">Google AdSense Footer Ad — 728×90</div></div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo"><div class="logo-icon">CZ</div><span class="logo-text">CODEZZY</span></a>
+          <p>CODEZZY is a free educational technology platform helping students learn programming, cyber security, web development, AI, and more. Learn. Build. Grow.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="Twitter">&#120143;</a>
+            <a href="#" aria-label="LinkedIn">in</a>
+            <a href="#" aria-label="YouTube">&#9654;</a>
+            <a href="#" aria-label="Instagram">&#9679;</a>
+          </div>
+        </div>
+        <div class="footer-col"><h4>Learn</h4><a href="tutorials.html">Tutorials</a><a href="programming.html">Programming</a><a href="web-development.html">Web Development</a><a href="cyber-security.html">Cyber Security</a><a href="ai-ml.html">AI &amp; ML</a></div>
+        <div class="footer-col"><h4>Resources</h4><a href="resources.html">Downloads</a><a href="tools.html">Student Tools</a><a href="projects.html">Projects</a><a href="career-guidance.html">Career Guidance</a><a href="blog.html">Blog</a></div>
+        <div class="footer-col"><h4>Company</h4><a href="about.html">About Us</a><a href="contact.html">Contact</a><a href="faq.html">FAQ</a><a href="privacy-policy.html">Privacy Policy</a><a href="terms.html">Terms</a><a href="disclaimer.html">Disclaimer</a></div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 CODEZZY. All rights reserved.</p>
+        <div class="footer-bottom-links"><a href="privacy-policy.html">Privacy</a><a href="terms.html">Terms</a><a href="disclaimer.html">Disclaimer</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <button id="scroll-top" aria-label="Scroll to top">&#8593;</button>
+
+  <div id="newsletter-popup" class="newsletter-popup">
+    <button class="popup-close" aria-label="Close popup">&times;</button>
+    <h3>&#128231; Join 10,000+ Learners</h3>
+    <p>Subscribe for free weekly tutorials and career tips.</p>
+    <form class="newsletter-form">
+      <input type="email" placeholder="Your email" required>
+      <button type="submit" class="btn btn-primary btn-sm" style="width:100%;margin-top:8px">Subscribe Free</button>
+    </form>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

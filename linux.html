@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learn Linux — Ubuntu, Commands, File System &amp; Permissions | CODEZZY</title>
+  <meta name="description" content="Free Linux tutorials covering Linux introduction, Ubuntu, essential commands, file system hierarchy, and permissions. Essential skills for developers and sysadmins.">
+  <meta name="keywords" content="Linux tutorial, Ubuntu, Linux commands, file system, permissions, chmod, chown, terminal, bash, CODEZZY">
+  <meta name="author" content="CODEZZY">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.codezzy.com/linux.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Learn Linux — CODEZZY">
+  <meta property="og:description" content="Master Linux with Ubuntu, essential commands, file systems, and permissions — free beginner tutorials.">
+  <meta property="og:url" content="https://www.codezzy.com/linux.html">
+  <meta property="og:site_name" content="CODEZZY">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Learn Linux — CODEZZY">
+  <meta name="twitter:description" content="Free Linux tutorials for beginners — Ubuntu, commands, file system, and permissions.">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "Linux — Ubuntu, Commands, File System & Permissions",
+    "description": "Free Linux course covering introduction, Ubuntu, essential commands, file system, and permissions.",
+    "provider": { "@type": "EducationalOrganization", "name": "CODEZZY", "url": "https://www.codezzy.com" },
+    "url": "https://www.codezzy.com/linux.html",
+    "isAccessibleForFree": true,
+    "educationalLevel": "Beginner",
+    "teaches": ["Linux", "Ubuntu", "Shell Commands", "File System", "Permissions"]
+  }
+  </script>
+</head>
+<body>
+  <div id="page-loader"><div class="loader-content"><div class="loader-logo">CODEZZY</div><div class="loader-spinner"></div></div></div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo" aria-label="CODEZZY Home">
+        <div class="logo-icon">CZ</div>
+        <div><span class="logo-text">CODEZZY</span><span class="logo-tagline">Learn. Build. Grow.</span></div>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="tutorials.html" class="nav-link active">Tutorials</a>
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-btn" aria-haspopup="true">Categories &#9662;</button>
+          <div class="nav-dropdown-menu">
+            <a href="programming.html">Programming</a>
+            <a href="web-development.html">Web Development</a>
+            <a href="cyber-security.html">Cyber Security</a>
+            <a href="ai-ml.html">AI &amp; Machine Learning</a>
+            <a href="networking.html">Networking</a>
+            <a href="linux.html">Linux</a>
+            <a href="cloud-computing.html">Cloud Computing</a>
+            <a href="domain-hosting.html">Domain &amp; Hosting</a>
+          </div>
+        </div>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="tools.html" class="nav-link">Tools</a>
+        <a href="resources.html" class="nav-link">Resources</a>
+      </nav>
+      <div class="header-actions">
+        <div class="search-box">
+          <span class="search-icon">&#128269;</span>
+          <input type="search" placeholder="Search tutorials..." aria-label="Search">
+          <div class="search-results"></div>
+        </div>
+        <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark mode">&#9790;</button>
+        <button id="mobile-toggle" class="mobile-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation">
+    <div class="mobile-nav-section">Main</div>
+    <a href="index.html">Home</a>
+    <a href="tutorials.html">Tutorials</a>
+    <a href="blog.html">Blog</a>
+    <a href="tools.html">Tools</a>
+    <a href="resources.html">Resources</a>
+    <div class="mobile-nav-section">Categories</div>
+    <a href="programming.html">Programming</a>
+    <a href="web-development.html">Web Development</a>
+    <a href="cyber-security.html">Cyber Security</a>
+    <a href="ai-ml.html">AI &amp; ML</a>
+    <a href="networking.html">Networking</a>
+    <a href="linux.html">Linux</a>
+    <a href="cloud-computing.html">Cloud Computing</a>
+    <a href="domain-hosting.html">Domain &amp; Hosting</a>
+    <div class="mobile-nav-section">More</div>
+    <a href="career-guidance.html">Career Guidance</a>
+    <a href="projects.html">Projects</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <main>
+    <div class="container"><div class="ad-placeholder ad-header">Google AdSense Header Ad — 728×90</div></div>
+
+    <section class="page-header">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <span>&#8250;</span>
+          <a href="tutorials.html">Tutorials</a>
+          <span>&#8250;</span>
+          <span>Linux</span>
+        </nav>
+        <h1>Learn Linux</h1>
+        <p>Get comfortable with Linux, Ubuntu, essential terminal commands, the file system hierarchy, and permissions — skills every developer and IT professional needs.</p>
+      </div>
+    </section>
+
+    <div class="container content-layout">
+      <div class="content-main">
+        <p>Linux powers the majority of web servers, cloud infrastructure, Android devices, and supercomputers worldwide. Learning Linux gives you direct control over your system, makes you a better developer, and is essential for careers in DevOps, cloud engineering, and cyber security.</p>
+
+        <div class="info-box tip">
+          <strong>&#128161; Tip:</strong> Install Ubuntu alongside Windows using dual boot, or run it in a free virtual machine (VirtualBox). You can also use <strong>Windows Subsystem for Linux (WSL)</strong> to get a Linux terminal inside Windows without leaving your current setup.
+        </div>
+
+        <h2 style="margin:2rem 0 1rem">Linux Introduction Roadmap</h2>
+        <div class="roadmap">
+          <div class="roadmap-item">
+            <span class="roadmap-level">Week 1</span>
+            <h3>What Is Linux?</h3>
+            <p>Open-source history, Linux distributions (distros), the kernel vs. the shell, and why Linux dominates servers and cloud.</p>
+          </div>
+          <div class="roadmap-item">
+            <span class="roadmap-level">Week 2</span>
+            <h3>Choosing a Distribution</h3>
+            <p>Ubuntu for beginners, Fedora for cutting-edge, Debian for stability, and CentOS/RHEL for enterprise environments.</p>
+          </div>
+          <div class="roadmap-item">
+            <span class="roadmap-level">Week 3</span>
+            <h3>Desktop vs. Server</h3>
+            <p>GUI environments (GNOME, KDE) vs. headless server installs. When to use each and how they differ.</p>
+          </div>
+        </div>
+
+        <h2 style="margin:2.5rem 0 1rem">Ubuntu Getting Started Roadmap</h2>
+        <div class="roadmap">
+          <div class="roadmap-item">
+            <span class="roadmap-level">Step 1</span>
+            <h3>Install Ubuntu</h3>
+            <p>Download Ubuntu ISO, create a bootable USB, install on VM or physical machine, and complete initial setup.</p>
+          </div>
+          <div class="roadmap-item">
+            <span class="roadmap-level">Step 2</span>
+            <h3>Package Management</h3>
+            <p>Use <code>apt update</code>, <code>apt install</code>, <code>apt remove</code>, and <code>snap</code> to manage software packages.</p>
+          </div>
+          <div class="roadmap-item">
+            <span class="roadmap-level">Step 3</span>
+            <h3>System Configuration</h3>
+            <p>Users, groups, network settings, SSH access, and keeping your system updated and secure.</p>
+          </div>
+        </div>
+
+        <h2 style="margin:2.5rem 0 1rem">Essential Commands Roadmap</h2>
+        <div class="roadmap">
+          <div class="roadmap-item">
+            <span class="roadmap-level">Navigation</span>
+            <h3>File &amp; Directory Commands</h3>
+            <p><code>ls</code>, <code>cd</code>, <code>pwd</code>, <code>mkdir</code>, <code>rm</code>, <code>cp</code>, <code>mv</code>, <code>touch</code>, and <code>find</code> for everyday file management.</p>
+          </div>
+          <div class="roadmap-item">
+            <span class="roadmap-level">Viewing</span>
+            <h3>Reading &amp; Editing Files</h3>
+            <p><code>cat</code>, <code>less</code>, <code>head</code>, <code>tail</code>, <code>nano</code>, and <code>vim</code> basics for viewing and editing text files.</p>
+          </div>
+          <div class="roadmap-item">
+            <span class="roadmap-level">System</span>
+            <h3>Processes &amp; System Info</h3>
+            <p><code>ps</code>, <code>top</code>, <code>htop</code>, <code>kill</code>, <code>df</code>, <code>du</code>, <code>uname</code>, and <code>whoami</code> for monitoring and control.</p>
+          </div>
+          <div class="roadmap-item">
+            <span class="roadmap-level">Network</span>
+            <h3>Networking Commands</h3>
+            <p><code>ping</code>, <code>curl</code>, <code>wget</code>, <code>ssh</code>, <code>scp</code>, and <code>ip addr</code> for connectivity and remote access.</p>
+          </div>
+        </div>
+
+        <h2 style="margin:2.5rem 0 1rem">File System &amp; Permissions</h2>
+        <div class="roadmap">
+          <div class="roadmap-item">
+            <span class="roadmap-level">File System</span>
+            <h3>Linux Directory Hierarchy</h3>
+            <p><code>/</code> root, <code>/home</code> user files, <code>/etc</code> configuration, <code>/var</code> logs, <code>/usr</code> programs, and <code>/tmp</code> temporary files.</p>
+          </div>
+          <div class="roadmap-item">
+            <span class="roadmap-level">Permissions</span>
+            <h3>Understanding Permissions</h3>
+            <p>Read (r), write (w), execute (x) for owner, group, and others. Numeric notation: 755, 644, 600.</p>
+          </div>
+          <div class="roadmap-item">
+            <span class="roadmap-level">Management</span>
+            <h3>chmod, chown &amp; chgrp</h3>
+            <p>Change file permissions and ownership. Use <code>chmod +x</code> for scripts and <code>sudo chown</code> for ownership transfers.</p>
+          </div>
+        </div>
+
+        <div class="info-box note">
+          <strong>&#128221; Note:</strong> The terminal is your superpower. Start with 5–10 commands per day, use tab completion, and read man pages with <code>man command</code> when you need help.
+        </div>
+
+        <h2 style="margin:2.5rem 0 1rem">Featured Linux Tutorials</h2>
+        <div class="card-grid">
+          <article class="tutorial-card">
+            <div class="tutorial-thumb">&#128039;</div>
+            <div class="tutorial-body">
+              <span class="tutorial-category">Commands</span>
+              <h3>50 Essential Linux Commands</h3>
+              <p>Navigate the terminal confidently with the most-used commands for daily tasks.</p>
+              <div class="tutorial-meta"><span>&#128337; 25 min</span><a href="tutorials.html" class="btn btn-ghost btn-sm">Start</a></div>
+            </div>
+          </article>
+          <article class="tutorial-card">
+            <div class="tutorial-thumb">&#128193;</div>
+            <div class="tutorial-body">
+              <span class="tutorial-category">File System</span>
+              <h3>Linux Directory Structure Explained</h3>
+              <p>Understand what lives in /etc, /var, /home, and every major directory.</p>
+              <div class="tutorial-meta"><span>&#128337; 30 min</span><a href="tutorials.html" class="btn btn-ghost btn-sm">Start</a></div>
+            </div>
+          </article>
+          <article class="tutorial-card">
+            <div class="tutorial-thumb">&#128274;</div>
+            <div class="tutorial-body">
+              <span class="tutorial-category">Permissions</span>
+              <h3>chmod &amp; chown — Complete Guide</h3>
+              <p>Master file permissions with symbolic and numeric notation.</p>
+              <div class="tutorial-meta"><span>&#128337; 35 min</span><a href="tutorials.html" class="btn btn-ghost btn-sm">Start</a></div>
+            </div>
+          </article>
+          <article class="tutorial-card">
+            <div class="tutorial-thumb">&#128421;</div>
+            <div class="tutorial-body">
+              <span class="tutorial-category">Ubuntu</span>
+              <h3>Install Ubuntu on VirtualBox</h3>
+              <p>Set up a free Linux virtual machine on Windows or Mac step by step.</p>
+              <div class="tutorial-meta"><span>&#128337; 40 min</span><a href="tutorials.html" class="btn btn-ghost btn-sm">Start</a></div>
+            </div>
+          </article>
+        </div>
+
+        <div class="ad-placeholder ad-article" style="margin-top:2rem">Google AdSense Article Ad — 336×280</div>
+      </div>
+
+      <aside class="content-sidebar">
+        <div class="sidebar-widget">
+          <h3>Topics Covered</h3>
+          <a href="#intro">Linux Introduction</a>
+          <a href="#ubuntu">Ubuntu</a>
+          <a href="#commands">Commands</a>
+          <a href="#filesystem">File System</a>
+          <a href="#permissions">Permissions</a>
+        </div>
+        <div class="sidebar-widget">
+          <h3>Popular Tutorials</h3>
+          <a href="tutorials.html">Bash Scripting for Beginners</a>
+          <a href="tutorials.html">grep, sed &amp; awk Basics</a>
+          <a href="tutorials.html">Setting Up SSH Keys</a>
+          <a href="tutorials.html">Cron Jobs Explained</a>
+          <a href="tutorials.html">Linux vs Windows — Key Differences</a>
+        </div>
+        <div class="ad-placeholder ad-sidebar">Google AdSense Sidebar Ad — 300×250</div>
+        <div class="sidebar-widget">
+          <h3>Related Categories</h3>
+          <a href="cyber-security.html">Cyber Security</a>
+          <a href="cloud-computing.html">Cloud Computing</a>
+          <a href="networking.html">Networking</a>
+          <a href="programming.html">Programming</a>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <div class="container"><div class="ad-placeholder ad-footer">Google AdSense Footer Ad — 728×90</div></div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo"><div class="logo-icon">CZ</div><span class="logo-text">CODEZZY</span></a>
+          <p>CODEZZY is a free educational technology platform helping students learn programming, cyber security, web development, AI, and more. Learn. Build. Grow.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="Twitter">&#120143;</a>
+            <a href="#" aria-label="LinkedIn">in</a>
+            <a href="#" aria-label="YouTube">&#9654;</a>
+            <a href="#" aria-label="Instagram">&#9679;</a>
+          </div>
+        </div>
+        <div class="footer-col"><h4>Learn</h4><a href="tutorials.html">Tutorials</a><a href="programming.html">Programming</a><a href="web-development.html">Web Development</a><a href="cyber-security.html">Cyber Security</a><a href="ai-ml.html">AI &amp; ML</a></div>
+        <div class="footer-col"><h4>Resources</h4><a href="resources.html">Downloads</a><a href="tools.html">Student Tools</a><a href="projects.html">Projects</a><a href="career-guidance.html">Career Guidance</a><a href="blog.html">Blog</a></div>
+        <div class="footer-col"><h4>Company</h4><a href="about.html">About Us</a><a href="contact.html">Contact</a><a href="faq.html">FAQ</a><a href="privacy-policy.html">Privacy Policy</a><a href="terms.html">Terms</a><a href="disclaimer.html">Disclaimer</a></div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 CODEZZY. All rights reserved.</p>
+        <div class="footer-bottom-links"><a href="privacy-policy.html">Privacy</a><a href="terms.html">Terms</a><a href="disclaimer.html">Disclaimer</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <button id="scroll-top" aria-label="Scroll to top">&#8593;</button>
+
+  <div id="newsletter-popup" class="newsletter-popup">
+    <button class="popup-close" aria-label="Close popup">&times;</button>
+    <h3>&#128231; Join 10,000+ Learners</h3>
+    <p>Subscribe for free weekly tutorials and career tips.</p>
+    <form class="newsletter-form">
+      <input type="email" placeholder="Your email" required>
+      <button type="submit" class="btn btn-primary btn-sm" style="width:100%;margin-top:8px">Subscribe Free</button>
+    </form>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
