@@ -201,54 +201,185 @@
 
   <button id="scroll-top" aria-label="Scroll to top">&#8593;</button>
   <script src="js/script.js"></script>
-  <script src="js/sc-data.js"></script>
   <script>
+  // ── All data inline so there is no external dependency ───────────────────
+  const SC_BRANCHES = {
+    '1st Year': [
+      {id:'cse',  label:'CSE — Computer Science'},
+      {id:'ece',  label:'ECE — Electronics & Comm.'},
+      {id:'mech', label:'Mechanical Engineering'},
+      {id:'civil',label:'Civil Engineering'},
+      {id:'eee',  label:'EEE — Electrical Engineering'},
+      {id:'bca',  label:'BCA — Computer Applications'}
+    ],
+    '2nd Year': [
+      {id:'cse',  label:'CSE — Computer Science'},
+      {id:'ece',  label:'ECE — Electronics & Comm.'},
+      {id:'mech', label:'Mechanical Engineering'},
+      {id:'civil',label:'Civil Engineering'},
+      {id:'eee',  label:'EEE — Electrical Engineering'},
+      {id:'bca',  label:'BCA — Computer Applications'},
+      {id:'mca',  label:'MCA — Computer Applications'}
+    ],
+    '3rd Year': [
+      {id:'cse',  label:'CSE — Computer Science'},
+      {id:'ece',  label:'ECE — Electronics & Comm.'},
+      {id:'mech', label:'Mechanical Engineering'},
+      {id:'civil',label:'Civil Engineering'},
+      {id:'eee',  label:'EEE — Electrical Engineering'},
+      {id:'bca',  label:'BCA — Computer Applications'},
+      {id:'mca',  label:'MCA — Computer Applications'}
+    ],
+    '4th Year': [
+      {id:'cse',  label:'CSE — Computer Science'},
+      {id:'ece',  label:'ECE — Electronics & Comm.'},
+      {id:'mech', label:'Mechanical Engineering'},
+      {id:'civil',label:'Civil Engineering'},
+      {id:'eee',  label:'EEE — Electrical Engineering'},
+      {id:'mca',  label:'MCA — Computer Applications'}
+    ]
+  };
+
+  const SC_SEMESTERS = {
+    '1st Year': [{id:'sem1',label:'Semester 1'},{id:'sem2',label:'Semester 2'}],
+    '2nd Year': [{id:'sem3',label:'Semester 3'},{id:'sem4',label:'Semester 4'}],
+    '3rd Year': [{id:'sem5',label:'Semester 5'},{id:'sem6',label:'Semester 6'}],
+    '4th Year': [{id:'sem7',label:'Semester 7'},{id:'sem8',label:'Semester 8'}]
+  };
+
+  const S1 = [
+    {id:'math1',     label:'Engineering Mathematics I'},
+    {id:'physics1',  label:'Engineering Physics I'},
+    {id:'chem1',     label:'Engineering Chemistry I'},
+    {id:'beee',      label:'Basic Electrical & Electronics Engineering'},
+    {id:'eg',        label:'Engineering Graphics'},
+    {id:'pce',       label:'Professional Communication & Ethics'},
+    {id:'phychemlab',label:'Physics / Chemistry Labs'}
+  ];
+  const S2 = [
+    {id:'math2_1',   label:'Engineering Mathematics II'},
+    {id:'physics2',  label:'Engineering Physics II'},
+    {id:'chem2',     label:'Engineering Chemistry II'},
+    {id:'engmech',   label:'Engineering Mechanics'},
+    {id:'prog_fund', label:'Programming Fundamentals (C / Python)'},
+    {id:'envstudies',label:'Environmental Studies'},
+    {id:'workshop',  label:'Workshop Practice'}
+  ];
+
+  const SC_SUBJECTS = {
+    '1st Year': {
+      sem1: { cse:S1, ece:S1, mech:S1, civil:S1, eee:S1, bca:S1 },
+      sem2: { cse:S2, ece:S2, mech:S2, civil:S2, eee:S2, bca:S2 }
+    },
+    '2nd Year': {
+      sem3: {
+        cse:  [{id:'dsa',label:'Data Structures'},{id:'oops',label:'OOP (Java/C++)'},{id:'dbms',label:'DBMS'},{id:'os',label:'Operating Systems'},{id:'math2',label:'Discrete Mathematics'},{id:'cn',label:'Computer Networks'}],
+        ece:  [{id:'signals',label:'Signals & Systems'},{id:'analog',label:'Analog Electronics'},{id:'digital',label:'Digital Electronics'},{id:'math2',label:'Engg. Maths III'},{id:'emf',label:'Electromagnetic Fields'}],
+        mech: [{id:'thermo',label:'Thermodynamics'},{id:'fluid',label:'Fluid Mechanics'},{id:'strength',label:'Strength of Materials'},{id:'math2',label:'Engg. Maths III'},{id:'mfg',label:'Manufacturing Process'}],
+        civil:[{id:'fluid',label:'Fluid Mechanics'},{id:'strength',label:'Strength of Materials'},{id:'surveying',label:'Surveying'},{id:'math2',label:'Engg. Maths III'},{id:'soil',label:'Soil Mechanics'}],
+        eee:  [{id:'emach',label:'Electrical Machines'},{id:'analog',label:'Analog Electronics'},{id:'digital',label:'Digital Electronics'},{id:'math2',label:'Engg. Maths III'},{id:'powerelec',label:'Power Electronics'}],
+        bca:  [{id:'dsa',label:'Data Structures'},{id:'oops',label:'OOP with Java'},{id:'dbms',label:'DBMS'},{id:'web_basics',label:'Web Development'},{id:'os',label:'Operating Systems'}],
+        mca:  [{id:'dsa',label:'Data Structures'},{id:'dbms',label:'DBMS'},{id:'os',label:'Operating Systems'},{id:'cn',label:'Computer Networks'},{id:'math_mca',label:'Mathematical Foundations'}]
+      },
+      sem4: {
+        cse:  [{id:'algo',label:'Algorithms'},{id:'cn',label:'Computer Networks'},{id:'se',label:'Software Engineering'},{id:'oops',label:'OOP'},{id:'math3',label:'Engineering Maths IV'}],
+        ece:  [{id:'comm',label:'Communication Systems'},{id:'microprocessor',label:'Microprocessors'},{id:'math3',label:'Engineering Maths IV'},{id:'vlsi',label:'VLSI Design'},{id:'digital',label:'Digital Electronics'}],
+        mech: [{id:'design',label:'Machine Design'},{id:'heat',label:'Heat Transfer'},{id:'dynamics',label:'Theory of Machines'},{id:'math3',label:'Engineering Maths IV'},{id:'cad',label:'CAD'}],
+        civil:[{id:'structural',label:'Structural Analysis'},{id:'transport',label:'Transportation Engg.'},{id:'concrete',label:'Concrete Technology'},{id:'math3',label:'Engineering Maths IV'},{id:'geo',label:'Geotechnical Engg.'}],
+        eee:  [{id:'control',label:'Control Systems'},{id:'powersys',label:'Power Systems'},{id:'drives',label:'Electric Drives'},{id:'math3',label:'Engineering Maths IV'},{id:'microprocessor',label:'Microprocessors'}],
+        bca:  [{id:'algo',label:'Algorithms'},{id:'cn',label:'Computer Networks'},{id:'python',label:'Python Programming'},{id:'se',label:'Software Engineering'},{id:'mobile',label:'Mobile App Development'}],
+        mca:  [{id:'algo',label:'Algorithms'},{id:'se',label:'Software Engineering'},{id:'web_adv',label:'Advanced Web Dev.'},{id:'cloud',label:'Cloud Computing'},{id:'ai',label:'Artificial Intelligence'}]
+      }
+    },
+    '3rd Year': {
+      sem5: {
+        cse:  [{id:'ai',label:'Artificial Intelligence'},{id:'ml',label:'Machine Learning'},{id:'compiler',label:'Compiler Design'},{id:'se',label:'Software Engineering'},{id:'cloud',label:'Cloud Computing'}],
+        ece:  [{id:'vlsi',label:'VLSI Design'},{id:'embedded',label:'Embedded Systems'},{id:'dsp',label:'Digital Signal Processing'},{id:'comm',label:'Communication Systems'},{id:'microprocessor',label:'Microprocessors'}],
+        mech: [{id:'cad_cam',label:'CAD/CAM'},{id:'automobile',label:'Automobile Engg.'},{id:'dynamics',label:'Theory of Machines'},{id:'heat',label:'Heat Transfer'},{id:'mfg',label:'Manufacturing Process'}],
+        civil:[{id:'structural',label:'Structural Analysis'},{id:'enviro',label:'Environmental Engg.'},{id:'transport',label:'Transportation Engg.'},{id:'geo',label:'Geotechnical Engg.'},{id:'water',label:'Water Resources'}],
+        eee:  [{id:'control',label:'Control Systems'},{id:'powersys',label:'Power Systems'},{id:'drives',label:'Electric Drives'},{id:'instrumentation',label:'Instrumentation'},{id:'microprocessor',label:'Microprocessors'}],
+        bca:  [{id:'algo',label:'Algorithms'},{id:'python',label:'Python Programming'},{id:'cybersec',label:'Cyber Security'},{id:'mobile',label:'Mobile App Development'},{id:'se',label:'Software Engineering'}],
+        mca:  [{id:'algo',label:'Algorithms'},{id:'ai',label:'Artificial Intelligence'},{id:'se',label:'Software Engineering'},{id:'web_adv',label:'Advanced Web Dev.'},{id:'cloud',label:'Cloud Computing'}]
+      },
+      sem6: {
+        cse:  [{id:'bigdata',label:'Big Data Analytics'},{id:'iot',label:'Internet of Things'},{id:'cybersec',label:'Cyber Security'},{id:'ml',label:'Machine Learning'},{id:'blockchain',label:'Blockchain Technology'}],
+        ece:  [{id:'wireless',label:'Wireless Communication'},{id:'robotics',label:'Robotics'},{id:'iot',label:'Internet of Things'},{id:'dsp',label:'Digital Signal Processing'},{id:'vlsi',label:'VLSI Design'}],
+        mech: [{id:'robotics',label:'Robotics'},{id:'renewable',label:'Renewable Energy'},{id:'product',label:'Product Design'},{id:'cad_cam',label:'CAD/CAM'},{id:'automobile',label:'Automobile Engg.'}],
+        civil:[{id:'construction',label:'Construction Management'},{id:'structural',label:'Structural Design'},{id:'disaster',label:'Disaster Management'},{id:'enviro',label:'Environmental Engg.'},{id:'geo',label:'Geotechnical Engg.'}],
+        eee:  [{id:'smart_grid',label:'Smart Grid Technology'},{id:'renewable',label:'Renewable Energy'},{id:'ev',label:'Electric Vehicles'},{id:'drives',label:'Electric Drives'},{id:'powersys',label:'Power Systems'}],
+        bca:  [{id:'bigdata',label:'Big Data Analytics'},{id:'cybersec',label:'Cyber Security'},{id:'ml',label:'Machine Learning'},{id:'cloud',label:'Cloud Computing'},{id:'se',label:'Software Engineering'}],
+        mca:  [{id:'ml',label:'Machine Learning'},{id:'bigdata',label:'Big Data Analytics'},{id:'blockchain',label:'Blockchain Technology'},{id:'cybersec',label:'Cyber Security'},{id:'cloud',label:'Cloud Computing'}]
+      }
+    },
+    '4th Year': {
+      sem7: {
+        cse:  [{id:'capstone',label:'Final Year Project I'},{id:'bigdata',label:'Big Data Analytics'},{id:'iot',label:'Internet of Things'},{id:'blockchain',label:'Blockchain Technology'},{id:'cybersec',label:'Cyber Security'}],
+        ece:  [{id:'capstone',label:'Final Year Project I'},{id:'iot',label:'Internet of Things'},{id:'wireless',label:'Wireless Comm.'},{id:'robotics',label:'Robotics'}],
+        mech: [{id:'capstone',label:'Final Year Project I'},{id:'robotics',label:'Robotics'},{id:'renewable',label:'Renewable Energy'},{id:'product',label:'Product Design'}],
+        civil:[{id:'capstone',label:'Final Year Project I'},{id:'construction',label:'Construction Management'},{id:'water',label:'Water Resources'},{id:'disaster',label:'Disaster Management'}],
+        eee:  [{id:'capstone',label:'Final Year Project I'},{id:'smart_grid',label:'Smart Grid Technology'},{id:'renewable',label:'Renewable Energy'},{id:'ev',label:'Electric Vehicles'}],
+        mca:  [{id:'capstone',label:'Final Year Project I'},{id:'ml',label:'Machine Learning'},{id:'bigdata',label:'Big Data Analytics'},{id:'blockchain',label:'Blockchain Technology'}]
+      },
+      sem8: {
+        cse:  [{id:'capstone',label:'Final Year Project II'},{id:'se',label:'Software Engineering'},{id:'cloud',label:'Cloud Computing'}],
+        ece:  [{id:'capstone',label:'Final Year Project II'},{id:'wireless',label:'Wireless Comm.'},{id:'iot',label:'Internet of Things'}],
+        mech: [{id:'capstone',label:'Final Year Project II'},{id:'automobile',label:'Automobile Engg.'},{id:'cad_cam',label:'CAD/CAM'}],
+        civil:[{id:'capstone',label:'Final Year Project II'},{id:'structural',label:'Structural Design'},{id:'transport',label:'Transportation Engg.'}],
+        eee:  [{id:'capstone',label:'Final Year Project II'},{id:'powersys',label:'Power Systems'},{id:'smart_grid',label:'Smart Grid Technology'}],
+        mca:  [{id:'capstone',label:'Final Year Project II'},{id:'ml',label:'Machine Learning'},{id:'cloud',label:'Cloud Computing'}]
+      }
+    }
+  };
+
+  // ── Form Logic ────────────────────────────────────────────────────────────
   const selYear     = document.getElementById('sel-year');
   const selBranch   = document.getElementById('sel-branch');
   const selSemester = document.getElementById('sel-semester');
   const selSubject  = document.getElementById('sel-subject');
   const btnSubmit   = document.getElementById('sc-submit');
 
+  function resetFrom(from) {
+    if (from === 'branch' || from === 'semester' || from === 'subject') {
+      selBranch.innerHTML   = '<option value="">— Select Branch —</option>';
+      selBranch.disabled    = true;
+    }
+    if (from === 'semester' || from === 'subject') {
+      selSemester.innerHTML = '<option value="">— Select Semester —</option>';
+      selSemester.disabled  = true;
+    }
+    if (from === 'subject') {
+      selSubject.innerHTML  = '<option value="">— Select Subject —</option>';
+      selSubject.disabled   = true;
+    }
+    btnSubmit.disabled = true;
+  }
+
   function onYearChange() {
-    const year = selYear.value;
     resetFrom('branch');
+    const year = selYear.value;
     if (!year) return;
+    (SC_BRANCHES[year] || []).forEach(b => selBranch.appendChild(new Option(b.label, b.id)));
     selBranch.disabled = false;
-    (SC_BRANCHES[year] || []).forEach(b => {
-      const o = new Option(b.label, b.id);
-      selBranch.appendChild(o);
-    });
   }
 
   function onBranchChange() {
     resetFrom('semester');
-    const year = selYear.value;
-    const branch = selBranch.value;
-    if (!branch) return;
-    const sems = SC_SEMESTERS[year] || [];
+    const year   = selYear.value;
+    if (!selBranch.value) return;
+    (SC_SEMESTERS[year] || []).forEach(s => selSemester.appendChild(new Option(s.label, s.id)));
     selSemester.disabled = false;
-    sems.forEach(s => selSemester.appendChild(new Option(s.label, s.id)));
   }
 
   function onSemesterChange() {
     resetFrom('subject');
-    const year = selYear.value;
+    const year   = selYear.value;
     const branch = selBranch.value;
-    const sem = selSemester.value;
+    const sem    = selSemester.value;
     if (!sem) return;
     const subjects = ((SC_SUBJECTS[year] || {})[sem] || {})[branch] || [];
-    selSubject.disabled = false;
     subjects.forEach(s => selSubject.appendChild(new Option(s.label, s.id)));
+    selSubject.disabled = false;
     selSubject.onchange = () => { btnSubmit.disabled = !selSubject.value; };
-  }
-
-  function resetFrom(from) {
-    const order = ['branch','semester','subject'];
-    const idx = order.indexOf(from);
-    if (idx <= 0) { selBranch.innerHTML = '<option value="">— Select Branch —</option>'; selBranch.disabled = true; }
-    if (idx <= 1) { selSemester.innerHTML = '<option value="">— Select Semester —</option>'; selSemester.disabled = true; }
-    if (idx <= 2) { selSubject.innerHTML = '<option value="">— Select Subject —</option>'; selSubject.disabled = true; }
-    btnSubmit.disabled = true;
   }
 
   function handleSubmit(e) {
@@ -258,7 +389,12 @@
     const sem     = selSemester.value;
     const subject = selSubject.value;
     if (!year || !branch || !sem || !subject) return;
-    const params = new URLSearchParams({ year, branch, sem, subject });
+    const params = new URLSearchParams({ year, branch, sem, subject,
+      yearLabel:   selYear.options[selYear.selectedIndex].text,
+      branchLabel: selBranch.options[selBranch.selectedIndex].text,
+      semLabel:    selSemester.options[selSemester.selectedIndex].text,
+      subjectLabel:selSubject.options[selSubject.selectedIndex].text
+    });
     window.location.href = 'questions.html?' + params.toString();
   }
   </script>
