@@ -737,9 +737,11 @@ button { cursor: pointer; border: none; background: none; }
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2.5rem;
+  font-size: 3.5rem;
   position: relative;
   overflow: hidden;
+  line-height: 1;
+  user-select: none;
 }
 
 .tutorial-thumb::after {
@@ -747,7 +749,8 @@ button { cursor: pointer; border: none; background: none; }
   position: absolute;
   inset: 0;
   background: var(--gradient);
-  opacity: 0.05;
+  opacity: 0.04;
+  pointer-events: none;
 }
 
 .tutorial-body { padding: 20px; }
@@ -997,7 +1000,9 @@ button { cursor: pointer; border: none; background: none; }
   font-weight: 700;
   margin-bottom: 1rem;
   padding-bottom: 0.75rem;
-  border-bottom: 2px solid var(--gradient-light);
+  border-bottom: 2px solid var(--border);
+  color: var(--text);
+}
 }
 
 .sidebar-widget a {
@@ -1292,7 +1297,7 @@ button { cursor: pointer; border: none; background: none; }
 .filter-bar {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   flex-wrap: wrap;
   margin-bottom: 32px;
   padding: 16px 20px;
@@ -1869,7 +1874,8 @@ button { cursor: pointer; border: none; background: none; }
   .footer-grid { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; text-align: center; }
   .auth-card { padding: 28px 24px; }
-  .filter-bar { flex-direction: column; align-items: stretch; }
+  .filter-bar { flex-direction: row; align-items: center; justify-content: flex-start; }
+  .faq-search { max-width: 100%; }
 }
 
 @media (max-width: 480px) {

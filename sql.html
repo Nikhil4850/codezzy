@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learn SQL — Complete Beginner to Advanced Guide | CODEZZY</title>
+  <meta name="description" content="Learn SQL from scratch — databases, SELECT queries, JOINs, aggregates, subqueries, indexes, stored procedures, and more. Free SQL tutorials for beginners.">
+  <meta name="keywords" content="learn SQL, SQL tutorial, SQL for beginners, database queries, SELECT JOIN SQL, SQL commands, CODEZZY">
+  <meta name="author" content="CODEZZY">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.codezzy.com/sql.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Learn SQL — CODEZZY">
+  <meta property="og:description" content="Free beginner-friendly SQL tutorials covering queries, JOINs, aggregates, subqueries, and database design.">
+  <meta property="og:url" content="https://www.codezzy.com/sql.html">
+  <meta property="og:site_name" content="CODEZZY">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Learn SQL — CODEZZY">
+  <meta name="twitter:description" content="Master SQL with free step-by-step tutorials for beginners and intermediate learners.">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="css/style.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9595610341128742" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "SQL — Complete Beginner to Advanced Guide",
+    "description": "Free beginner-friendly SQL tutorials covering database fundamentals, queries, JOINs, aggregates, and more.",
+    "provider": { "@type": "EducationalOrganization", "name": "CODEZZY", "url": "https://www.codezzy.com" },
+    "url": "https://www.codezzy.com/sql.html",
+    "isAccessibleForFree": true,
+    "educationalLevel": "Beginner",
+    "teaches": ["SQL", "Database Design", "SELECT Queries", "JOINs", "Aggregates", "Subqueries", "Indexes"]
+  }
+  </script>
+</head>
+<body>
+  <div id="page-loader"><div class="loader-content"><div class="loader-logo">CODEZZY</div><div class="loader-spinner"></div></div></div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo" aria-label="CODEZZY Home">
+        <div class="logo-icon">CZ</div>
+        <div><span class="logo-text">CODEZZY</span><span class="logo-tagline">Learn. Build. Grow.</span></div>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="tutorials.html" class="nav-link active">Tutorials</a>
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-btn" aria-haspopup="true">Categories &#9662;</button>
+          <div class="nav-dropdown-menu">
+            <a href="programming.html">Programming</a>
+            <a href="web-development.html">Web Development</a>
+            <a href="cyber-security.html">Cyber Security</a>
+            <a href="ai-ml.html">AI &amp; Machine Learning</a>
+            <a href="networking.html">Networking</a>
+            <a href="linux.html">Linux</a>
+            <a href="cloud-computing.html">Cloud Computing</a>
+            <a href="domain-hosting.html">Domain &amp; Hosting</a>
+            <a href="sql.html">SQL</a>
+          </div>
+        </div>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="tools.html" class="nav-link">Tools</a>
+        <a href="resources.html" class="nav-link">Resources</a>
+      </nav>
+      <div class="header-actions">
+        <div class="search-box">
+          <span class="search-icon">&#128269;</span>
+          <input type="search" placeholder="Search tutorials..." aria-label="Search">
+          <div class="search-results"></div>
+        </div>
+        <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark mode">&#9790;</button>
+        <button id="mobile-toggle" class="mobile-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation">
+    <div class="mobile-nav-section">Main</div>
+    <a href="index.html">Home</a>
+    <a href="tutorials.html">Tutorials</a>
+    <a href="blog.html">Blog</a>
+    <a href="tools.html">Tools</a>
+    <a href="resources.html">Resources</a>
+    <div class="mobile-nav-section">Categories</div>
+    <a href="programming.html">Programming</a>
+    <a href="web-development.html">Web Development</a>
+    <a href="cyber-security.html">Cyber Security</a>
+    <a href="ai-ml.html">AI &amp; ML</a>
+    <a href="networking.html">Networking</a>
+    <a href="linux.html">Linux</a>
+    <a href="cloud-computing.html">Cloud Computing</a>
+    <a href="domain-hosting.html">Domain &amp; Hosting</a>
+    <a href="sql.html">SQL</a>
+    <div class="mobile-nav-section">More</div>
+    <a href="career-guidance.html">Career Guidance</a>
+    <a href="projects.html">Projects</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <span>&#8250;</span>
+          <a href="tutorials.html">Tutorials</a>
+          <span>&#8250;</span>
+          <span>SQL</span>
+        </nav>
+        <h1>Learn SQL</h1>
+        <p>Master databases and SQL from the ground up — from your first SELECT query to advanced joins, subqueries, and performance optimization.</p>
+      </div>
+    </section>
+
+    <div class="container content-layout">
+      <div class="content-main">
+
+        <p>SQL (Structured Query Language) is the universal language for working with relational databases. It powers everything from small apps to massive enterprise systems. Whether you are a developer, data analyst, or backend engineer, SQL is one of the most valuable skills you can learn.</p>
+
+        <div class="info-box tip">
+          <strong>&#128161; Beginner Tip:</strong> You do not need to install anything to start learning SQL. Use free online tools like <strong>SQLiteOnline.com</strong> or <strong>DB Fiddle</strong> to write and run queries directly in your browser.
+        </div>
+
+        <!-- SECTION 1 -->
+        <h2 style="margin:2.5rem 0 1rem" id="what-is-sql">What Is SQL?</h2>
+        <p>SQL stands for <strong>Structured Query Language</strong>. It is used to create, read, update, and delete data in relational databases — collectively known as CRUD operations. Popular database systems that use SQL include:</p>
+        <ul style="margin:1rem 0 1rem 1.5rem;line-height:2">
+          <li><strong>MySQL</strong> — widely used in web apps (WordPress, e-commerce)</li>
+          <li><strong>PostgreSQL</strong> — powerful open-source database with advanced features</li>
+          <li><strong>SQLite</strong> — lightweight, file-based, great for learning and mobile apps</li>
+          <li><strong>Microsoft SQL Server</strong> — enterprise-grade, used in corporate systems</li>
+          <li><strong>Oracle Database</strong> — large-scale enterprise systems</li>
+        </ul>
+
+        <!-- SECTION 2 -->
+        <h2 style="margin:2.5rem 0 1rem" id="sql-basics">SQL Basics — Your First Queries</h2>
+        <p>Every SQL journey starts with understanding tables. A table is like a spreadsheet — it has columns (fields) and rows (records). Here is how you create one and insert data.</p>
+
+        <h3 style="margin:1.5rem 0 0.5rem">Creating a Table</h3>
+        <pre style="background:var(--code-bg,#1e1e2e);color:var(--code-color,#cdd6f4);padding:1.25rem;border-radius:8px;overflow-x:auto;font-size:0.9rem;line-height:1.7"><code>CREATE TABLE students (
+  id        INT PRIMARY KEY AUTO_INCREMENT,
+  name      VARCHAR(100) NOT NULL,
+  email     VARCHAR(150) UNIQUE,
+  age       INT,
+  course    VARCHAR(50),
+  enrolled  DATE
+);</code></pre>
+
+        <h3 style="margin:1.5rem 0 0.5rem">Inserting Data</h3>
+        <pre style="background:var(--code-bg,#1e1e2e);color:var(--code-color,#cdd6f4);padding:1.25rem;border-radius:8px;overflow-x:auto;font-size:0.9rem;line-height:1.7"><code>INSERT INTO students (name, email, age, course, enrolled)
+VALUES
+  ('Alice Johnson', 'alice@example.com', 20, 'Python', '2025-01-15'),
+  ('Bob Smith',     'bob@example.com',   22, 'Web Dev', '2025-02-01'),
+  ('Carla Reyes',   'carla@example.com', 19, 'Python', '2025-01-20'),
+  ('David Lee',     'david@example.com', 21, 'SQL',    '2025-03-10');</code></pre>
+
+        <h3 style="margin:1.5rem 0 0.5rem">Selecting Data</h3>
+        <pre style="background:var(--code-bg,#1e1e2e);color:var(--code-color,#cdd6f4);padding:1.25rem;border-radius:8px;overflow-x:auto;font-size:0.9rem;line-height:1.7"><code>-- Select all columns
+SELECT * FROM students;
+
+-- Select specific columns
+SELECT name, course FROM students;
+
+-- Filter with WHERE
+SELECT name, age FROM students WHERE age &lt; 21;
+
+-- Sort results
+SELECT name, age FROM students ORDER BY age DESC;
+
+-- Limit rows
+SELECT name FROM students LIMIT 2;</code></pre>
+
+        <!-- SECTION 3 -->
+        <h2 style="margin:2.5rem 0 1rem" id="where-clause">Filtering with WHERE</h2>
+        <p>The WHERE clause lets you filter rows using conditions. You can combine conditions with AND, OR, and NOT.</p>
+        <pre style="background:var(--code-bg,#1e1e2e);color:var(--code-color,#cdd6f4);padding:1.25rem;border-radius:8px;overflow-x:auto;font-size:0.9rem;line-height:1.7"><code>-- Single condition
+SELECT * FROM students WHERE course = 'Python';
+
+-- Multiple conditions
+SELECT * FROM students WHERE course = 'Python' AND age &lt;= 20;
+
+-- OR condition
+SELECT * FROM students WHERE course = 'SQL' OR course = 'Web Dev';
+
+-- NOT condition
+SELECT * FROM students WHERE NOT course = 'Python';
+
+-- BETWEEN (inclusive range)
+SELECT * FROM students WHERE age BETWEEN 19 AND 21;
+
+-- IN (match a list)
+SELECT * FROM students WHERE course IN ('Python', 'SQL');
+
+-- LIKE (pattern matching)
+SELECT * FROM students WHERE name LIKE 'A%';   -- starts with A
+SELECT * FROM students WHERE email LIKE '%@example.com';</code></pre>
+
+        <!-- SECTION 4 -->
+        <h2 style="margin:2.5rem 0 1rem" id="update-delete">Updating and Deleting Data</h2>
+        <pre style="background:var(--code-bg,#1e1e2e);color:var(--code-color,#cdd6f4);padding:1.25rem;border-radius:8px;overflow-x:auto;font-size:0.9rem;line-height:1.7"><code>-- Update a record
+UPDATE students SET age = 23 WHERE name = 'Bob Smith';
+
+-- Update multiple columns
+UPDATE students SET course = 'Data Science', age = 21 WHERE id = 3;
+
+-- Delete a specific record
+DELETE FROM students WHERE id = 4;
+
+-- Delete all rows (keep table structure)
+DELETE FROM students;</code></pre>
+
+        <div class="info-box note">
+          <strong>&#9888;&#65039; Warning:</strong> Always use a WHERE clause with UPDATE and DELETE. Without it, every row in the table will be affected.
+        </div>
+
+        <!-- SECTION 5 -->
+        <h2 style="margin:2.5rem 0 1rem" id="aggregate-functions">Aggregate Functions</h2>
+        <p>Aggregate functions perform calculations on a set of rows and return a single value. They are essential for data analysis.</p>
+        <pre style="background:var(--code-bg,#1e1e2e);color:var(--code-color,#cdd6f4);padding:1.25rem;border-radius:8px;overflow-x:auto;font-size:0.9rem;line-height:1.7"><code>-- Count total students
+SELECT COUNT(*) AS total_students FROM students;
+
+-- Average age
+SELECT AVG(age) AS average_age FROM students;
+
+-- Youngest and oldest
+SELECT MIN(age) AS youngest, MAX(age) AS oldest FROM students;
+
+-- Count students per course
+SELECT course, COUNT(*) AS total
+FROM students
+GROUP BY course;
+
+-- Filter groups with HAVING
+SELECT course, COUNT(*) AS total
+FROM students
+GROUP BY course
+HAVING COUNT(*) &gt; 1;</code></pre>
+
+        <!-- SECTION 6 -->
+        <h2 style="margin:2.5rem 0 1rem" id="joins">SQL JOINs</h2>
+        <p>JOINs combine rows from two or more tables based on a related column. This is the backbone of relational database design.</p>
+        <p>Let's say we have a second table:</p>
+        <pre style="background:var(--code-bg,#1e1e2e);color:var(--code-color,#cdd6f4);padding:1.25rem;border-radius:8px;overflow-x:auto;font-size:0.9rem;line-height:1.7"><code>CREATE TABLE enrollments (
+  enrollment_id INT PRIMARY KEY AUTO_INCREMENT,
+  student_id    INT,
+  course_name   VARCHAR(50),
+  grade         CHAR(2),
+  FOREIGN KEY (student_id) REFERENCES students(id)
+);
+
+INSERT INTO enrollments (student_id, course_name, grade)
+VALUES (1, 'Python', 'A'), (2, 'Web Dev', 'B+'), (1, 'SQL', 'A-');</code></pre>
+
+        <h3 style="margin:1.5rem 0 0.5rem">INNER JOIN — only matching rows</h3>
+        <pre style="background:var(--code-bg,#1e1e2e);color:var(--code-color,#cdd6f4);padding:1.25rem;border-radius:8px;overflow-x:auto;font-size:0.9rem;line-height:1.7"><code>SELECT s.name, e.course_name, e.grade
+FROM students s
+INNER JOIN enrollments e ON s.id = e.student_id;</code></pre>
+
+        <h3 style="margin:1.5rem 0 0.5rem">LEFT JOIN — all students, even with no enrollment</h3>
+        <pre style="background:var(--code-bg,#1e1e2e);color:var(--code-color,#cdd6f4);padding:1.25rem;border-radius:8px;overflow-x:auto;font-size:0.9rem;line-height:1.7"><code>SELECT s.name, e.course_name, e.grade
+FROM students s
+LEFT JOIN enrollments e ON s.id = e.student_id;</code></pre>
+
+        <h3 style="margin:1.5rem 0 0.5rem">RIGHT JOIN — all enrollments, even unmatched</h3>
+        <pre style="background:var(--code-bg,#1e1e2e);color:var(--code-color,#cdd6f4);padding:1.25rem;border-radius:8px;overflow-x:auto;font-size:0.9rem;line-height:1.7"><code>SELECT s.name, e.course_name, e.grade
+FROM students s
+RIGHT JOIN enrollments e ON s.id = e.student_id;</code></pre>
+
+        <h3 style="margin:1.5rem 0 0.5rem">FULL OUTER JOIN — all rows from both tables</h3>
+        <pre style="background:var(--code-bg,#1e1e2e);color:var(--code-color,#cdd6f4);padding:1.25rem;border-radius:8px;overflow-x:auto;font-size:0.9rem;line-height:1.7"><code>-- Not supported in MySQL — use UNION of LEFT and RIGHT JOIN
+SELECT s.name, e.course_name
+FROM students s LEFT JOIN enrollments e ON s.id = e.student_id
+UNION
+SELECT s.name, e.course_name
+FROM students s RIGHT JOIN enrollments e ON s.id = e.student_id;</code></pre>
+
+        <!-- SECTION 7 -->
+        <h2 style="margin:2.5rem 0 1rem" id="subqueries">Subqueries</h2>
+        <p>A subquery is a query nested inside another query. It runs first and passes its result to the outer query.</p>
+        <pre style="background:var(--code-bg,#1e1e2e);color:var(--code-color,#cdd6f4);padding:1.25rem;border-radius:8px;overflow-x:auto;font-size:0.9rem;line-height:1.7"><code>-- Find students older than the average age
+SELECT name, age FROM students
+WHERE age &gt; (SELECT AVG(age) FROM students);
+
+-- Find students enrolled in at least one course
+SELECT name FROM students
+WHERE id IN (SELECT DISTINCT student_id FROM enrollments);
+
+-- Subquery in SELECT (scalar subquery)
+SELECT name,
+       (SELECT COUNT(*) FROM enrollments e WHERE e.student_id = s.id) AS total_courses
+FROM students s;</code></pre>
+
+        <!-- SECTION 8 -->
+        <h2 style="margin:2.5rem 0 1rem" id="indexes">Indexes</h2>
+        <p>Indexes speed up data retrieval on large tables. Think of them like a book index — instead of scanning every page, you jump straight to what you need.</p>
+        <pre style="background:var(--code-bg,#1e1e2e);color:var(--code-color,#cdd6f4);padding:1.25rem;border-radius:8px;overflow-x:auto;font-size:0.9rem;line-height:1.7"><code>-- Create an index on a column
+CREATE INDEX idx_course ON students(course);
+
+-- Create a unique index
+CREATE UNIQUE INDEX idx_email ON students(email);
+
+-- Drop an index
+DROP INDEX idx_course ON students;
+
+-- View indexes (MySQL)
+SHOW INDEX FROM students;</code></pre>
+
+        <div class="info-box note">
+          <strong>&#128221; Note:</strong> Indexes speed up SELECT queries but slow down INSERT, UPDATE, and DELETE because the index must also be updated. Only index columns you frequently search or sort by.
+        </div>
+
+        <!-- SECTION 9 -->
+        <h2 style="margin:2.5rem 0 1rem" id="views">Views</h2>
+        <p>A view is a saved SQL query you can treat like a virtual table. It simplifies complex queries and adds a layer of security by hiding raw table structure.</p>
+        <pre style="background:var(--code-bg,#1e1e2e);color:var(--code-color,#cdd6f4);padding:1.25rem;border-radius:8px;overflow-x:auto;font-size:0.9rem;line-height:1.7"><code>-- Create a view
+CREATE VIEW python_students AS
+SELECT name, age, email
+FROM students
+WHERE course = 'Python';
+
+-- Query the view like a table
+SELECT * FROM python_students;
+
+-- Drop the view
+DROP VIEW python_students;</code></pre>
+
+        <!-- SECTION 10 -->
+        <h2 style="margin:2.5rem 0 1rem" id="stored-procedures">Stored Procedures</h2>
+        <p>Stored procedures are reusable blocks of SQL code stored in the database. They accept parameters and can contain logic like loops and conditionals.</p>
+        <pre style="background:var(--code-bg,#1e1e2e);color:var(--code-color,#cdd6f4);padding:1.25rem;border-radius:8px;overflow-x:auto;font-size:0.9rem;line-height:1.7"><code>-- Create a stored procedure (MySQL syntax)
+DELIMITER $$
+
+CREATE PROCEDURE GetStudentsByCourse(IN course_name VARCHAR(50))
+BEGIN
+  SELECT name, age, email
+  FROM students
+  WHERE course = course_name;
+END $$
+
+DELIMITER ;
+
+-- Call the procedure
+CALL GetStudentsByCourse('Python');</code></pre>
+
+        <!-- SECTION 11 -->
+        <h2 style="margin:2.5rem 0 1rem" id="transactions">Transactions</h2>
+        <p>Transactions group multiple SQL statements into a single unit. Either all statements succeed, or none do — this keeps your data consistent.</p>
+        <pre style="background:var(--code-bg,#1e1e2e);color:var(--code-color,#cdd6f4);padding:1.25rem;border-radius:8px;overflow-x:auto;font-size:0.9rem;line-height:1.7"><code>START TRANSACTION;
+
+UPDATE students SET course = 'Data Science' WHERE id = 1;
+INSERT INTO enrollments (student_id, course_name, grade)
+VALUES (1, 'Data Science', 'A');
+
+-- If everything is fine, save it
+COMMIT;
+
+-- If something went wrong, undo all changes
+ROLLBACK;</code></pre>
+
+        <!-- SECTION 12 -->
+        <h2 style="margin:2.5rem 0 1rem" id="database-design">Database Design Basics</h2>
+        <p>Good database design prevents data duplication and keeps your data clean. The key principles are called <strong>normalization</strong>.</p>
+        <ul style="margin:1rem 0 1rem 1.5rem;line-height:2">
+          <li><strong>1NF</strong> — Each column holds a single value. No repeating groups.</li>
+          <li><strong>2NF</strong> — Every non-key column depends on the entire primary key (no partial dependencies).</li>
+          <li><strong>3NF</strong> — No transitive dependencies. Non-key columns depend only on the primary key.</li>
+          <li><strong>Foreign Keys</strong> — Link tables together and enforce referential integrity.</li>
+          <li><strong>Primary Key</strong> — Uniquely identifies each row in a table.</li>
+        </ul>
+
+        <!-- SECTION 13 -->
+        <h2 style="margin:2.5rem 0 1rem" id="roadmap">SQL Learning Roadmap</h2>
+        <div class="roadmap">
+          <div class="roadmap-item">
+            <span class="roadmap-level">Week 1</span>
+            <h3>Foundations</h3>
+            <p>Understand what databases and tables are. Practice CREATE TABLE, INSERT, SELECT, WHERE, and ORDER BY until they feel natural.</p>
+          </div>
+          <div class="roadmap-item">
+            <span class="roadmap-level">Week 2</span>
+            <h3>Data Manipulation</h3>
+            <p>Master UPDATE, DELETE, LIKE, BETWEEN, IN, and NULL handling. Build a small student or product database from scratch.</p>
+          </div>
+          <div class="roadmap-item">
+            <span class="roadmap-level">Week 3</span>
+            <h3>Aggregates &amp; Grouping</h3>
+            <p>Use COUNT, SUM, AVG, MIN, MAX with GROUP BY and HAVING. Analyze data with aggregate queries on real datasets.</p>
+          </div>
+          <div class="roadmap-item">
+            <span class="roadmap-level">Week 4</span>
+            <h3>JOINs &amp; Relationships</h3>
+            <p>Design multi-table schemas with foreign keys. Practice INNER, LEFT, RIGHT, and FULL JOINs to combine related data.</p>
+          </div>
+          <div class="roadmap-item">
+            <span class="roadmap-level">Week 5–6</span>
+            <h3>Advanced SQL</h3>
+            <p>Subqueries, views, indexes, transactions, and stored procedures. Optimize slow queries and understand execution plans.</p>
+          </div>
+          <div class="roadmap-item">
+            <span class="roadmap-level">Week 7–8</span>
+            <h3>Real Projects</h3>
+            <p>Build a library management system, e-commerce database, or student portal. Connect SQL to a backend language like Python or Node.js.</p>
+          </div>
+        </div>
+
+        <div class="info-box tip">
+          <strong>&#128218; Practice Resources:</strong> Try <strong>SQLZoo</strong>, <strong>Mode Analytics SQL Tutorial</strong>, or <strong>LeetCode Database</strong> problems to sharpen your skills with real exercises.
+        </div>
+
+        <!-- Featured tutorials -->
+        <h2 style="margin:2.5rem 0 1rem">Featured SQL Tutorials</h2>
+        <div class="card-grid">
+          <article class="tutorial-card">
+            <div class="tutorial-thumb">&#128200;</div>
+            <div class="tutorial-body">
+              <span class="tutorial-category">SQL</span>
+              <h3>SQL for Absolute Beginners</h3>
+              <p>Create your first database, write SELECT queries, and filter data with WHERE from scratch.</p>
+              <div class="tutorial-meta"><span>&#128337; 50 min</span><a href="tutorials.html" class="btn btn-ghost btn-sm">Start</a></div>
+            </div>
+          </article>
+          <article class="tutorial-card">
+            <div class="tutorial-thumb">&#128195;</div>
+            <div class="tutorial-body">
+              <span class="tutorial-category">SQL</span>
+              <h3>SQL JOINs Explained Simply</h3>
+              <p>Master INNER, LEFT, RIGHT, and FULL JOINs with clear diagrams and real-world examples.</p>
+              <div class="tutorial-meta"><span>&#128337; 35 min</span><a href="tutorials.html" class="btn btn-ghost btn-sm">Start</a></div>
+            </div>
+          </article>
+          <article class="tutorial-card">
+            <div class="tutorial-thumb">&#128201;</div>
+            <div class="tutorial-body">
+              <span class="tutorial-category">SQL</span>
+              <h3>Aggregate Functions &amp; GROUP BY</h3>
+              <p>Analyze data using COUNT, SUM, AVG, MIN, MAX, and GROUP BY to summarize records.</p>
+              <div class="tutorial-meta"><span>&#128337; 30 min</span><a href="tutorials.html" class="btn btn-ghost btn-sm">Start</a></div>
+            </div>
+          </article>
+          <article class="tutorial-card">
+            <div class="tutorial-thumb">&#128202;</div>
+            <div class="tutorial-body">
+              <span class="tutorial-category">SQL</span>
+              <h3>Subqueries &amp; Advanced Filtering</h3>
+              <p>Write nested queries, use EXISTS and IN operators, and tackle complex filtering problems.</p>
+              <div class="tutorial-meta"><span>&#128337; 40 min</span><a href="tutorials.html" class="btn btn-ghost btn-sm">Start</a></div>
+            </div>
+          </article>
+        </div>
+
+      </div>
+
+      <aside class="content-sidebar">
+        <div class="sidebar-widget">
+          <h3>On This Page</h3>
+          <a href="#what-is-sql">What Is SQL?</a>
+          <a href="#sql-basics">Basics &amp; First Queries</a>
+          <a href="#where-clause">WHERE Clause</a>
+          <a href="#update-delete">Update &amp; Delete</a>
+          <a href="#aggregate-functions">Aggregate Functions</a>
+          <a href="#joins">SQL JOINs</a>
+          <a href="#subqueries">Subqueries</a>
+          <a href="#indexes">Indexes</a>
+          <a href="#views">Views</a>
+          <a href="#stored-procedures">Stored Procedures</a>
+          <a href="#transactions">Transactions</a>
+          <a href="#database-design">Database Design</a>
+          <a href="#roadmap">Learning Roadmap</a>
+        </div>
+        <div class="sidebar-widget">
+          <h3>Related Categories</h3>
+          <a href="programming.html">Programming</a>
+          <a href="web-development.html">Web Development</a>
+          <a href="cloud-computing.html">Cloud Computing</a>
+          <a href="career-guidance.html">Career Guidance</a>
+        </div>
+        <div class="sidebar-widget">
+          <h3>Popular SQL Topics</h3>
+          <a href="#joins">SQL JOINs</a>
+          <a href="#aggregate-functions">GROUP BY &amp; HAVING</a>
+          <a href="#subqueries">Subqueries</a>
+          <a href="#indexes">Indexes &amp; Performance</a>
+          <a href="#transactions">Transactions</a>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo"><div class="logo-icon">CZ</div><span class="logo-text">CODEZZY</span></a>
+          <p>CODEZZY is a free educational technology platform helping students learn programming, cyber security, web development, AI, and more. Learn. Build. Grow.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="Twitter">&#120143;</a>
+            <a href="#" aria-label="LinkedIn">in</a>
+            <a href="#" aria-label="YouTube">&#9654;</a>
+            <a href="#" aria-label="Instagram">&#9679;</a>
+          </div>
+        </div>
+        <div class="footer-col"><h4>Learn</h4><a href="tutorials.html">Tutorials</a><a href="programming.html">Programming</a><a href="web-development.html">Web Development</a><a href="cyber-security.html">Cyber Security</a><a href="ai-ml.html">AI &amp; ML</a><a href="sql.html">SQL</a></div>
+        <div class="footer-col"><h4>Resources</h4><a href="resources.html">Downloads</a><a href="tools.html">Student Tools</a><a href="projects.html">Projects</a><a href="career-guidance.html">Career Guidance</a><a href="blog.html">Blog</a></div>
+        <div class="footer-col"><h4>Company</h4><a href="about.html">About Us</a><a href="contact.html">Contact</a><a href="faq.html">FAQ</a><a href="privacy-policy.html">Privacy Policy</a><a href="terms.html">Terms</a><a href="disclaimer.html">Disclaimer</a></div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 CODEZZY. All rights reserved.</p>
+        <div class="footer-bottom-links"><a href="privacy-policy.html">Privacy</a><a href="terms.html">Terms</a><a href="disclaimer.html">Disclaimer</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <button id="scroll-top" aria-label="Scroll to top">&#8593;</button>
+
+  <div id="newsletter-popup" class="newsletter-popup">
+    <button class="popup-close" aria-label="Close popup">&times;</button>
+    <h3>&#128231; Join 10,000+ Learners</h3>
+    <p>Subscribe for free weekly tutorials and career tips.</p>
+    <form class="newsletter-form">
+      <input type="email" placeholder="Your email" required>
+      <button type="submit" class="btn btn-primary btn-sm" style="width:100%;margin-top:8px">Subscribe Free</button>
+    </form>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
