@@ -228,7 +228,7 @@
           <a href="index.html">Home</a><span>&#8250;</span><span>Student Corner</span>
         </nav>
         <h1>🎓 Student Corner</h1>
-        <p>Select your year, branch and subject to get important exam questions. Also explore universities in Maharashtra.</p>
+        <p>Select your year, branch and subject to get important exam questions.</p>
       </div>
     </section>
 
@@ -252,15 +252,24 @@
               </select>
             </div>
 
+            <div class="sc-field" id="field-semester" style="display:none">
+              <label for="sel-semester"><span>②</span> Semester</label>
+              <select id="sel-semester" class="sc-select" onchange="onSemesterChange()">
+                <option value="">— Select Semester —</option>
+                <option value="sem1">Semester 1</option>
+                <option value="sem2">Semester 2</option>
+              </select>
+            </div>
+
             <div class="sc-field">
-              <label for="sel-branch"><span>②</span> Branch / Programme</label>
+              <label for="sel-branch" id="label-branch"><span id="branch-step-num">②</span> Branch / Programme</label>
               <select id="sel-branch" class="sc-select" onchange="onBranchChange()" required disabled>
                 <option value="">— Select Branch —</option>
               </select>
             </div>
 
             <div class="sc-field">
-              <label for="sel-subject"><span>③</span> Subject</label>
+              <label for="sel-subject" id="label-subject"><span id="subject-step-num">③</span> Subject</label>
               <select id="sel-subject" class="sc-select" required disabled>
                 <option value="">— Select Subject —</option>
               </select>
@@ -284,20 +293,10 @@
           <div id="sc-questions-output"></div>
         </div>
 
-        <!-- ── Maharashtra Universities ── -->
-        <div class="uni-section">
-          <h2>🏛️ Universities in Maharashtra</h2>
-          <p>Explore the top universities and institutes across Maharashtra — from central and state universities to deemed and private institutions.</p>
 
-          <div class="uni-tabs">
-            <button class="uni-tab active" onclick="filterUni('all', this)">All</button>
-            <button class="uni-tab" onclick="filterUni('central', this)">Central</button>
-            <button class="uni-tab" onclick="filterUni('state', this)">State</button>
-            <button class="uni-tab" onclick="filterUni('deemed', this)">Deemed</button>
-            <button class="uni-tab" onclick="filterUni('private', this)">Private</button>
-          </div>
-
-          <div class="uni-grid" id="uni-grid">
+      </div>
+    </section>
+  </main>
 
             <div class="uni-card" data-cat="central">
               <div class="uni-card-top">
@@ -651,12 +650,22 @@
 
   const SUBJECTS = {
     '1st Year': {
-      cse:   [{id:'programming_c',label:'C Programming'},{id:'math1',label:'Engineering Maths I'},{id:'physics',label:'Engineering Physics'},{id:'chemistry',label:'Engineering Chemistry'},{id:'english',label:'Technical English'}],
-      ece:   [{id:'basic_elec',label:'Basic Electronics'},{id:'math1',label:'Engineering Maths I'},{id:'physics',label:'Engineering Physics'},{id:'chemistry',label:'Engineering Chemistry'},{id:'programming_c',label:'C Programming'}],
-      mech:  [{id:'math1',label:'Engineering Maths I'},{id:'physics',label:'Engineering Physics'},{id:'cad',label:'Engineering Drawing'},{id:'chemistry',label:'Engineering Chemistry'}],
-      civil: [{id:'math1',label:'Engineering Maths I'},{id:'physics',label:'Engineering Physics'},{id:'cad',label:'Engineering Drawing'},{id:'chemistry',label:'Engineering Chemistry'}],
-      eee:   [{id:'math1',label:'Engineering Maths I'},{id:'basic_elec',label:'Basic Electrical'},{id:'physics',label:'Engineering Physics'},{id:'chemistry',label:'Engineering Chemistry'},{id:'programming_c',label:'C Programming'}],
-      bca:   [{id:'programming_c',label:'C Programming'},{id:'math_bca',label:'Maths for Computing'},{id:'it_fundamentals',label:'IT Fundamentals'},{id:'english',label:'Technical English'}],
+      sem1: {
+        cse:   [{id:'math1',label:'Engineering Mathematics I'},{id:'physics1',label:'Engineering Physics I'},{id:'chemistry1',label:'Engineering Chemistry I'},{id:'beee',label:'Basic Electrical & Electronics Engineering'},{id:'eg',label:'Engineering Graphics'},{id:'pce',label:'Professional Communication & Ethics'},{id:'phychemlab',label:'Physics / Chemistry Labs'}],
+        ece:   [{id:'math1',label:'Engineering Mathematics I'},{id:'physics1',label:'Engineering Physics I'},{id:'chemistry1',label:'Engineering Chemistry I'},{id:'beee',label:'Basic Electrical & Electronics Engineering'},{id:'eg',label:'Engineering Graphics'},{id:'pce',label:'Professional Communication & Ethics'},{id:'phychemlab',label:'Physics / Chemistry Labs'}],
+        mech:  [{id:'math1',label:'Engineering Mathematics I'},{id:'physics1',label:'Engineering Physics I'},{id:'chemistry1',label:'Engineering Chemistry I'},{id:'beee',label:'Basic Electrical & Electronics Engineering'},{id:'eg',label:'Engineering Graphics'},{id:'pce',label:'Professional Communication & Ethics'},{id:'phychemlab',label:'Physics / Chemistry Labs'}],
+        civil: [{id:'math1',label:'Engineering Mathematics I'},{id:'physics1',label:'Engineering Physics I'},{id:'chemistry1',label:'Engineering Chemistry I'},{id:'beee',label:'Basic Electrical & Electronics Engineering'},{id:'eg',label:'Engineering Graphics'},{id:'pce',label:'Professional Communication & Ethics'},{id:'phychemlab',label:'Physics / Chemistry Labs'}],
+        eee:   [{id:'math1',label:'Engineering Mathematics I'},{id:'physics1',label:'Engineering Physics I'},{id:'chemistry1',label:'Engineering Chemistry I'},{id:'beee',label:'Basic Electrical & Electronics Engineering'},{id:'eg',label:'Engineering Graphics'},{id:'pce',label:'Professional Communication & Ethics'},{id:'phychemlab',label:'Physics / Chemistry Labs'}],
+        bca:   [{id:'math1',label:'Engineering Mathematics I'},{id:'physics1',label:'Engineering Physics I'},{id:'chemistry1',label:'Engineering Chemistry I'},{id:'beee',label:'Basic Electrical & Electronics Engineering'},{id:'eg',label:'Engineering Graphics'},{id:'pce',label:'Professional Communication & Ethics'},{id:'phychemlab',label:'Physics / Chemistry Labs'}],
+      },
+      sem2: {
+        cse:   [{id:'math2_1',label:'Engineering Mathematics II'},{id:'physics2',label:'Engineering Physics II'},{id:'chemistry2',label:'Engineering Chemistry II'},{id:'engmech',label:'Engineering Mechanics'},{id:'prog_fund',label:'Programming Fundamentals (C / Python)'},{id:'envstudies',label:'Environmental Studies'},{id:'workshop',label:'Workshop Practice'}],
+        ece:   [{id:'math2_1',label:'Engineering Mathematics II'},{id:'physics2',label:'Engineering Physics II'},{id:'chemistry2',label:'Engineering Chemistry II'},{id:'engmech',label:'Engineering Mechanics'},{id:'prog_fund',label:'Programming Fundamentals (C / Python)'},{id:'envstudies',label:'Environmental Studies'},{id:'workshop',label:'Workshop Practice'}],
+        mech:  [{id:'math2_1',label:'Engineering Mathematics II'},{id:'physics2',label:'Engineering Physics II'},{id:'chemistry2',label:'Engineering Chemistry II'},{id:'engmech',label:'Engineering Mechanics'},{id:'prog_fund',label:'Programming Fundamentals (C / Python)'},{id:'envstudies',label:'Environmental Studies'},{id:'workshop',label:'Workshop Practice'}],
+        civil: [{id:'math2_1',label:'Engineering Mathematics II'},{id:'physics2',label:'Engineering Physics II'},{id:'chemistry2',label:'Engineering Chemistry II'},{id:'engmech',label:'Engineering Mechanics'},{id:'prog_fund',label:'Programming Fundamentals (C / Python)'},{id:'envstudies',label:'Environmental Studies'},{id:'workshop',label:'Workshop Practice'}],
+        eee:   [{id:'math2_1',label:'Engineering Mathematics II'},{id:'physics2',label:'Engineering Physics II'},{id:'chemistry2',label:'Engineering Chemistry II'},{id:'engmech',label:'Engineering Mechanics'},{id:'prog_fund',label:'Programming Fundamentals (C / Python)'},{id:'envstudies',label:'Environmental Studies'},{id:'workshop',label:'Workshop Practice'}],
+        bca:   [{id:'math2_1',label:'Engineering Mathematics II'},{id:'physics2',label:'Engineering Physics II'},{id:'chemistry2',label:'Engineering Chemistry II'},{id:'engmech',label:'Engineering Mechanics'},{id:'prog_fund',label:'Programming Fundamentals (C / Python)'},{id:'envstudies',label:'Environmental Studies'},{id:'workshop',label:'Workshop Practice'}],
+      },
     },
     '2nd Year': {
       cse:   [{id:'dsa',label:'Data Structures'},{id:'oops',label:'OOP (Java / C++)'},{id:'dbms',label:'DBMS'},{id:'os',label:'Operating Systems'},{id:'math2',label:'Discrete Mathematics'},{id:'cn',label:'Computer Networks'}],
