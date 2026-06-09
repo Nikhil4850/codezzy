@@ -11,9 +11,9 @@
     { title: 'Linux Commands Cheat Sheet', url: 'linux.html', category: 'Linux' },
     { title: 'Cloud Computing Overview', url: 'cloud-computing.html', category: 'Cloud' },
     { title: 'Domain & Hosting Guide', url: 'domain-hosting.html', category: 'Hosting' },
-    { title: 'GPA Calculator Tool', url: 'tools.html', category: 'Tools' },
+    { title: 'GPA Calculator Tool', url: 'student-corner.html', category: 'Student Corner' },
     { title: 'Interview Preparation', url: 'career-guidance.html', category: 'Career' },
-    { title: 'JavaScript Projects', url: 'projects.html', category: 'Projects' },
+    { title: 'JavaScript Projects', url: 'https://niksprojects.online', category: 'Projects' },
     { title: 'All Tutorials', url: 'tutorials.html', category: 'Tutorials' },
     { title: 'Blog Articles', url: 'blog.html', category: 'Blog' },
     { title: 'Free Resources', url: 'resources.html', category: 'Resources' },
@@ -586,6 +586,35 @@
       if (href === path || (path === '' && href === 'index.html')) link.classList.add('active');
     });
   }
+
+  /* Coming Soon Modal */
+  function showComingSoon(type) {
+    let modal = document.getElementById('coming-soon-modal');
+    if (!modal) {
+      modal = document.createElement('div');
+      modal.id = 'coming-soon-modal';
+      modal.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:10002;display:flex;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px);';
+      modal.innerHTML = `
+        <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius-xl);padding:40px 36px;max-width:400px;width:100%;text-align:center;box-shadow:var(--shadow-xl);">
+          <div style="font-size:3rem;margin-bottom:1rem">🚀</div>
+          <h2 style="font-size:1.4rem;font-weight:800;margin-bottom:0.5rem;color:var(--text)">Coming Soon!</h2>
+          <p id="coming-soon-msg" style="color:var(--text-secondary);font-size:0.95rem;margin-bottom:1.5rem;line-height:1.6"></p>
+          <button onclick="document.getElementById('coming-soon-modal').remove()" style="background:var(--gradient);color:white;border:none;padding:12px 32px;border-radius:50px;font-size:0.9rem;font-weight:700;cursor:pointer;font-family:inherit;">Got it!</button>
+        </div>`;
+      modal.addEventListener('click', e => { if (e.target === modal) modal.remove(); });
+      document.body.appendChild(modal);
+    }
+    const msgs = {
+      'PDF': 'This PDF is currently being prepared. Subscribe to our newsletter to get notified when it\'s ready!',
+      'ZIP': 'This project ZIP is being packaged. Check back soon or visit niksprojects.online for available projects.',
+      'File': 'This file is being prepared. Subscribe to our newsletter to get notified when it\'s ready!',
+      'Test': 'Interactive MCQ tests are coming soon. Subscribe to get notified when live!',
+      'Questions': 'This question bank is being compiled. Subscribe to our newsletter to stay updated.',
+    };
+    document.getElementById('coming-soon-msg').textContent = msgs[type] || 'This feature is coming soon. Stay tuned!';
+  }
+
+  window.showComingSoon = showComingSoon;
 
   /* Toast Notification */
   function showToast(message) {
