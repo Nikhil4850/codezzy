@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Corner — Year, Branch &amp; Subject Question Bank | CODEZZY</title>
+  <meta name="description" content="Select your year of study, branch, and subject to access important exam questions tailored for engineering and computer science students.">
+  <meta name="keywords" content="student corner, important questions, engineering question bank, CSE BCA MCA questions, CODEZZY">
+  <meta name="author" content="CODEZZY">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.codezzy.com/student-corner.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Student Corner — CODEZZY">
+  <meta property="og:description" content="Access important questions for your year, branch and subject — completely free.">
+  <meta property="og:url" content="https://www.codezzy.com/student-corner.html">
+  <meta property="og:site_name" content="CODEZZY">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Student Corner — CODEZZY">
+  <meta name="twitter:description" content="Year-wise, branch-wise important questions for engineering students.">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="css/style.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9595610341128742" crossorigin="anonymous"></script>
+  <style>
+    .sc-wizard { max-width: 860px; margin: 0 auto; }
+    .sc-steps { display: flex; align-items: center; gap: 0; margin-bottom: 2.5rem; }
+    .sc-step { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; font-weight: 600; color: var(--text-muted); }
+    .sc-step.active { color: var(--primary); }
+    .sc-step.done { color: var(--success); }
+    .sc-step-num { width: 32px; height: 32px; border-radius: 50%; border: 2px solid currentColor; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; flex-shrink: 0; }
+    .sc-step.active .sc-step-num { background: var(--primary); color: white; border-color: var(--primary); }
+    .sc-step.done .sc-step-num { background: var(--success); color: white; border-color: var(--success); }
+    .sc-divider { flex: 1; height: 2px; background: var(--border); margin: 0 8px; }
+    .sc-divider.done { background: var(--success); }
+    .sc-panel { display: none; }
+    .sc-panel.active { display: block; }
+    .sc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; margin-top: 1.5rem; }
+    .sc-btn { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 24px 16px; background: var(--card-bg); border: 2px solid var(--border); border-radius: var(--radius-lg); cursor: pointer; transition: all var(--transition); text-align: center; }
+    .sc-btn:hover { border-color: var(--primary); background: var(--gradient-light); transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .sc-btn.selected { border-color: var(--primary); background: var(--gradient-light); box-shadow: var(--shadow-md); }
+    .sc-btn-icon { font-size: 2rem; line-height: 1; }
+    .sc-btn-label { font-size: 0.9rem; font-weight: 600; color: var(--text); }
+    .sc-btn-sub { font-size: 0.75rem; color: var(--text-muted); }
+    .sc-back { display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem; cursor: pointer; transition: color var(--transition); background: none; border: none; }
+    .sc-back:hover { color: var(--primary); }
+    .sc-breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1.5rem; flex-wrap: wrap; }
+    .sc-breadcrumb span { color: var(--primary); font-weight: 600; }
+    .sc-breadcrumb .sep { color: var(--border); }
+    /* Questions */
+    .q-list { display: flex; flex-direction: column; gap: 12px; margin-top: 1.5rem; }
+    .q-item { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 20px 24px; transition: all var(--transition); }
+    .q-item:hover { border-color: var(--primary-light); box-shadow: var(--shadow-sm); }
+    .q-num { display: inline-block; font-size: 0.7rem; font-weight: 700; color: var(--primary); background: var(--gradient-light); padding: 2px 8px; border-radius: 50px; margin-bottom: 8px; }
+    .q-text { font-size: 0.95rem; color: var(--text); font-weight: 500; line-height: 1.5; }
+    .q-marks { display: inline-block; font-size: 0.75rem; color: var(--text-muted); margin-top: 6px; }
+    .sc-empty { text-align: center; padding: 60px 20px; color: var(--text-muted); }
+    .sc-empty .icon { font-size: 3rem; margin-bottom: 1rem; }
+    .q-section-title { font-size: 1rem; font-weight: 700; color: var(--text); margin: 1.5rem 0 0.5rem; padding-left: 4px; border-left: 3px solid var(--primary); }
+    @media (max-width: 480px) { .sc-grid { grid-template-columns: 1fr 1fr; } .sc-steps { gap: 0; } .sc-step-label { display: none; } }
+  </style>
+</head>
+<body>
+  <div id="page-loader"><div class="loader-content"><div class="loader-logo">CODEZZY</div><div class="loader-spinner"></div></div></div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo" aria-label="CODEZZY Home">
+        <img src="https://www.image2url.com/r2/default/images/1780987258335-61ded361-c005-4468-90d5-6a7bc3596fc5.png" alt="CODEZZY Logo" style="height:40px;width:auto;border-radius:8px;">
+        <div><span class="logo-text">CODEZZY</span><span class="logo-tagline">Learn. Build. Grow.</span></div>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="tutorials.html" class="nav-link">Tutorials</a>
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-btn" aria-haspopup="true">Categories &#9662;</button>
+          <div class="nav-dropdown-menu">
+            <a href="programming.html">Programming</a>
+            <a href="web-development.html">Web Development</a>
+            <a href="cyber-security.html">Cyber Security</a>
+            <a href="ai-ml.html">AI &amp; Machine Learning</a>
+            <a href="networking.html">Networking</a>
+            <a href="linux.html">Linux</a>
+            <a href="cloud-computing.html">Cloud Computing</a>
+            <a href="domain-hosting.html">Domain &amp; Hosting</a>
+          </div>
+        </div>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="student-corner.html" class="nav-link active">Student Corner</a>
+        <a href="resources.html" class="nav-link">Resources</a>
+      </nav>
+      <div class="header-actions">
+        <div class="search-box">
+          <span class="search-icon">&#128269;</span>
+          <input type="search" placeholder="Search tutorials..." aria-label="Search">
+          <div class="search-results"></div>
+        </div>
+        <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark mode">&#9790;</button>
+        <button id="mobile-toggle" class="mobile-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation">
+    <div class="mobile-nav-section">Main</div>
+    <a href="index.html">Home</a>
+    <a href="tutorials.html">Tutorials</a>
+    <a href="blog.html">Blog</a>
+    <a href="student-corner.html">Student Corner</a>
+    <a href="resources.html">Resources</a>
+    <div class="mobile-nav-section">Categories</div>
+    <a href="programming.html">Programming</a>
+    <a href="web-development.html">Web Development</a>
+    <a href="cyber-security.html">Cyber Security</a>
+    <a href="ai-ml.html">AI &amp; ML</a>
+    <a href="networking.html">Networking</a>
+    <a href="linux.html">Linux</a>
+    <a href="cloud-computing.html">Cloud Computing</a>
+    <a href="domain-hosting.html">Domain &amp; Hosting</a>
+    <div class="mobile-nav-section">More</div>
+    <a href="career-guidance.html">Career Guidance</a>
+    <a href="https://niksprojects.online" target="_blank" rel="noopener">Projects</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <span>&#8250;</span>
+          <span>Student Corner</span>
+        </nav>
+        <h1>🎓 Student Corner</h1>
+        <p>Select your year, branch, and subject to get important exam questions — curated for your semester.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:2rem">
+      <div class="container">
+        <div class="sc-wizard">
+
+          <!-- Step Indicator -->
+          <div class="sc-steps" id="sc-steps">
+            <div class="sc-step active" id="step-ind-1">
+              <div class="sc-step-num">1</div>
+              <span class="sc-step-label">Year</span>
+            </div>
+            <div class="sc-divider" id="div-1"></div>
+            <div class="sc-step" id="step-ind-2">
+              <div class="sc-step-num">2</div>
+              <span class="sc-step-label">Branch</span>
+            </div>
+            <div class="sc-divider" id="div-2"></div>
+            <div class="sc-step" id="step-ind-3">
+              <div class="sc-step-num">3</div>
+              <span class="sc-step-label">Subject</span>
+            </div>
+            <div class="sc-divider" id="div-3"></div>
+            <div class="sc-step" id="step-ind-4">
+              <div class="sc-step-num">4</div>
+              <span class="sc-step-label">Questions</span>
+            </div>
+          </div>
+
+          <!-- Panel 1: Year -->
+          <div class="sc-panel active" id="panel-year">
+            <h2 style="margin-bottom:0.5rem">Select Your Year of Study</h2>
+            <p style="color:var(--text-secondary);font-size:0.9rem">Choose the year you are currently studying in.</p>
+            <div class="sc-grid">
+              <button class="sc-btn" onclick="selectYear('1st Year')">
+                <span class="sc-btn-icon">🌱</span>
+                <span class="sc-btn-label">1st Year</span>
+                <span class="sc-btn-sub">Foundation</span>
+              </button>
+              <button class="sc-btn" onclick="selectYear('2nd Year')">
+                <span class="sc-btn-icon">📖</span>
+                <span class="sc-btn-label">2nd Year</span>
+                <span class="sc-btn-sub">Core Concepts</span>
+              </button>
+              <button class="sc-btn" onclick="selectYear('3rd Year')">
+                <span class="sc-btn-icon">⚙️</span>
+                <span class="sc-btn-label">3rd Year</span>
+                <span class="sc-btn-sub">Specialization</span>
+              </button>
+              <button class="sc-btn" onclick="selectYear('4th Year')">
+                <span class="sc-btn-icon">🎓</span>
+                <span class="sc-btn-label">4th Year</span>
+                <span class="sc-btn-sub">Final Year</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Panel 2: Branch -->
+          <div class="sc-panel" id="panel-branch">
+            <button class="sc-back" onclick="goTo('year')">&#8592; Back</button>
+            <div class="sc-breadcrumb" id="bc-branch"></div>
+            <h2 style="margin-bottom:0.5rem">Select Your Branch</h2>
+            <p style="color:var(--text-secondary);font-size:0.9rem">Choose your engineering or science branch.</p>
+            <div class="sc-grid" id="branch-grid"></div>
+          </div>
+
+          <!-- Panel 3: Subject -->
+          <div class="sc-panel" id="panel-subject">
+            <button class="sc-back" onclick="goTo('branch')">&#8592; Back</button>
+            <div class="sc-breadcrumb" id="bc-subject"></div>
+            <h2 style="margin-bottom:0.5rem">Select a Subject</h2>
+            <p style="color:var(--text-secondary);font-size:0.9rem">Choose the subject you want to study questions for.</p>
+            <div class="sc-grid" id="subject-grid"></div>
+          </div>
+
+          <!-- Panel 4: Questions -->
+          <div class="sc-panel" id="panel-questions">
+            <button class="sc-back" onclick="goTo('subject')">&#8592; Back</button>
+            <div class="sc-breadcrumb" id="bc-questions"></div>
+            <div id="questions-container"></div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo"><img src="https://www.image2url.com/r2/default/images/1780987258335-61ded361-c005-4468-90d5-6a7bc3596fc5.png" alt="CODEZZY Logo" style="height:36px;width:auto;border-radius:8px;"></a>
+          <p>CODEZZY is a free educational technology platform helping students learn programming, cyber security, web development, AI, and more. Learn. Build. Grow.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="Twitter">&#120143;</a>
+            <a href="#" aria-label="LinkedIn">in</a>
+            <a href="#" aria-label="YouTube">&#9654;</a>
+            <a href="#" aria-label="Instagram">&#9679;</a>
+          </div>
+        </div>
+        <div class="footer-col"><h4>Learn</h4><a href="tutorials.html">Tutorials</a><a href="programming.html">Programming</a><a href="web-development.html">Web Development</a><a href="cyber-security.html">Cyber Security</a><a href="ai-ml.html">AI &amp; ML</a></div>
+        <div class="footer-col"><h4>Resources</h4><a href="resources.html">Downloads</a><a href="student-corner.html">Student Corner</a><a href="https://niksprojects.online" target="_blank" rel="noopener">Projects</a><a href="career-guidance.html">Career Guidance</a><a href="blog.html">Blog</a></div>
+        <div class="footer-col"><h4>Company</h4><a href="about.html">About Us</a><a href="contact.html">Contact</a><a href="faq.html">FAQ</a><a href="privacy-policy.html">Privacy Policy</a><a href="terms.html">Terms</a><a href="disclaimer.html">Disclaimer</a></div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 CODEZZY. All rights reserved.</p>
+        <div class="footer-bottom-links"><a href="privacy-policy.html">Privacy</a><a href="terms.html">Terms</a><a href="disclaimer.html">Disclaimer</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <button id="scroll-top" aria-label="Scroll to top">&#8593;</button>
+  <script src="js/script.js"></script>
+  <script>
+  // ─── Data ───────────────────────────────────────────────────────────────────
+  const BRANCHES = {
+    '1st Year': [
+      { id: 'cse',   label: 'CSE',           icon: '💻', sub: 'Computer Science' },
+      { id: 'ece',   label: 'ECE',           icon: '📡', sub: 'Electronics & Comm.' },
+      { id: 'mech',  label: 'Mechanical',    icon: '⚙️', sub: 'Mechanical Engg.' },
+      { id: 'civil', label: 'Civil',         icon: '🏗️', sub: 'Civil Engg.' },
+      { id: 'eee',   label: 'EEE',           icon: '⚡', sub: 'Electrical Engg.' },
+      { id: 'bca',   label: 'BCA',           icon: '🖥️', sub: 'Computer Applications' },
+    ],
+    '2nd Year': [
+      { id: 'cse',   label: 'CSE',           icon: '💻', sub: 'Computer Science' },
+      { id: 'ece',   label: 'ECE',           icon: '📡', sub: 'Electronics & Comm.' },
+      { id: 'mech',  label: 'Mechanical',    icon: '⚙️', sub: 'Mechanical Engg.' },
+      { id: 'civil', label: 'Civil',         icon: '🏗️', sub: 'Civil Engg.' },
+      { id: 'eee',   label: 'EEE',           icon: '⚡', sub: 'Electrical Engg.' },
+      { id: 'bca',   label: 'BCA',           icon: '🖥️', sub: 'Computer Applications' },
+      { id: 'mca',   label: 'MCA',           icon: '🎓', sub: 'Computer Applications' },
+    ],
+    '3rd Year': [
+      { id: 'cse',   label: 'CSE',           icon: '💻', sub: 'Computer Science' },
+      { id: 'ece',   label: 'ECE',           icon: '📡', sub: 'Electronics & Comm.' },
+      { id: 'mech',  label: 'Mechanical',    icon: '⚙️', sub: 'Mechanical Engg.' },
+      { id: 'civil', label: 'Civil',         icon: '🏗️', sub: 'Civil Engg.' },
+      { id: 'eee',   label: 'EEE',           icon: '⚡', sub: 'Electrical Engg.' },
+      { id: 'bca',   label: 'BCA',           icon: '🖥️', sub: 'Computer Applications' },
+      { id: 'mca',   label: 'MCA',           icon: '🎓', sub: 'Computer Applications' },
+    ],
+    '4th Year': [
+      { id: 'cse',   label: 'CSE',           icon: '💻', sub: 'Computer Science' },
+      { id: 'ece',   label: 'ECE',           icon: '📡', sub: 'Electronics & Comm.' },
+      { id: 'mech',  label: 'Mechanical',    icon: '⚙️', sub: 'Mechanical Engg.' },
+      { id: 'civil', label: 'Civil',         icon: '🏗️', sub: 'Civil Engg.' },
+      { id: 'eee',   label: 'EEE',           icon: '⚡', sub: 'Electrical Engg.' },
+      { id: 'mca',   label: 'MCA',           icon: '🎓', sub: 'Computer Applications' },
+    ],
+  };
+
+  const SUBJECTS = {
+    '1st Year': {
+      cse:   [
+        { id: 'programming_c',  label: 'C Programming',         icon: '⌨️' },
+        { id: 'math1',          label: 'Engineering Maths I',   icon: '📐' },
+        { id: 'physics',        label: 'Engineering Physics',   icon: '🔬' },
+        { id: 'chemistry',      label: 'Engineering Chemistry', icon: '⚗️' },
+        { id: 'english',        label: 'Technical English',     icon: '📝' },
+      ],
+      ece:   [
+        { id: 'basic_elec',    label: 'Basic Electronics',      icon: '🔌' },
+        { id: 'math1',         label: 'Engineering Maths I',    icon: '📐' },
+        { id: 'physics',       label: 'Engineering Physics',    icon: '🔬' },
+        { id: 'chemistry',     label: 'Engineering Chemistry',  icon: '⚗️' },
+        { id: 'programming_c', label: 'C Programming',          icon: '⌨️' },
+      ],
+      mech:  [
+        { id: 'math1',         label: 'Engineering Maths I',    icon: '📐' },
+        { id: 'physics',       label: 'Engineering Physics',    icon: '🔬' },
+        { id: 'cad',           label: 'Engineering Drawing',    icon: '📏' },
+        { id: 'wst',           label: 'Workshop Technology',    icon: '🔧' },
+        { id: 'chemistry',     label: 'Engineering Chemistry',  icon: '⚗️' },
+      ],
+      civil: [
+        { id: 'math1',         label: 'Engineering Maths I',    icon: '📐' },
+        { id: 'physics',       label: 'Engineering Physics',    icon: '🔬' },
+        { id: 'cad',           label: 'Engineering Drawing',    icon: '📏' },
+        { id: 'bce',           label: 'Basic Civil Engg.',      icon: '🏗️' },
+        { id: 'chemistry',     label: 'Engineering Chemistry',  icon: '⚗️' },
+      ],
+      eee:   [
+        { id: 'math1',         label: 'Engineering Maths I',    icon: '📐' },
+        { id: 'basic_elec',    label: 'Basic Electrical',       icon: '🔌' },
+        { id: 'physics',       label: 'Engineering Physics',    icon: '🔬' },
+        { id: 'chemistry',     label: 'Engineering Chemistry',  icon: '⚗️' },
+        { id: 'programming_c', label: 'C Programming',          icon: '⌨️' },
+      ],
+      bca:   [
+        { id: 'programming_c', label: 'C Programming',          icon: '⌨️' },
+        { id: 'math_bca',      label: 'Maths for Computing',    icon: '📐' },
+        { id: 'it_fundamentals',label: 'IT Fundamentals',       icon: '🖥️' },
+        { id: 'english',       label: 'Technical English',      icon: '📝' },
+      ],
+    },
+    '2nd Year': {
+      cse:   [
+        { id: 'dsa',           label: 'Data Structures',        icon: '🗂️' },
+        { id: 'oops',          label: 'OOP (Java/C++)',         icon: '☕' },
+        { id: 'dbms',          label: 'DBMS',                   icon: '🗄️' },
+        { id: 'os',            label: 'Operating Systems',      icon: '🖥️' },
+        { id: 'math2',         label: 'Discrete Mathematics',   icon: '📐' },
+        { id: 'cn',            label: 'Computer Networks',      icon: '🌐' },
+      ],
+      ece:   [
+        { id: 'signals',       label: 'Signals & Systems',      icon: '📶' },
+        { id: 'analog',        label: 'Analog Electronics',     icon: '🔌' },
+        { id: 'digital',       label: 'Digital Electronics',    icon: '💡' },
+        { id: 'math2',         label: 'Engg. Maths II',         icon: '📐' },
+        { id: 'emf',           label: 'Electromagnetic Fields', icon: '🧲' },
+      ],
+      mech:  [
+        { id: 'thermo',        label: 'Thermodynamics',         icon: '🌡️' },
+        { id: 'fluid',         label: 'Fluid Mechanics',        icon: '💧' },
+        { id: 'strength',      label: 'Strength of Materials',  icon: '🏋️' },
+        { id: 'math2',         label: 'Engg. Maths II',         icon: '📐' },
+        { id: 'manufacturing', label: 'Manufacturing Process',  icon: '🏭' },
+      ],
+      civil: [
+        { id: 'fluid',         label: 'Fluid Mechanics',        icon: '💧' },
+        { id: 'strength',      label: 'Strength of Materials',  icon: '🏋️' },
+        { id: 'surveying',     label: 'Surveying',              icon: '🗺️' },
+        { id: 'math2',         label: 'Engg. Maths II',         icon: '📐' },
+        { id: 'soil',          label: 'Soil Mechanics',         icon: '🌍' },
+      ],
+      eee:   [
+        { id: 'emach',         label: 'Electrical Machines',    icon: '⚡' },
+        { id: 'analog',        label: 'Analog Electronics',     icon: '🔌' },
+        { id: 'digital',       label: 'Digital Electronics',    icon: '💡' },
+        { id: 'math2',         label: 'Engg. Maths II',         icon: '📐' },
+        { id: 'powerelec',     label: 'Power Electronics',      icon: '🔋' },
+      ],
+      bca:   [
+        { id: 'dsa',           label: 'Data Structures',        icon: '🗂️' },
+        { id: 'oops',          label: 'OOP with Java',          icon: '☕' },
+        { id: 'dbms',          label: 'DBMS',                   icon: '🗄️' },
+        { id: 'web_basics',    label: 'Web Development',        icon: '🌐' },
+        { id: 'os',            label: 'Operating Systems',      icon: '🖥️' },
+      ],
+      mca:   [
+        { id: 'dsa',           label: 'Data Structures',        icon: '🗂️' },
+        { id: 'dbms',          label: 'DBMS',                   icon: '🗄️' },
+        { id: 'os',            label: 'Operating Systems',      icon: '🖥️' },
+        { id: 'cn',            label: 'Computer Networks',      icon: '🌐' },
+        { id: 'math_mca',      label: 'Mathematical Foundations',icon:'📐' },
+      ],
+    },
+    '3rd Year': {
+      cse:   [
+        { id: 'algo',          label: 'Algorithms',             icon: '🧮' },
+        { id: 'compiler',      label: 'Compiler Design',        icon: '⚙️' },
+        { id: 'ai',            label: 'Artificial Intelligence',icon: '🤖' },
+        { id: 'se',            label: 'Software Engineering',   icon: '📋' },
+        { id: 'ml',            label: 'Machine Learning',       icon: '🧠' },
+        { id: 'cloud',         label: 'Cloud Computing',        icon: '☁️' },
+      ],
+      ece:   [
+        { id: 'vlsi',          label: 'VLSI Design',            icon: '🔬' },
+        { id: 'comm',          label: 'Communication Systems',  icon: '📡' },
+        { id: 'microprocessor',label: 'Microprocessors',        icon: '💾' },
+        { id: 'embedded',      label: 'Embedded Systems',       icon: '🤖' },
+        { id: 'dsp',           label: 'Digital Signal Processing',icon:'📶'},
+      ],
+      mech:  [
+        { id: 'design',        label: 'Machine Design',         icon: '⚙️' },
+        { id: 'heat',          label: 'Heat Transfer',          icon: '🌡️' },
+        { id: 'dynamics',      label: 'Theory of Machines',     icon: '🔩' },
+        { id: 'cad_cam',       label: 'CAD/CAM',                icon: '🖥️' },
+        { id: 'automobile',    label: 'Automobile Engg.',       icon: '🚗' },
+      ],
+      civil: [
+        { id: 'structural',    label: 'Structural Analysis',    icon: '🏗️' },
+        { id: 'transport',     label: 'Transportation Engg.',   icon: '🛣️' },
+        { id: 'enviro',        label: 'Environmental Engg.',    icon: '🌿' },
+        { id: 'concrete',      label: 'Concrete Technology',    icon: '🧱' },
+        { id: 'geo',           label: 'Geotechnical Engg.',     icon: '🌍' },
+      ],
+      eee:   [
+        { id: 'control',       label: 'Control Systems',        icon: '🎛️' },
+        { id: 'powersys',      label: 'Power Systems',          icon: '⚡' },
+        { id: 'drives',        label: 'Electric Drives',        icon: '🔋' },
+        { id: 'instrumentation',label:'Instrumentation',        icon: '📊' },
+        { id: 'microprocessor',label: 'Microprocessors',        icon: '💾' },
+      ],
+      bca:   [
+        { id: 'algo',          label: 'Algorithms',             icon: '🧮' },
+        { id: 'python',        label: 'Python Programming',     icon: '🐍' },
+        { id: 'cybersec',      label: 'Cyber Security',         icon: '🔐' },
+        { id: 'mobile',        label: 'Mobile App Development', icon: '📱' },
+        { id: 'se',            label: 'Software Engineering',   icon: '📋' },
+      ],
+      mca:   [
+        { id: 'algo',          label: 'Algorithms',             icon: '🧮' },
+        { id: 'ai',            label: 'Artificial Intelligence',icon: '🤖' },
+        { id: 'se',            label: 'Software Engineering',   icon: '📋' },
+        { id: 'web_adv',       label: 'Advanced Web Dev.',      icon: '🌐' },
+        { id: 'cloud',         label: 'Cloud Computing',        icon: '☁️' },
+      ],
+    },
+    '4th Year': {
+      cse:   [
+        { id: 'bigdata',       label: 'Big Data Analytics',     icon: '📊' },
+        { id: 'iot',           label: 'Internet of Things',     icon: '🔗' },
+        { id: 'blockchain',    label: 'Blockchain Technology',  icon: '⛓️' },
+        { id: 'capstone',      label: 'Project / Capstone',     icon: '🎓' },
+        { id: 'cybersec',      label: 'Cyber Security',         icon: '🔐' },
+      ],
+      ece:   [
+        { id: 'iot',           label: 'Internet of Things',     icon: '🔗' },
+        { id: 'wireless',      label: 'Wireless Comm.',         icon: '📶' },
+        { id: 'robotics',      label: 'Robotics',               icon: '🤖' },
+        { id: 'capstone',      label: 'Project / Capstone',     icon: '🎓' },
+        { id: 'ai_ece',        label: 'AI in Electronics',      icon: '🧠' },
+      ],
+      mech:  [
+        { id: 'robotics',      label: 'Robotics',               icon: '🤖' },
+        { id: 'renewable',     label: 'Renewable Energy',       icon: '🌞' },
+        { id: 'product',       label: 'Product Design',         icon: '📐' },
+        { id: 'capstone',      label: 'Project / Capstone',     icon: '🎓' },
+      ],
+      civil: [
+        { id: 'construction',  label: 'Construction Management',icon: '🏗️' },
+        { id: 'water',         label: 'Water Resources',        icon: '💧' },
+        { id: 'disaster',      label: 'Disaster Management',    icon: '🌊' },
+        { id: 'capstone',      label: 'Project / Capstone',     icon: '🎓' },
+      ],
+      eee:   [
+        { id: 'smart_grid',    label: 'Smart Grid Technology',  icon: '⚡' },
+        { id: 'renewable',     label: 'Renewable Energy',       icon: '🌞' },
+        { id: 'ev',            label: 'Electric Vehicles',      icon: '🚗' },
+        { id: 'capstone',      label: 'Project / Capstone',     icon: '🎓' },
+      ],
+      mca:   [
+        { id: 'ml',            label: 'Machine Learning',       icon: '🧠' },
+        { id: 'bigdata',       label: 'Big Data Analytics',     icon: '📊' },
+        { id: 'blockchain',    label: 'Blockchain Technology',  icon: '⛓️' },
+        { id: 'capstone',      label: 'Project / Capstone',     icon: '🎓' },
+      ],
+    },
+  };
+
+  // ─── Question Bank ───────────────────────────────────────────────────────────
+  const QUESTIONS = {
+    programming_c: {
+      title: 'C Programming',
+      sections: [
+        { title: '2 Marks — Short Answer', questions: [
+          { q: 'What is a pointer in C? How is it declared?', marks: '2 Marks' },
+          { q: 'Differentiate between while loop and do-while loop.', marks: '2 Marks' },
+          { q: 'What is the difference between call by value and call by reference?', marks: '2 Marks' },
+          { q: 'Define structure and union in C.', marks: '2 Marks' },
+          { q: 'What is a null pointer? Give an example.', marks: '2 Marks' },
+          { q: 'List any four string handling functions in C.', marks: '2 Marks' },
+        ]},
+        { title: '5 Marks — Medium Answer', questions: [
+          { q: 'Write a C program to find the factorial of a number using recursion.', marks: '5 Marks' },
+          { q: 'Explain the concept of arrays with an example program to sort numbers.', marks: '5 Marks' },
+          { q: 'Write a program to read and display elements of a matrix using 2D arrays.', marks: '5 Marks' },
+          { q: 'Explain file handling in C with fopen, fclose, fprintf and fscanf.', marks: '5 Marks' },
+        ]},
+        { title: '10 Marks — Long Answer', questions: [
+          { q: 'Explain pointers in detail. Write programs to demonstrate pointer arithmetic, pointer to pointer, and pointer to function.', marks: '10 Marks' },
+          { q: 'What is dynamic memory allocation? Explain malloc(), calloc(), realloc(), and free() with examples.', marks: '10 Marks' },
+          { q: 'Explain structures in C with a program to implement a student record system using an array of structures.', marks: '10 Marks' },
+        ]},
+      ]
+    },
+    dsa: {
+      title: 'Data Structures & Algorithms',
+      sections: [
+        { title: '2 Marks — Short Answer', questions: [
+          { q: 'Define data structure. List its types.', marks: '2 Marks' },
+          { q: 'What is a stack? State its operations.', marks: '2 Marks' },
+          { q: 'What is a linked list? Differentiate singly and doubly linked list.', marks: '2 Marks' },
+          { q: 'Define tree and binary tree. What is a complete binary tree?', marks: '2 Marks' },
+          { q: 'What is hashing? What is a collision?', marks: '2 Marks' },
+          { q: 'Define Big-O notation with examples.', marks: '2 Marks' },
+        ]},
+        { title: '5 Marks — Medium Answer', questions: [
+          { q: 'Explain stack operations with push and pop algorithms. Write a program to implement stack using array.', marks: '5 Marks' },
+          { q: 'Write an algorithm for binary search. What is its time complexity?', marks: '5 Marks' },
+          { q: 'Explain queue and circular queue with diagrams.', marks: '5 Marks' },
+          { q: 'Write insertion and deletion operations on a singly linked list.', marks: '5 Marks' },
+        ]},
+        { title: '10 Marks — Long Answer', questions: [
+          { q: 'Explain binary search tree (BST). Write algorithms for insertion, deletion, and traversal (inorder, preorder, postorder).', marks: '10 Marks' },
+          { q: 'What is a graph? Explain BFS and DFS traversal with algorithms and examples.', marks: '10 Marks' },
+          { q: 'Explain various sorting algorithms — Bubble, Selection, Insertion, Merge and Quick sort — with time complexity comparison.', marks: '10 Marks' },
+        ]},
+      ]
+    },
+    dbms: {
+      title: 'Database Management System',
+      sections: [
+        { title: '2 Marks — Short Answer', questions: [
+          { q: 'What is a DBMS? How is it different from a file system?', marks: '2 Marks' },
+          { q: 'Define primary key, foreign key, and candidate key.', marks: '2 Marks' },
+          { q: 'What is normalization? Name its normal forms.', marks: '2 Marks' },
+          { q: 'What is an ER diagram? Name its components.', marks: '2 Marks' },
+          { q: 'What is a transaction? State the ACID properties.', marks: '2 Marks' },
+          { q: 'Differentiate between DDL, DML, and DCL commands.', marks: '2 Marks' },
+        ]},
+        { title: '5 Marks — Medium Answer', questions: [
+          { q: 'Explain 1NF, 2NF, and 3NF with examples.', marks: '5 Marks' },
+          { q: 'Write SQL queries for creating a table, inserting records, and performing SELECT with JOIN.', marks: '5 Marks' },
+          { q: 'Explain different types of JOINs in SQL with examples.', marks: '5 Marks' },
+          { q: 'What is a view? How is it different from a table? Write syntax to create and drop a view.', marks: '5 Marks' },
+        ]},
+        { title: '10 Marks — Long Answer', questions: [
+          { q: 'Draw and explain an ER diagram for a Hospital Management System with all entities, attributes, and relationships.', marks: '10 Marks' },
+          { q: 'Explain concurrency control in DBMS. Describe lock-based and timestamp-based protocols.', marks: '10 Marks' },
+          { q: 'What is query optimization? Explain the steps involved in processing and optimizing a SQL query.', marks: '10 Marks' },
+        ]},
+      ]
+    },
+    os: {
+      title: 'Operating Systems',
+      sections: [
+        { title: '2 Marks — Short Answer', questions: [
+          { q: 'What is an operating system? List its functions.', marks: '2 Marks' },
+          { q: 'What is a process? Differentiate process from program.', marks: '2 Marks' },
+          { q: 'Define deadlock. State its necessary conditions.', marks: '2 Marks' },
+          { q: 'What is virtual memory? What are its advantages?', marks: '2 Marks' },
+          { q: 'Differentiate between internal and external fragmentation.', marks: '2 Marks' },
+          { q: 'What is a semaphore? What are its types?', marks: '2 Marks' },
+        ]},
+        { title: '5 Marks — Medium Answer', questions: [
+          { q: 'Explain FCFS, SJF, Round Robin, and Priority scheduling algorithms with examples.', marks: '5 Marks' },
+          { q: 'What is paging? Explain the page table mechanism with a diagram.', marks: '5 Marks' },
+          { q: 'Explain the producer-consumer problem using semaphores.', marks: '5 Marks' },
+          { q: 'What are page replacement algorithms? Explain FIFO, LRU, and Optimal.', marks: '5 Marks' },
+        ]},
+        { title: '10 Marks — Long Answer', questions: [
+          { q: 'Explain the deadlock problem in detail. Describe deadlock prevention, avoidance (Banker\'s algorithm), and detection methods.', marks: '10 Marks' },
+          { q: 'Describe the file system structure. Explain file allocation methods — contiguous, linked, and indexed.', marks: '10 Marks' },
+          { q: 'What is thrashing? How can it be prevented? Explain working set model and page fault frequency approach.', marks: '10 Marks' },
+        ]},
+      ]
+    },
+    cn: {
+      title: 'Computer Networks',
+      sections: [
+        { title: '2 Marks — Short Answer', questions: [
+          { q: 'What is the OSI model? List its seven layers.', marks: '2 Marks' },
+          { q: 'Differentiate between TCP and UDP.', marks: '2 Marks' },
+          { q: 'What is an IP address? Differentiate IPv4 and IPv6.', marks: '2 Marks' },
+          { q: 'Define subnetting and subnet mask.', marks: '2 Marks' },
+          { q: 'What is DNS? How does it resolve domain names?', marks: '2 Marks' },
+          { q: 'What is the difference between a hub, switch, and router?', marks: '2 Marks' },
+        ]},
+        { title: '5 Marks — Medium Answer', questions: [
+          { q: 'Explain the TCP/IP model with all its layers and protocols.', marks: '5 Marks' },
+          { q: 'Explain the three-way handshake in TCP with a diagram.', marks: '5 Marks' },
+          { q: 'What is CSMA/CD? Explain how it works in Ethernet networks.', marks: '5 Marks' },
+          { q: 'Explain different routing algorithms — Distance Vector and Link State.', marks: '5 Marks' },
+        ]},
+        { title: '10 Marks — Long Answer', questions: [
+          { q: 'Explain the OSI model in detail. Describe the role and protocols of each layer.', marks: '10 Marks' },
+          { q: 'What is network security? Explain firewalls, VPNs, SSL/TLS, and digital certificates.', marks: '10 Marks' },
+          { q: 'Explain congestion control in TCP. Describe slow start, congestion avoidance, fast retransmit, and fast recovery.', marks: '10 Marks' },
+        ]},
+      ]
+    },
+    oops: {
+      title: 'Object Oriented Programming',
+      sections: [
+        { title: '2 Marks — Short Answer', questions: [
+          { q: 'What are the four pillars of OOP? Define each.', marks: '2 Marks' },
+          { q: 'What is a class? How is it different from an object?', marks: '2 Marks' },
+          { q: 'What is method overloading and method overriding?', marks: '2 Marks' },
+          { q: 'What is a constructor? What are its types?', marks: '2 Marks' },
+          { q: 'Define interface and abstract class in Java.', marks: '2 Marks' },
+          { q: 'What is the difference between final, finally, and finalize in Java?', marks: '2 Marks' },
+        ]},
+        { title: '5 Marks — Medium Answer', questions: [
+          { q: 'Explain inheritance in Java with a program demonstrating single, multilevel, and hierarchical inheritance.', marks: '5 Marks' },
+          { q: 'What is exception handling? Explain try, catch, finally, throw, and throws with an example.', marks: '5 Marks' },
+          { q: 'Explain polymorphism with examples of compile-time and runtime polymorphism.', marks: '5 Marks' },
+          { q: 'Write a Java program demonstrating ArrayList, HashMap, and Iterator from the Collections framework.', marks: '5 Marks' },
+        ]},
+        { title: '10 Marks — Long Answer', questions: [
+          { q: 'Explain multithreading in Java. Write a program to demonstrate thread creation, synchronization, and inter-thread communication.', marks: '10 Marks' },
+          { q: 'Explain file I/O in Java. Write programs using FileReader, FileWriter, BufferedReader, and BufferedWriter.', marks: '10 Marks' },
+          { q: 'What are design patterns? Explain Singleton, Factory, and Observer patterns with Java code examples.', marks: '10 Marks' },
+        ]},
+      ]
+    },
+    ai: {
+      title: 'Artificial Intelligence',
+      sections: [
+        { title: '2 Marks — Short Answer', questions: [
+          { q: 'Define Artificial Intelligence. List its applications.', marks: '2 Marks' },
+          { q: 'What is a knowledge base and inference engine?', marks: '2 Marks' },
+          { q: 'Define heuristic function in A* search.', marks: '2 Marks' },
+          { q: 'What is the difference between supervised and unsupervised learning?', marks: '2 Marks' },
+          { q: 'What is a Turing Test?', marks: '2 Marks' },
+        ]},
+        { title: '5 Marks — Medium Answer', questions: [
+          { q: 'Explain BFS and DFS in AI with state space search examples.', marks: '5 Marks' },
+          { q: 'What is the minimax algorithm? Explain with a game tree example.', marks: '5 Marks' },
+          { q: 'Explain backpropagation in neural networks with a diagram.', marks: '5 Marks' },
+          { q: 'What is a Bayesian network? Explain with a simple probability example.', marks: '5 Marks' },
+        ]},
+        { title: '10 Marks — Long Answer', questions: [
+          { q: 'Explain problem formulation in AI. Describe the 8-puzzle problem with BFS, DFS, and A* approaches.', marks: '10 Marks' },
+          { q: 'What is machine learning? Describe decision trees, k-NN, and naive Bayes classifiers with examples.', marks: '10 Marks' },
+          { q: 'Explain natural language processing. Describe tokenization, POS tagging, parsing, and NLP applications.', marks: '10 Marks' },
+        ]},
+      ]
+    },
+    ml: {
+      title: 'Machine Learning',
+      sections: [
+        { title: '2 Marks — Short Answer', questions: [
+          { q: 'Define machine learning. What are its types?', marks: '2 Marks' },
+          { q: 'What is overfitting? How can it be prevented?', marks: '2 Marks' },
+          { q: 'What is a confusion matrix?', marks: '2 Marks' },
+          { q: 'Define precision, recall, and F1 score.', marks: '2 Marks' },
+          { q: 'What is gradient descent?', marks: '2 Marks' },
+        ]},
+        { title: '5 Marks — Medium Answer', questions: [
+          { q: 'Explain linear regression with cost function and gradient descent optimization.', marks: '5 Marks' },
+          { q: 'What is k-means clustering? Explain the algorithm with an example.', marks: '5 Marks' },
+          { q: 'Explain Support Vector Machine (SVM) with kernel functions.', marks: '5 Marks' },
+          { q: 'What is cross-validation? Explain k-fold cross-validation.', marks: '5 Marks' },
+        ]},
+        { title: '10 Marks — Long Answer', questions: [
+          { q: 'Explain the Random Forest algorithm. Compare it with decision trees. Describe bagging and boosting.', marks: '10 Marks' },
+          { q: 'Describe a complete ML pipeline — data collection, preprocessing, feature engineering, model training, evaluation, and deployment.', marks: '10 Marks' },
+          { q: 'Explain deep learning architectures — ANN, CNN, and RNN — with applications.', marks: '10 Marks' },
+        ]},
+      ]
+    },
+    se: {
+      title: 'Software Engineering',
+      sections: [
+        { title: '2 Marks — Short Answer', questions: [
+          { q: 'Define software engineering. What are its objectives?', marks: '2 Marks' },
+          { q: 'What is SDLC? List its phases.', marks: '2 Marks' },
+          { q: 'What is a use case diagram? Give an example.', marks: '2 Marks' },
+          { q: 'Differentiate verification and validation.', marks: '2 Marks' },
+          { q: 'What is cohesion and coupling in software design?', marks: '2 Marks' },
+        ]},
+        { title: '5 Marks — Medium Answer', questions: [
+          { q: 'Compare Waterfall, Agile, and Spiral models. When should each be used?', marks: '5 Marks' },
+          { q: 'Explain UML diagrams — class diagram, sequence diagram, and activity diagram with examples.', marks: '5 Marks' },
+          { q: 'What is software testing? Explain unit testing, integration testing, and system testing.', marks: '5 Marks' },
+          { q: 'Explain software project estimation. Describe COCOMO model.', marks: '5 Marks' },
+        ]},
+        { title: '10 Marks — Long Answer', questions: [
+          { q: 'Explain the Agile methodology in detail. Describe Scrum framework with roles, ceremonies, and artifacts.', marks: '10 Marks' },
+          { q: 'What is software maintenance? Explain its types. Describe the role of configuration management.', marks: '10 Marks' },
+          { q: 'Describe software design principles — SOLID, DRY, KISS — and how they improve software quality.', marks: '10 Marks' },
+        ]},
+      ]
+    },
+    cybersec: {
+      title: 'Cyber Security',
+      sections: [
+        { title: '2 Marks — Short Answer', questions: [
+          { q: 'Define cyber security. List its types.', marks: '2 Marks' },
+          { q: 'What is a firewall? How does it work?', marks: '2 Marks' },
+          { q: 'What is phishing? How can it be prevented?', marks: '2 Marks' },
+          { q: 'Define encryption and decryption.', marks: '2 Marks' },
+          { q: 'What is a VPN? When should it be used?', marks: '2 Marks' },
+          { q: 'What is social engineering in cyber security?', marks: '2 Marks' },
+        ]},
+        { title: '5 Marks — Medium Answer', questions: [
+          { q: 'Explain symmetric and asymmetric encryption with examples (AES, RSA).', marks: '5 Marks' },
+          { q: 'What is ethical hacking? Describe the phases of a penetration test.', marks: '5 Marks' },
+          { q: 'Explain common web vulnerabilities — SQL injection, XSS, and CSRF — with prevention techniques.', marks: '5 Marks' },
+          { q: 'What is a digital certificate? Explain PKI and SSL/TLS.', marks: '5 Marks' },
+        ]},
+        { title: '10 Marks — Long Answer', questions: [
+          { q: 'Explain network security. Describe IDS/IPS systems, honeypots, DMZ, and network monitoring.', marks: '10 Marks' },
+          { q: 'What is malware? Explain types of malware and describe how antivirus software detects and removes them.', marks: '10 Marks' },
+          { q: 'Explain the CIA triad. Describe information security policies, risk assessment, and compliance frameworks like ISO 27001.', marks: '10 Marks' },
+        ]},
+      ]
+    },
+    python: {
+      title: 'Python Programming',
+      sections: [
+        { title: '2 Marks — Short Answer', questions: [
+          { q: 'What are Python\'s key features? How is it different from C?', marks: '2 Marks' },
+          { q: 'What is the difference between list, tuple, and set in Python?', marks: '2 Marks' },
+          { q: 'What are lambda functions in Python? Give an example.', marks: '2 Marks' },
+          { q: 'What is a decorator in Python?', marks: '2 Marks' },
+          { q: 'What is the difference between shallow copy and deep copy?', marks: '2 Marks' },
+        ]},
+        { title: '5 Marks — Medium Answer', questions: [
+          { q: 'Explain list comprehensions and generators in Python with examples.', marks: '5 Marks' },
+          { q: 'What is OOP in Python? Write a program with class, inheritance, and polymorphism.', marks: '5 Marks' },
+          { q: 'Explain exception handling in Python with try, except, else, and finally.', marks: '5 Marks' },
+          { q: 'Write a Python program to read and write CSV files using the csv module.', marks: '5 Marks' },
+        ]},
+        { title: '10 Marks — Long Answer', questions: [
+          { q: 'Explain Python file handling. Write programs to read, write, and append files. Include error handling.', marks: '10 Marks' },
+          { q: 'What are Python modules and packages? Explain pip, virtual environments, and key standard library modules.', marks: '10 Marks' },
+          { q: 'Explain NumPy and Pandas with examples — array creation, indexing, DataFrame operations, and data analysis.', marks: '10 Marks' },
+        ]},
+      ]
+    },
+    cloud: {
+      title: 'Cloud Computing',
+      sections: [
+        { title: '2 Marks — Short Answer', questions: [
+          { q: 'What is cloud computing? List its service models.', marks: '2 Marks' },
+          { q: 'Differentiate IaaS, PaaS, and SaaS with examples.', marks: '2 Marks' },
+          { q: 'What is virtualization? How does it enable cloud computing?', marks: '2 Marks' },
+          { q: 'What is auto-scaling in cloud?', marks: '2 Marks' },
+          { q: 'Define SLA in the context of cloud services.', marks: '2 Marks' },
+        ]},
+        { title: '5 Marks — Medium Answer', questions: [
+          { q: 'Explain public, private, hybrid, and community cloud deployment models.', marks: '5 Marks' },
+          { q: 'What is containerization? Explain Docker and Kubernetes.', marks: '5 Marks' },
+          { q: 'Explain key AWS services — EC2, S3, RDS, Lambda, and IAM.', marks: '5 Marks' },
+          { q: 'What is serverless computing? Explain Function-as-a-Service with AWS Lambda examples.', marks: '5 Marks' },
+        ]},
+        { title: '10 Marks — Long Answer', questions: [
+          { q: 'Explain cloud security challenges. Describe data encryption, identity management, and compliance in cloud.', marks: '10 Marks' },
+          { q: 'What is DevOps? Explain CI/CD pipeline with tools like Jenkins, Git, Docker, and Kubernetes.', marks: '10 Marks' },
+          { q: 'Describe microservices architecture. Compare with monolithic applications. Explain benefits, challenges, and use cases.', marks: '10 Marks' },
+        ]},
+      ]
+    },
+    capstone: {
+      title: 'Final Year Project / Capstone',
+      sections: [
+        { title: 'Project Planning Questions', questions: [
+          { q: 'How do you select a final year project topic? What criteria should be considered?', marks: 'Concept' },
+          { q: 'Write a project proposal structure including abstract, objectives, scope, and methodology.', marks: 'Concept' },
+          { q: 'What is a literature review? How do you write one for a capstone project?', marks: 'Concept' },
+          { q: 'Define the system requirements (functional and non-functional) for your project.', marks: 'Concept' },
+        ]},
+        { title: 'Design & Implementation Questions', questions: [
+          { q: 'Draw the system architecture diagram for your project. Explain each component.', marks: 'Design' },
+          { q: 'Explain the database schema design for your project with an ER diagram.', marks: 'Design' },
+          { q: 'How do you implement authentication and authorization in a web project?', marks: 'Implementation' },
+          { q: 'What testing strategies will you use? Write test cases for at least two modules.', marks: 'Testing' },
+        ]},
+        { title: 'Viva / Defense Questions', questions: [
+          { q: 'What is the novelty of your project? How is it different from existing solutions?', marks: 'Viva' },
+          { q: 'What challenges did you face during development? How did you resolve them?', marks: 'Viva' },
+          { q: 'How can your project be scaled or extended in the future?', marks: 'Viva' },
+          { q: 'What technologies and frameworks did you use? Justify your technology choices.', marks: 'Viva' },
+        ]},
+      ]
+    },
+  };
+
+  // ─── State ────────────────────────────────────────────────────────────────
+  let state = { year: null, branch: null, subject: null };
+
+  // ─── Logic ────────────────────────────────────────────────────────────────
+  function selectYear(year) {
+    state.year = year;
+    goTo('branch');
+    renderBranches();
+  }
+
+  function selectBranch(branchId, branchLabel) {
+    state.branch = { id: branchId, label: branchLabel };
+    goTo('subject');
+    renderSubjects();
+  }
+
+  function selectSubject(subjectId, subjectLabel) {
+    state.subject = { id: subjectId, label: subjectLabel };
+    goTo('questions');
+    renderQuestions();
+  }
+
+  function goTo(panel) {
+    document.querySelectorAll('.sc-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('panel-' + panel).classList.add('active');
+    updateSteps(panel);
+    window.scrollTo({ top: document.querySelector('.sc-wizard').offsetTop - 100, behavior: 'smooth' });
+  }
+
+  function updateSteps(panel) {
+    const map = { year: 1, branch: 2, subject: 3, questions: 4 };
+    const current = map[panel];
+    for (let i = 1; i <= 4; i++) {
+      const el = document.getElementById('step-ind-' + i);
+      el.classList.remove('active', 'done');
+      if (i < current) el.classList.add('done');
+      else if (i === current) el.classList.add('active');
+      if (i < 4) {
+        const div = document.getElementById('div-' + i);
+        div.classList.toggle('done', i < current);
+      }
+    }
+  }
+
+  function renderBranches() {
+    const branches = BRANCHES[state.year] || [];
+    const grid = document.getElementById('branch-grid');
+    grid.innerHTML = branches.map(b =>
+      `<button class="sc-btn" onclick="selectBranch('${b.id}','${b.label}')">
+        <span class="sc-btn-icon">${b.icon}</span>
+        <span class="sc-btn-label">${b.label}</span>
+        <span class="sc-btn-sub">${b.sub}</span>
+      </button>`
+    ).join('');
+    document.getElementById('bc-branch').innerHTML =
+      `<span>${state.year}</span>`;
+  }
+
+  function renderSubjects() {
+    const subjects = (SUBJECTS[state.year] || {})[state.branch.id] || [];
+    const grid = document.getElementById('subject-grid');
+    if (!subjects.length) {
+      grid.innerHTML = `<div class="sc-empty"><div class="icon">📚</div><p>Subjects for this combination coming soon. Check back later!</p></div>`;
+    } else {
+      grid.innerHTML = subjects.map(s =>
+        `<button class="sc-btn" onclick="selectSubject('${s.id}','${s.label}')">
+          <span class="sc-btn-icon">${s.icon}</span>
+          <span class="sc-btn-label">${s.label}</span>
+        </button>`
+      ).join('');
+    }
+    document.getElementById('bc-subject').innerHTML =
+      `<span>${state.year}</span><span class="sep">›</span><span>${state.branch.label}</span>`;
+  }
+
+  function renderQuestions() {
+    const data = QUESTIONS[state.subject.id];
+    const container = document.getElementById('questions-container');
+    document.getElementById('bc-questions').innerHTML =
+      `<span>${state.year}</span><span class="sep">›</span><span>${state.branch.label}</span><span class="sep">›</span><span>${state.subject.label}</span>`;
+
+    if (!data) {
+      container.innerHTML = `<div class="sc-empty"><div class="icon">🛠️</div><p>Questions for <strong>${state.subject.label}</strong> are being prepared. Please check back soon!</p></div>`;
+      return;
+    }
+
+    let html = `<h2 style="margin-bottom:0.25rem">${data.title}</h2>
+      <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:1.5rem">Important exam questions — sorted by marks</p>`;
+
+    data.sections.forEach(section => {
+      html += `<div class="q-section-title">${section.title}</div><div class="q-list">`;
+      section.questions.forEach((item, idx) => {
+        html += `<div class="q-item">
+          <div class="q-num">Q${idx + 1}</div>
+          <div class="q-text">${item.q}</div>
+          <div class="q-marks">[${item.marks}]</div>
+        </div>`;
+      });
+      html += `</div>`;
+    });
+
+    container.innerHTML = html;
+  }
+  </script>
+</body>
+</html>
