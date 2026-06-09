@@ -339,13 +339,20 @@
   const btnSubmit   = document.getElementById('sc-submit');
 
   function resetFrom(from) {
-    if (from === 'branch' || from === 'semester' || from === 'subject') {
+    // Only clear downstream dropdowns, not 'from' itself
+    if (from === 'branch') {
       selBranch.innerHTML   = '<option value="">— Select Branch —</option>';
       selBranch.disabled    = true;
-    }
-    if (from === 'semester' || from === 'subject') {
       selSemester.innerHTML = '<option value="">— Select Semester —</option>';
       selSemester.disabled  = true;
+      selSubject.innerHTML  = '<option value="">— Select Subject —</option>';
+      selSubject.disabled   = true;
+    }
+    if (from === 'semester') {
+      selSemester.innerHTML = '<option value="">— Select Semester —</option>';
+      selSemester.disabled  = true;
+      selSubject.innerHTML  = '<option value="">— Select Subject —</option>';
+      selSubject.disabled   = true;
     }
     if (from === 'subject') {
       selSubject.innerHTML  = '<option value="">— Select Subject —</option>';
