@@ -206,48 +206,55 @@
   // ── All data inline so there is no external dependency ───────────────────
   const SC_BRANCHES = {
     '1st Year': [
-      {id:'cse',  label:'CSE — Computer Science'},
-      {id:'ece',  label:'ECE — Electronics & Comm.'},
+      {id:'ce',   label:'Computer Engineering'},
+      {id:'it',   label:'Information Technology'},
+      {id:'aiml', label:'AI & Machine Learning'},
+      {id:'extc', label:'Electronics & Telecommunication'},
+      {id:'eee',  label:'Electrical Engineering'},
       {id:'mech', label:'Mechanical Engineering'},
       {id:'civil',label:'Civil Engineering'},
-      {id:'eee',  label:'EEE — Electrical Engineering'},
-      {id:'bca',  label:'BCA — Computer Applications'}
+      {id:'chem', label:'Chemical Engineering'}
     ],
     '2nd Year': [
-      {id:'cse',  label:'CSE — Computer Science'},
-      {id:'ece',  label:'ECE — Electronics & Comm.'},
+      {id:'ce',   label:'Computer Engineering'},
+      {id:'it',   label:'Information Technology'},
+      {id:'aiml', label:'AI & Machine Learning'},
+      {id:'extc', label:'Electronics & Telecommunication'},
+      {id:'eee',  label:'Electrical Engineering'},
       {id:'mech', label:'Mechanical Engineering'},
       {id:'civil',label:'Civil Engineering'},
-      {id:'eee',  label:'EEE — Electrical Engineering'},
-      {id:'bca',  label:'BCA — Computer Applications'},
-      {id:'mca',  label:'MCA — Computer Applications'}
+      {id:'chem', label:'Chemical Engineering'}
     ],
     '3rd Year': [
-      {id:'cse',  label:'CSE — Computer Science'},
-      {id:'ece',  label:'ECE — Electronics & Comm.'},
+      {id:'ce',   label:'Computer Engineering'},
+      {id:'it',   label:'Information Technology'},
+      {id:'aiml', label:'AI & Machine Learning'},
+      {id:'extc', label:'Electronics & Telecommunication'},
+      {id:'eee',  label:'Electrical Engineering'},
       {id:'mech', label:'Mechanical Engineering'},
       {id:'civil',label:'Civil Engineering'},
-      {id:'eee',  label:'EEE — Electrical Engineering'},
-      {id:'bca',  label:'BCA — Computer Applications'},
-      {id:'mca',  label:'MCA — Computer Applications'}
+      {id:'chem', label:'Chemical Engineering'}
     ],
     '4th Year': [
-      {id:'cse',  label:'CSE — Computer Science'},
-      {id:'ece',  label:'ECE — Electronics & Comm.'},
+      {id:'ce',   label:'Computer Engineering'},
+      {id:'it',   label:'Information Technology'},
+      {id:'aiml', label:'AI & Machine Learning'},
+      {id:'extc', label:'Electronics & Telecommunication'},
+      {id:'eee',  label:'Electrical Engineering'},
       {id:'mech', label:'Mechanical Engineering'},
       {id:'civil',label:'Civil Engineering'},
-      {id:'eee',  label:'EEE — Electrical Engineering'},
-      {id:'mca',  label:'MCA — Computer Applications'}
+      {id:'chem', label:'Chemical Engineering'}
     ]
   };
 
   const SC_SEMESTERS = {
-    '1st Year': [{id:'sem1',label:'Semester 1'},{id:'sem2',label:'Semester 2'}],
-    '2nd Year': [{id:'sem3',label:'Semester 3'},{id:'sem4',label:'Semester 4'}],
-    '3rd Year': [{id:'sem5',label:'Semester 5'},{id:'sem6',label:'Semester 6'}],
-    '4th Year': [{id:'sem7',label:'Semester 7'},{id:'sem8',label:'Semester 8'}]
+    '1st Year': [{id:'sem1',label:'Semester I'},{id:'sem2',label:'Semester II'}],
+    '2nd Year': [{id:'sem3',label:'Semester III'},{id:'sem4',label:'Semester IV'}],
+    '3rd Year': [{id:'sem5',label:'Semester V'},{id:'sem6',label:'Semester VI'}],
+    '4th Year': [{id:'sem7',label:'Semester VII'},{id:'sem8',label:'Semester VIII'}]
   };
 
+  // ── Shared 1st & 2nd year subjects (same across all branches) ──────────
   const S1 = [
     {id:'math1',     label:'Engineering Mathematics I'},
     {id:'physics1',  label:'Engineering Physics I'},
@@ -269,65 +276,73 @@
 
   const SC_SUBJECTS = {
     '1st Year': {
-      sem1: { cse:S1, ece:S1, mech:S1, civil:S1, eee:S1, bca:S1 },
-      sem2: { cse:S2, ece:S2, mech:S2, civil:S2, eee:S2, bca:S2 }
+      sem1: { ce:S1, it:S1, aiml:S1, extc:S1, eee:S1, mech:S1, civil:S1, chem:S1 },
+      sem2: { ce:S2, it:S2, aiml:S2, extc:S2, eee:S2, mech:S2, civil:S2, chem:S2 }
     },
     '2nd Year': {
       sem3: {
-        cse:  [{id:'dsa',label:'Data Structures'},{id:'oops',label:'OOP (Java/C++)'},{id:'dbms',label:'DBMS'},{id:'os',label:'Operating Systems'},{id:'math2',label:'Discrete Mathematics'},{id:'cn',label:'Computer Networks'}],
-        ece:  [{id:'signals',label:'Signals & Systems'},{id:'analog',label:'Analog Electronics'},{id:'digital',label:'Digital Electronics'},{id:'math2',label:'Engg. Maths III'},{id:'emf',label:'Electromagnetic Fields'}],
-        mech: [{id:'thermo',label:'Thermodynamics'},{id:'fluid',label:'Fluid Mechanics'},{id:'strength',label:'Strength of Materials'},{id:'math2',label:'Engg. Maths III'},{id:'mfg',label:'Manufacturing Process'}],
-        civil:[{id:'fluid',label:'Fluid Mechanics'},{id:'strength',label:'Strength of Materials'},{id:'surveying',label:'Surveying'},{id:'math2',label:'Engg. Maths III'},{id:'soil',label:'Soil Mechanics'}],
-        eee:  [{id:'emach',label:'Electrical Machines'},{id:'analog',label:'Analog Electronics'},{id:'digital',label:'Digital Electronics'},{id:'math2',label:'Engg. Maths III'},{id:'powerelec',label:'Power Electronics'}],
-        bca:  [{id:'dsa',label:'Data Structures'},{id:'oops',label:'OOP with Java'},{id:'dbms',label:'DBMS'},{id:'web_basics',label:'Web Development'},{id:'os',label:'Operating Systems'}],
-        mca:  [{id:'dsa',label:'Data Structures'},{id:'dbms',label:'DBMS'},{id:'os',label:'Operating Systems'},{id:'cn',label:'Computer Networks'},{id:'math_mca',label:'Mathematical Foundations'}]
+        ce:   [{id:'ce_m3',label:'Engineering Mathematics – III'},{id:'ce_dsgt',label:'Discrete Structures and Graph Theory'},{id:'ce_ds',label:'Data Structure'},{id:'ce_dlca',label:'Digital Logic and Computer Architecture'},{id:'ce_cg',label:'Computer Graphics'},{id:'ce_py',label:'Python Programming'}],
+        it:   [{id:'it_m3',label:'Engineering Mathematics – III'},{id:'it_ds',label:'Data Structures'},{id:'it_coa',label:'Computer Organization and Architecture'},{id:'it_dm',label:'Discrete Mathematics'},{id:'it_py',label:'Python Programming'}],
+        aiml: [{id:'ai_m3',label:'Engineering Mathematics – III'},{id:'ai_ds',label:'Data Structures'},{id:'ai_py',label:'Python Programming'},{id:'ai_sp',label:'Statistics and Probability'},{id:'ai_co',label:'Computer Organization'}],
+        extc: [{id:'ex_m3',label:'Engineering Mathematics – III'},{id:'ex_edc',label:'Electronic Devices and Circuits'},{id:'ex_nt',label:'Network Theory'},{id:'ex_dsd',label:'Digital System Design'},{id:'ex_ei',label:'Electronic Instrumentation'}],
+        eee:  [{id:'ee_m3',label:'Engineering Mathematics – III'},{id:'ee_em1',label:'Electrical Machines – I'},{id:'ee_na',label:'Network Analysis'},{id:'ee_meas',label:'Electrical Measurements'}],
+        mech: [{id:'me_m3',label:'Engineering Mathematics – III'},{id:'me_thermo',label:'Thermodynamics'},{id:'me_som',label:'Strength of Materials'},{id:'me_mat',label:'Engineering Materials and Metallurgy'},{id:'me_mfg',label:'Manufacturing Processes'}],
+        civil:[{id:'cv_m3',label:'Engineering Mathematics – III'},{id:'cv_surv',label:'Surveying'},{id:'cv_bm',label:'Building Materials and Construction Technology'},{id:'cv_sa',label:'Structural Analysis'}],
+        chem: [{id:'ch_m3',label:'Engineering Mathematics – III'},{id:'ch_pcc',label:'Chemical Process Calculations'},{id:'ch_ffo',label:'Fluid Flow Operations'},{id:'ch_mo',label:'Mechanical Operations'},{id:'ch_cet1',label:'Chemical Engineering Thermodynamics – I'}]
       },
       sem4: {
-        cse:  [{id:'algo',label:'Algorithms'},{id:'cn',label:'Computer Networks'},{id:'se',label:'Software Engineering'},{id:'oops',label:'OOP'},{id:'math3',label:'Engineering Maths IV'}],
-        ece:  [{id:'comm',label:'Communication Systems'},{id:'microprocessor',label:'Microprocessors'},{id:'math3',label:'Engineering Maths IV'},{id:'vlsi',label:'VLSI Design'},{id:'digital',label:'Digital Electronics'}],
-        mech: [{id:'design',label:'Machine Design'},{id:'heat',label:'Heat Transfer'},{id:'dynamics',label:'Theory of Machines'},{id:'math3',label:'Engineering Maths IV'},{id:'cad',label:'CAD'}],
-        civil:[{id:'structural',label:'Structural Analysis'},{id:'transport',label:'Transportation Engg.'},{id:'concrete',label:'Concrete Technology'},{id:'math3',label:'Engineering Maths IV'},{id:'geo',label:'Geotechnical Engg.'}],
-        eee:  [{id:'control',label:'Control Systems'},{id:'powersys',label:'Power Systems'},{id:'drives',label:'Electric Drives'},{id:'math3',label:'Engineering Maths IV'},{id:'microprocessor',label:'Microprocessors'}],
-        bca:  [{id:'algo',label:'Algorithms'},{id:'cn',label:'Computer Networks'},{id:'python',label:'Python Programming'},{id:'se',label:'Software Engineering'},{id:'mobile',label:'Mobile App Development'}],
-        mca:  [{id:'algo',label:'Algorithms'},{id:'se',label:'Software Engineering'},{id:'web_adv',label:'Advanced Web Dev.'},{id:'cloud',label:'Cloud Computing'},{id:'ai',label:'Artificial Intelligence'}]
+        ce:   [{id:'ce_m4',label:'Engineering Mathematics – IV'},{id:'ce_aoa',label:'Analysis of Algorithms'},{id:'ce_dbms',label:'Database Management System'},{id:'ce_os',label:'Operating System'},{id:'ce_mp',label:'Microprocessor'},{id:'ce_wp',label:'Web Programming'}],
+        it:   [{id:'it_m4',label:'Engineering Mathematics – IV'},{id:'it_aoa',label:'Analysis of Algorithms'},{id:'it_dbms',label:'Database Management Systems'},{id:'it_os',label:'Operating Systems'},{id:'it_wt',label:'Web Technologies'}],
+        aiml: [{id:'ai_m4',label:'Engineering Mathematics – IV'},{id:'ai_dbms',label:'Database Management Systems'},{id:'ai_os',label:'Operating Systems'},{id:'ai_mlf',label:'Machine Learning Fundamentals'},{id:'ai_da',label:'Data Analytics'}],
+        extc: [{id:'ex_m4',label:'Engineering Mathematics – IV'},{id:'ex_ac',label:'Analog Communication'},{id:'ex_ss',label:'Signals and Systems'},{id:'ex_mc',label:'Microcontrollers'},{id:'ex_ec',label:'Electronic Circuits'}],
+        eee:  [{id:'ee_m4',label:'Engineering Mathematics – IV'},{id:'ee_em2',label:'Electrical Machines – II'},{id:'ee_pg',label:'Power Generation'},{id:'ee_ae',label:'Analog Electronics'}],
+        mech: [{id:'me_m4',label:'Engineering Mathematics – IV'},{id:'me_fm',label:'Fluid Mechanics'},{id:'me_km',label:'Kinematics of Machinery'},{id:'me_pp',label:'Production Processes'}],
+        civil:[{id:'cv_m4',label:'Engineering Mathematics – IV'},{id:'cv_geo',label:'Geotechnical Engineering'},{id:'cv_fm',label:'Fluid Mechanics'},{id:'cv_ct',label:'Concrete Technology'}],
+        chem: [{id:'ch_m4',label:'Engineering Mathematics – IV'},{id:'ch_ht',label:'Heat Transfer'},{id:'ch_cet2',label:'Chemical Engineering Thermodynamics – II'},{id:'ch_cht',label:'Chemical Technology'},{id:'ch_ms',label:'Material Science'}]
       }
     },
     '3rd Year': {
       sem5: {
-        cse:  [{id:'ai',label:'Artificial Intelligence'},{id:'ml',label:'Machine Learning'},{id:'compiler',label:'Compiler Design'},{id:'se',label:'Software Engineering'},{id:'cloud',label:'Cloud Computing'}],
-        ece:  [{id:'vlsi',label:'VLSI Design'},{id:'embedded',label:'Embedded Systems'},{id:'dsp',label:'Digital Signal Processing'},{id:'comm',label:'Communication Systems'},{id:'microprocessor',label:'Microprocessors'}],
-        mech: [{id:'cad_cam',label:'CAD/CAM'},{id:'automobile',label:'Automobile Engg.'},{id:'dynamics',label:'Theory of Machines'},{id:'heat',label:'Heat Transfer'},{id:'mfg',label:'Manufacturing Process'}],
-        civil:[{id:'structural',label:'Structural Analysis'},{id:'enviro',label:'Environmental Engg.'},{id:'transport',label:'Transportation Engg.'},{id:'geo',label:'Geotechnical Engg.'},{id:'water',label:'Water Resources'}],
-        eee:  [{id:'control',label:'Control Systems'},{id:'powersys',label:'Power Systems'},{id:'drives',label:'Electric Drives'},{id:'instrumentation',label:'Instrumentation'},{id:'microprocessor',label:'Microprocessors'}],
-        bca:  [{id:'algo',label:'Algorithms'},{id:'python',label:'Python Programming'},{id:'cybersec',label:'Cyber Security'},{id:'mobile',label:'Mobile App Development'},{id:'se',label:'Software Engineering'}],
-        mca:  [{id:'algo',label:'Algorithms'},{id:'ai',label:'Artificial Intelligence'},{id:'se',label:'Software Engineering'},{id:'web_adv',label:'Advanced Web Dev.'},{id:'cloud',label:'Cloud Computing'}]
+        ce:   [{id:'ce_tcs',label:'Theoretical Computer Science'},{id:'ce_ip',label:'Internet Programming'},{id:'ce_admt',label:'Advanced Data Management Technologies'},{id:'ce_cn',label:'Computer Network'},{id:'ce_se',label:'Software Engineering'}],
+        it:   [{id:'it_cn',label:'Computer Networks'},{id:'it_se',label:'Software Engineering'},{id:'it_iot',label:'Internet of Things'},{id:'it_ads',label:'Advanced Database Systems'}],
+        aiml: [{id:'ai_ai',label:'Artificial Intelligence'},{id:'ai_ml',label:'Machine Learning'},{id:'ai_dwm',label:'Data Warehousing and Mining'},{id:'ai_cn',label:'Computer Network'},{id:'ai_wc',label:'Web Computing'}],
+        extc: [{id:'ex_dc',label:'Digital Communication'},{id:'ex_cs',label:'Control Systems'},{id:'ex_mp',label:'Microprocessors'},{id:'ex_em',label:'Electromagnetic Engineering'}],
+        eee:  [{id:'ee_ps1',label:'Power Systems – I'},{id:'ee_ctrl',label:'Control Systems'},{id:'ee_pe',label:'Power Electronics'},{id:'ee_mp',label:'Microprocessors'}],
+        mech: [{id:'me_dom',label:'Dynamics of Machinery'},{id:'me_dme',label:'Design of Machine Elements'},{id:'me_hmt',label:'Heat Transfer'},{id:'me_mqc',label:'Metrology and Quality Control'}],
+        civil:[{id:'cv_rcs',label:'Reinforced Concrete Structures'},{id:'cv_ee',label:'Environmental Engineering'},{id:'cv_te',label:'Transportation Engineering'}],
+        chem: [{id:'ch_mto1',label:'Mass Transfer Operations – I'},{id:'ch_cre1',label:'Chemical Reaction Engineering – I'},{id:'ch_pdc',label:'Process Dynamics and Control'},{id:'ch_ene',label:'Energy Engineering'}]
       },
       sem6: {
-        cse:  [{id:'bigdata',label:'Big Data Analytics'},{id:'iot',label:'Internet of Things'},{id:'cybersec',label:'Cyber Security'},{id:'ml',label:'Machine Learning'},{id:'blockchain',label:'Blockchain Technology'}],
-        ece:  [{id:'wireless',label:'Wireless Communication'},{id:'robotics',label:'Robotics'},{id:'iot',label:'Internet of Things'},{id:'dsp',label:'Digital Signal Processing'},{id:'vlsi',label:'VLSI Design'}],
-        mech: [{id:'robotics',label:'Robotics'},{id:'renewable',label:'Renewable Energy'},{id:'product',label:'Product Design'},{id:'cad_cam',label:'CAD/CAM'},{id:'automobile',label:'Automobile Engg.'}],
-        civil:[{id:'construction',label:'Construction Management'},{id:'structural',label:'Structural Design'},{id:'disaster',label:'Disaster Management'},{id:'enviro',label:'Environmental Engg.'},{id:'geo',label:'Geotechnical Engg.'}],
-        eee:  [{id:'smart_grid',label:'Smart Grid Technology'},{id:'renewable',label:'Renewable Energy'},{id:'ev',label:'Electric Vehicles'},{id:'drives',label:'Electric Drives'},{id:'powersys',label:'Power Systems'}],
-        bca:  [{id:'bigdata',label:'Big Data Analytics'},{id:'cybersec',label:'Cyber Security'},{id:'ml',label:'Machine Learning'},{id:'cloud',label:'Cloud Computing'},{id:'se',label:'Software Engineering'}],
-        mca:  [{id:'ml',label:'Machine Learning'},{id:'bigdata',label:'Big Data Analytics'},{id:'blockchain',label:'Blockchain Technology'},{id:'cybersec',label:'Cyber Security'},{id:'cloud',label:'Cloud Computing'}]
+        ce:   [{id:'ce_spcc',label:'System Programming and Compiler Construction'},{id:'ce_css',label:'Cryptography and System Security'},{id:'ce_mc',label:'Mobile Computing'},{id:'ce_ai',label:'Artificial Intelligence'},{id:'ce_dloc2',label:'Department Level Optional Course II'}],
+        it:   [{id:'it_cc',label:'Cloud Computing'},{id:'it_is',label:'Information Security'},{id:'it_mad',label:'Mobile Application Development'},{id:'it_ai',label:'Artificial Intelligence'}],
+        aiml: [{id:'ai_dl',label:'Deep Learning'},{id:'ai_nlp',label:'Natural Language Processing'},{id:'ai_cv',label:'Computer Vision'},{id:'ai_rl',label:'Reinforcement Learning'},{id:'ai_cloud',label:'Cloud Computing'}],
+        extc: [{id:'ex_es',label:'Embedded Systems'},{id:'ex_dsp',label:'Digital Signal Processing'},{id:'ex_wc',label:'Wireless Communication'},{id:'ex_awp',label:'Antenna and Wave Propagation'}],
+        eee:  [{id:'ee_ps2',label:'Power Systems – II'},{id:'ee_sgp',label:'Switchgear and Protection'},{id:'ee_uee',label:'Utilization of Electrical Energy'},{id:'ee_ed',label:'Electrical Drives'}],
+        mech: [{id:'me_cadcam',label:'CAD/CAM'},{id:'me_mech',label:'Mechatronics'},{id:'me_fea',label:'Finite Element Analysis'},{id:'me_ie',label:'Industrial Engineering'}],
+        civil:[{id:'cv_wre',label:'Water Resources Engineering'},{id:'cv_dss',label:'Design of Steel Structures'},{id:'cv_qsv',label:'Quantity Surveying and Valuation'}],
+        chem: [{id:'ch_mto2',label:'Mass Transfer Operations – II'},{id:'ch_cre2',label:'Chemical Reaction Engineering – II'},{id:'ch_pms',label:'Process Modeling and Simulation'},{id:'ch_ee',label:'Environmental Engineering'}]
       }
     },
     '4th Year': {
       sem7: {
-        cse:  [{id:'capstone',label:'Final Year Project I'},{id:'bigdata',label:'Big Data Analytics'},{id:'iot',label:'Internet of Things'},{id:'blockchain',label:'Blockchain Technology'},{id:'cybersec',label:'Cyber Security'}],
-        ece:  [{id:'capstone',label:'Final Year Project I'},{id:'iot',label:'Internet of Things'},{id:'wireless',label:'Wireless Comm.'},{id:'robotics',label:'Robotics'}],
-        mech: [{id:'capstone',label:'Final Year Project I'},{id:'robotics',label:'Robotics'},{id:'renewable',label:'Renewable Energy'},{id:'product',label:'Product Design'}],
-        civil:[{id:'capstone',label:'Final Year Project I'},{id:'construction',label:'Construction Management'},{id:'water',label:'Water Resources'},{id:'disaster',label:'Disaster Management'}],
-        eee:  [{id:'capstone',label:'Final Year Project I'},{id:'smart_grid',label:'Smart Grid Technology'},{id:'renewable',label:'Renewable Energy'},{id:'ev',label:'Electric Vehicles'}],
-        mca:  [{id:'capstone',label:'Final Year Project I'},{id:'ml',label:'Machine Learning'},{id:'bigdata',label:'Big Data Analytics'},{id:'blockchain',label:'Blockchain Technology'}]
+        ce:   [{id:'ce_ml',label:'Machine Learning'},{id:'ce_bda',label:'Big Data Analytics'},{id:'ce_elec1',label:'Elective I'},{id:'ce_elec2',label:'Elective II'},{id:'ce_proj1',label:'Project Stage I'}],
+        it:   [{id:'it_ml',label:'Machine Learning'},{id:'it_bda',label:'Big Data Analytics'},{id:'it_elec',label:'Electives'},{id:'it_proj1',label:'Project Stage I'}],
+        aiml: [{id:'ai_gai',label:'Generative AI'},{id:'ai_mlops',label:'MLOps'},{id:'ai_eth',label:'AI Ethics'},{id:'ai_proj1',label:'Project Stage I'}],
+        extc: [{id:'ex_vlsi',label:'VLSI Design'},{id:'ex_oc',label:'Optical Communication'},{id:'ex_iot',label:'Internet of Things'},{id:'ex_proj1',label:'Project Stage I'}],
+        eee:  [{id:'ee_hv',label:'High Voltage Engineering'},{id:'ee_re',label:'Renewable Energy Systems'},{id:'ee_pq',label:'Power Quality'},{id:'ee_proj1',label:'Project Stage I'}],
+        mech: [{id:'me_auto',label:'Automobile Engineering'},{id:'me_rac',label:'Refrigeration and Air Conditioning'},{id:'me_rob',label:'Robotics'},{id:'me_proj1',label:'Project Stage I'}],
+        civil:[{id:'cv_act',label:'Advanced Construction Technology'},{id:'cv_eq',label:'Earthquake Engineering'},{id:'cv_proj1',label:'Project Stage I'}],
+        chem: [{id:'ch_pde',label:'Plant Design and Economics'},{id:'ch_pt',label:'Polymer Technology'},{id:'ch_ft',label:'Fertilizer Technology'},{id:'ch_proj1',label:'Project Stage I'}]
       },
       sem8: {
-        cse:  [{id:'capstone',label:'Final Year Project II'},{id:'se',label:'Software Engineering'},{id:'cloud',label:'Cloud Computing'}],
-        ece:  [{id:'capstone',label:'Final Year Project II'},{id:'wireless',label:'Wireless Comm.'},{id:'iot',label:'Internet of Things'}],
-        mech: [{id:'capstone',label:'Final Year Project II'},{id:'automobile',label:'Automobile Engg.'},{id:'cad_cam',label:'CAD/CAM'}],
-        civil:[{id:'capstone',label:'Final Year Project II'},{id:'structural',label:'Structural Design'},{id:'transport',label:'Transportation Engg.'}],
-        eee:  [{id:'capstone',label:'Final Year Project II'},{id:'powersys',label:'Power Systems'},{id:'smart_grid',label:'Smart Grid Technology'}],
-        mca:  [{id:'capstone',label:'Final Year Project II'},{id:'ml',label:'Machine Learning'},{id:'cloud',label:'Cloud Computing'}]
+        ce:   [{id:'ce_dl',label:'Deep Learning'},{id:'ce_pe3',label:'Professional Elective III'},{id:'ce_pe4',label:'Professional Elective IV'},{id:'ce_proj2',label:'Project Stage II'},{id:'ce_intern',label:'Internship'}],
+        it:   [{id:'it_dl',label:'Deep Learning'},{id:'it_elec2',label:'Electives'},{id:'it_proj2',label:'Project Stage II'},{id:'it_intern',label:'Internship'}],
+        aiml: [{id:'ai_adv',label:'Advanced AI Applications'},{id:'ai_rm',label:'Research Methodology'},{id:'ai_proj2',label:'Project Stage II'},{id:'ai_intern',label:'Internship'}],
+        extc: [{id:'ex_sat',label:'Satellite Communication'},{id:'ex_acs',label:'Advanced Communication Systems'},{id:'ex_proj2',label:'Project Stage II'},{id:'ex_intern',label:'Internship'}],
+        eee:  [{id:'ee_sg',label:'Smart Grid'},{id:'ee_ev',label:'Electric Vehicles'},{id:'ee_proj2',label:'Project Stage II'},{id:'ee_intern',label:'Internship'}],
+        mech: [{id:'me_re',label:'Renewable Energy Systems'},{id:'me_amt',label:'Advanced Manufacturing Technology'},{id:'me_proj2',label:'Project Stage II'},{id:'me_intern',label:'Internship'}],
+        civil:[{id:'cv_pm',label:'Project Management'},{id:'cv_infra',label:'Infrastructure Engineering'},{id:'cv_proj2',label:'Project Stage II'},{id:'cv_intern',label:'Internship'}],
+        chem: [{id:'ch_asp',label:'Advanced Separation Processes'},{id:'ch_im',label:'Industrial Management'},{id:'ch_ret',label:'Renewable Energy Technology'},{id:'ch_proj2',label:'Project Stage II'},{id:'ch_intern',label:'Internship'}]
       }
     }
   };
