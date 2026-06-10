@@ -656,7 +656,7 @@ button { cursor: pointer; border: none; background: none; }
 /* Cards */
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 24px;
 }
 
@@ -1304,6 +1304,8 @@ button { cursor: pointer; border: none; background: none; }
   background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .filter-bar select {
@@ -1850,6 +1852,7 @@ button { cursor: pointer; border: none; background: none; }
   .header-inner {
     display: flex;
     justify-content: space-between;
+    gap: 0.75rem;
   }
   .main-nav, .header-actions .search-box { display: none; }
   .mobile-toggle { display: flex; }
@@ -1869,19 +1872,46 @@ button { cursor: pointer; border: none; background: none; }
   .hero { padding: 60px 0 80px; }
   .stats-grid { grid-template-columns: 1fr 1fr; }
   .newsletter-form { flex-direction: column; }
-  .newsletter-box { padding: 32px 24px; }
+  .newsletter-form .btn { width: 100%; }
+  .newsletter-box { padding: 32px 20px; }
   .form-row { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; text-align: center; }
   .auth-card { padding: 28px 24px; }
-  .filter-bar { flex-direction: row; align-items: center; justify-content: flex-start; }
+  .filter-bar { flex-direction: row; align-items: center; justify-content: flex-start; overflow-x: auto; }
   .faq-search { max-width: 100%; }
+  .content-layout { padding: 32px 0; }
+  /* Hide Get App text label on small screens, keep icon */
+  .header-actions a[aria-label="Download App"] { font-size: 0; padding: 7px 10px; }
+  .header-actions a[aria-label="Download App"]::before { content: '📱'; font-size: 1.1rem; }
 }
 
 @media (max-width: 480px) {
-  .container { padding: 0 16px; }
+  .container { padding: 0 14px; }
   .stats-grid { grid-template-columns: 1fr; }
   .card-grid { grid-template-columns: 1fr; }
   .hero-buttons { flex-direction: column; }
   .hero-buttons .btn { width: 100%; }
+  .hero { padding: 40px 0 60px; }
+  .section { padding: 48px 0; }
+  .page-header { padding: 40px 0 28px; }
+  .page-header h1 { font-size: clamp(1.6rem, 6vw, 2.2rem); }
+  .newsletter-box { padding: 28px 16px; }
+  .newsletter-box h2 { font-size: 1.3rem; }
+  .footer-grid { gap: 24px; }
+  .roadmap { padding-left: 24px; }
+  .roadmap-item { padding: 16px 18px; }
+  /* Header: hide Get App button entirely on very small screens */
+  .header-actions a[aria-label="Download App"] { display: none; }
+  .header-inner { gap: 0.5rem; }
+  .logo-tagline { display: none; }
+  /* Chatbot */
+  #cz-chat-btn { bottom: 16px; right: 16px; width: 50px; height: 50px; }
+  /* Tutorial card grid single col */
+  .tutorial-card { width: 100%; }
+  /* Blog grid */
+  .blog-tabs { gap: 6px; }
+  .blog-tab { padding: 6px 14px; font-size: 0.8rem; }
+  /* Sidebar widget links padding */
+  .sidebar-widget a { padding: 10px 0; }
 }
