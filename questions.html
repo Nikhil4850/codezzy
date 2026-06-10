@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -10,27 +10,230 @@
   <link rel="stylesheet" href="css/style.css?v=2">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9595610341128742" crossorigin="anonymous"></script>
   <style>
-    .q-header { background:var(--gradient-light); border-radius:var(--radius-xl); padding:28px 32px; margin-bottom:2rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; }
-    .q-header h1 { font-size:1.5rem; font-weight:800; margin:0; }
-    .q-breadcrumb-tags { display:flex; flex-wrap:wrap; gap:8px; margin-top:8px; }
-    .q-tag { display:inline-block; font-size:0.75rem; font-weight:700; color:var(--primary); background:var(--gradient-light); padding:4px 12px; border-radius:50px; border:1px solid rgba(79,70,229,0.2); }
-    .q-back-btn { display:inline-flex; align-items:center; gap:8px; padding:10px 20px; border-radius:50px; border:2px solid var(--primary); color:var(--primary); font-size:0.875rem; font-weight:600; cursor:pointer; background:transparent; transition:all var(--transition); font-family:inherit; text-decoration:none; }
-    .q-back-btn:hover { background:var(--primary); color:white; }
-    .q-section-title { font-size:1rem; font-weight:700; color:var(--text); margin:2rem 0 0.75rem; padding:12px 18px; background:var(--gradient-light); border-radius:var(--radius-md); border-left:4px solid var(--primary); }
-    .q-list { display:flex; flex-direction:column; gap:10px; margin-bottom:8px; }
-    .q-item { background:var(--card-bg); border:1px solid var(--border); border-radius:var(--radius-md); padding:18px 22px; transition:all var(--transition); display:flex; gap:14px; align-items:flex-start; }
-    .q-item:hover { border-color:var(--primary-light); box-shadow:var(--shadow-sm); }
-    .q-num { flex-shrink:0; width:30px; height:30px; border-radius:50%; background:var(--gradient); color:white; display:flex; align-items:center; justify-content:center; font-size:0.72rem; font-weight:700; margin-top:1px; }
-    .q-body { flex:1; }
-    .q-text { font-size:0.93rem; color:var(--text); font-weight:500; line-height:1.6; }
-    .q-marks { display:inline-block; font-size:0.72rem; font-weight:700; color:var(--primary); background:var(--gradient-light); padding:2px 9px; border-radius:50px; margin-top:6px; }
-    .q-empty { text-align:center; padding:80px 20px; color:var(--text-muted); }
-    .q-empty .icon { font-size:3.5rem; margin-bottom:1rem; }
-    @media(max-width:600px){ .q-header{padding:20px;} }
+    /* ── Layout ── */
+    .qp-wrap {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 0;
+      min-height: calc(100vh - var(--header-height) - 120px);
+    }
+    /* ── Left Sidebar ── */
+    .qp-sidebar {
+      background: var(--primary);
+      border-radius: var(--radius-xl) 0 0 var(--radius-xl);
+      padding: 28px 0 28px;
+      display: flex;
+      flex-direction: column;
+      position: sticky;
+      top: calc(var(--header-height) + 24px);
+      align-self: start;
+      max-height: calc(100vh - var(--header-height) - 48px);
+      overflow-y: auto;
+    }
+    .qp-sidebar::-webkit-scrollbar { width: 4px; }
+    .qp-sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 2px; }
+    .qp-sidebar-header {
+      padding: 0 20px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+      margin-bottom: 12px;
+    }
+    .qp-sidebar-header h3 {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 4px;
+    }
+    .qp-sidebar-meta {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.55);
+    }
+    .qp-subject-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      padding: 11px 20px;
+      background: transparent;
+      border: none;
+      color: rgba(255,255,255,0.8);
+      font-size: 0.83rem;
+      font-weight: 500;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+      line-height: 1.4;
+    }
+    .qp-subject-btn:hover { background: rgba(255,255,255,0.1); color: #fff; }
+    .qp-subject-btn.active {
+      background: rgba(255,255,255,0.18);
+      color: #fff;
+      font-weight: 700;
+      border-left: 3px solid #fff;
+    }
+    .qp-subject-icon {
+      width: 28px; height: 28px; border-radius: 6px;
+      background: rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.8rem; flex-shrink: 0;
+    }
+    .qp-sidebar-footer {
+      margin-top: auto;
+      padding: 16px 20px 0;
+      border-top: 1px solid rgba(255,255,255,0.15);
+    }
+    .qp-progress-label { font-size: 0.75rem; color: rgba(255,255,255,0.6); margin-bottom: 6px; }
+    .qp-progress-label strong { color: #fff; }
+    .qp-progress-bar {
+      height: 5px; border-radius: 3px;
+      background: rgba(255,255,255,0.2);
+      overflow: hidden;
+    }
+    .qp-progress-fill { height: 100%; background: #f59e0b; border-radius: 3px; transition: width 0.4s; }
+    /* ── Right Panel ── */
+    .qp-panel {
+      background: var(--bg);
+      border-radius: 0 var(--radius-xl) var(--radius-xl) 0;
+      border: 1px solid var(--border);
+      border-left: none;
+      padding: 32px 36px;
+    }
+    .qp-panel-header { margin-bottom: 24px; }
+    .qp-panel-header h1 { font-size: 1.6rem; font-weight: 800; margin-bottom: 4px; }
+    .qp-panel-header p { font-size: 0.875rem; color: var(--text-muted); }
+    .qp-filters {
+      display: flex; gap: 10px; flex-wrap: wrap;
+      margin-bottom: 24px; align-items: center;
+    }
+    .qp-filter-select {
+      padding: 8px 12px; border-radius: var(--radius-md);
+      border: 1.5px solid var(--border);
+      background: var(--bg-secondary); color: var(--text);
+      font-size: 0.82rem; font-family: inherit; cursor: pointer;
+      appearance: none; -webkit-appearance: none;
+    }
+    .qp-filter-select:focus { outline: none; border-color: var(--primary); }
+    .qp-search {
+      flex: 1; min-width: 180px;
+      padding: 8px 14px; border-radius: var(--radius-md);
+      border: 1.5px solid var(--border);
+      background: var(--bg-secondary); color: var(--text);
+      font-size: 0.82rem; font-family: inherit;
+    }
+    .qp-search:focus { outline: none; border-color: var(--primary); }
+    /* Subject heading */
+    .qp-subject-heading {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 12px; margin-bottom: 20px; flex-wrap: wrap;
+    }
+    .qp-subject-heading-left { display: flex; align-items: center; gap: 12px; }
+    .qp-subject-icon-lg {
+      width: 44px; height: 44px; border-radius: var(--radius-md);
+      background: var(--gradient-light);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; flex-shrink: 0;
+    }
+    .qp-subject-title { font-size: 1.2rem; font-weight: 800; }
+    .qp-subject-sub { font-size: 0.78rem; color: var(--text-muted); }
+    .qp-count-badge {
+      padding: 4px 12px; border-radius: 50px;
+      background: var(--gradient-light); color: var(--primary);
+      font-size: 0.78rem; font-weight: 700; white-space: nowrap;
+    }
+    /* Question rows */
+    .qp-q-list { display: flex; flex-direction: column; gap: 0; }
+    .qp-q-row {
+      display: flex; align-items: flex-start; gap: 16px;
+      padding: 16px 20px;
+      border: 1px solid var(--border); border-top: none;
+      background: var(--card-bg);
+      transition: background 0.15s;
+    }
+    .qp-q-row:first-child { border-top: 1px solid var(--border); border-radius: var(--radius-md) var(--radius-md) 0 0; }
+    .qp-q-row:last-child { border-radius: 0 0 var(--radius-md) var(--radius-md); }
+    .qp-q-row:only-child { border-radius: var(--radius-md); }
+    .qp-q-row:hover { background: var(--bg-secondary); }
+    .qp-q-num {
+      flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%;
+      background: var(--gradient-light); color: var(--primary);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.8rem; font-weight: 800; margin-top: 1px;
+    }
+    .qp-q-body { flex: 1; }
+    .qp-q-text { font-size: 0.9rem; color: var(--text); line-height: 1.55; font-weight: 500; }
+    .qp-q-actions {
+      display: flex; align-items: center; gap: 8px;
+      flex-shrink: 0; flex-wrap: wrap; justify-content: flex-end;
+    }
+    .qp-marks-badge {
+      padding: 3px 10px; border-radius: 50px;
+      font-size: 0.72rem; font-weight: 700; white-space: nowrap;
+    }
+    .badge-2m  { background: #fef3c7; color: #92400e; }
+    .badge-5m  { background: #dbeafe; color: #1e40af; }
+    .badge-10m { background: #d1fae5; color: #065f46; }
+    .badge-misc{ background: var(--gradient-light); color: var(--primary); }
+    [data-theme="dark"] .badge-2m  { background: rgba(245,158,11,0.2); color: #fcd34d; }
+    [data-theme="dark"] .badge-5m  { background: rgba(59,130,246,0.2); color: #93c5fd; }
+    [data-theme="dark"] .badge-10m { background: rgba(16,185,129,0.2); color: #6ee7b7; }
+    .qp-section-divider {
+      font-size: 0.78rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.06em; color: var(--primary);
+      padding: 14px 0 8px; margin-top: 8px;
+    }
+    .qp-empty {
+      text-align: center; padding: 80px 20px;
+      color: var(--text-muted);
+    }
+    .qp-empty .icon { font-size: 3rem; margin-bottom: 1rem; }
+    /* Breadcrumb row */
+    .qp-breadcrumb-row {
+      display: flex; align-items: center; gap: 8px;
+      margin-bottom: 24px; flex-wrap: wrap;
+    }
+    .qp-tag {
+      padding: 4px 12px; border-radius: 50px;
+      background: var(--gradient-light); color: var(--primary);
+      font-size: 0.75rem; font-weight: 700;
+    }
+    .qp-back {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: var(--primary); font-size: 0.82rem; font-weight: 600;
+      text-decoration: none; padding: 5px 0;
+    }
+    .qp-back:hover { text-decoration: underline; }
+    /* Mobile layout */
+    @media (max-width: 768px) {
+      .qp-wrap { grid-template-columns: 1fr; }
+      .qp-sidebar {
+        border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+        position: static; max-height: 280px;
+        flex-direction: row; flex-wrap: wrap;
+        padding: 16px 12px; gap: 4px;
+      }
+      .qp-sidebar-header, .qp-sidebar-footer { display: none; }
+      .qp-subject-btn {
+        padding: 7px 12px; border-radius: var(--radius-md);
+        font-size: 0.78rem; width: auto; flex: 0 0 auto;
+      }
+      .qp-subject-btn.active { border-left: none; border-bottom: 2px solid #fff; }
+      .qp-panel { border-radius: 0 0 var(--radius-xl) var(--radius-xl); border: 1px solid var(--border); border-top: none; padding: 20px 16px; }
+      .qp-panel-header h1 { font-size: 1.2rem; }
+      .qp-filters { gap: 8px; }
+      .qp-q-actions { gap: 6px; }
+      .qp-q-row { padding: 12px 14px; }
+    }
+    @media (max-width: 480px) {
+      .qp-q-actions { flex-direction: column; align-items: flex-start; }
+      .qp-q-row { gap: 10px; }
+    }
   </style>
 </head>
 <body>
   <div id="page-loader"><div class="loader-content"><div class="loader-logo">CODEZZY</div><div class="loader-spinner"></div></div></div>
+
   <header class="site-header">
     <div class="container header-inner">
       <a href="index.html" class="logo" aria-label="CODEZZY Home">
@@ -61,6 +264,7 @@
       </div>
     </div>
   </header>
+
   <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation">
     <div class="mobile-nav-section">Main</div>
     <a href="index.html">Home</a><a href="tutorials.html">Tutorials</a>
@@ -69,18 +273,59 @@
     <div class="mobile-nav-section">More</div>
     <a href="career-guidance.html">Career Guidance</a><a href="about.html">About</a><a href="contact.html">Contact</a>
   </nav>
+
   <main>
-    <section class="section" style="padding-top:2rem">
+    <section class="section" style="padding-top:1.5rem;padding-bottom:2.5rem">
       <div class="container">
-        <nav class="breadcrumb" aria-label="Breadcrumb" style="margin-bottom:1.5rem">
-          <a href="index.html">Home</a><span>&#8250;</span>
-          <a href="student-corner.html">Student Corner</a><span>&#8250;</span>
-          <span>Questions</span>
-        </nav>
-        <div id="q-output"></div>
+        <!-- Breadcrumb -->
+        <div class="qp-breadcrumb-row">
+          <a href="student-corner.html" class="qp-back">&#8592; Change Selection</a>
+          <span id="qp-tag-year" class="qp-tag"></span>
+          <span id="qp-tag-branch" class="qp-tag"></span>
+          <span id="qp-tag-sem" class="qp-tag"></span>
+        </div>
+
+        <!-- Main two-panel grid -->
+        <div class="qp-wrap">
+
+          <!-- LEFT: Subject list -->
+          <div class="qp-sidebar" id="qp-sidebar">
+            <div class="qp-sidebar-header">
+              <h3>Subjects</h3>
+              <div class="qp-sidebar-meta" id="qp-sem-label"></div>
+            </div>
+            <div id="qp-subject-list"></div>
+            <div class="qp-sidebar-footer">
+              <div class="qp-progress-label">Subject <strong id="qp-prog-cur">1</strong> of <strong id="qp-prog-tot">1</strong></div>
+              <div class="qp-progress-bar"><div class="qp-progress-fill" id="qp-prog-fill" style="width:100%"></div></div>
+            </div>
+          </div>
+
+          <!-- RIGHT: Questions panel -->
+          <div class="qp-panel" id="qp-panel">
+            <div class="qp-panel-header">
+              <h1>📋 Important Questions</h1>
+              <p>Browse important questions by subject to prepare better for your exams.</p>
+            </div>
+
+            <div class="qp-filters">
+              <select class="qp-filter-select" id="qp-type-filter" onchange="applyFilters()">
+                <option value="all">⭐ All Types</option>
+                <option value="2">2 Marks</option>
+                <option value="5">5 Marks</option>
+                <option value="10">10 Marks</option>
+              </select>
+              <input type="search" class="qp-search" id="qp-search" placeholder="Search questions…" oninput="applyFilters()">
+            </div>
+
+            <div id="qp-content"></div>
+          </div>
+
+        </div>
       </div>
     </section>
   </main>
+
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
@@ -95,186 +340,271 @@
       <div class="footer-bottom"><p>&copy; 2026 CODEZZY. All rights reserved.</p></div>
     </div>
   </footer>
+
   <button id="scroll-top" aria-label="Scroll to top">&#8593;</button>
   <script src="js/script.js"></script>
   <script>
-  const QUESTIONS={
-    math1:{title:'Engineering Mathematics I',sections:[
-      {title:'2 Marks',questions:[{q:"Define limit of a function. State L'Hôpital's rule.",marks:'2M'},{q:'What is a differential equation? Classify with examples.',marks:'2M'},{q:'Define eigenvalue and eigenvector.',marks:'2M'},{q:"State Rolle's theorem and Mean Value theorem.",marks:'2M'},{q:'Define partial derivative with an example.',marks:'2M'},{q:'What is the rank of a matrix?',marks:'2M'}]},
-      {title:'5 Marks',questions:[{q:'Find maxima and minima of f(x) = x³ − 3x² + 4.',marks:'5M'},{q:'Solve dy/dx + 2y = e^(−2x).',marks:'5M'},{q:'Find eigenvalues and eigenvectors of A = [[3,1],[1,3]].',marks:'5M'},{q:'Evaluate ∫∫(x²+y²)dxdy over the unit square.',marks:'5M'}]},
-      {title:'10 Marks',questions:[{q:"State and prove Taylor's theorem. Expand sin(x) and cos(x) about x=0.",marks:'10M'},{q:'Solve a system of linear equations using Gauss-Jordan elimination.',marks:'10M'},{q:'Explain Fourier series. Find expansion of f(x)=x in [−π,π].',marks:'10M'}]}
-    ]},
-    physics1:{title:'Engineering Physics I',sections:[
-      {title:'2 Marks',questions:[{q:"State Newton's laws of motion.",marks:'2M'},{q:'Define wave-particle duality with an example.',marks:'2M'},{q:'What is the photoelectric effect?',marks:'2M'},{q:"State Heisenberg's uncertainty principle.",marks:'2M'},{q:"Define refractive index and Snell's law.",marks:'2M'}]},
-      {title:'5 Marks',questions:[{q:'Explain interference of light. Derive conditions for constructive and destructive interference.',marks:'5M'},{q:"Describe Bohr's model of hydrogen atom. Derive radius of nth orbit.",marks:'5M'},{q:'Explain superconductivity and its applications.',marks:'5M'}]},
-      {title:'10 Marks',questions:[{q:"Explain quantum mechanics. Discuss Schrödinger's wave equation.",marks:'10M'},{q:'Describe LASER — principle, construction, types, and applications.',marks:'10M'},{q:'Explain optical fibres — principle, structure, types, and applications.',marks:'10M'}]}
-    ]},
-    chem1:{title:'Engineering Chemistry I',sections:[
-      {title:'2 Marks',questions:[{q:'What is a covalent bond? How does it differ from ionic bond?',marks:'2M'},{q:'Define pH and pOH.',marks:'2M'},{q:'What is hardness of water? Give types.',marks:'2M'},{q:'Define corrosion. List types.',marks:'2M'},{q:'Differentiate thermoplastic and thermosetting polymers.',marks:'2M'}]},
-      {title:'5 Marks',questions:[{q:'Explain water softening by ion exchange method.',marks:'5M'},{q:'Describe electrochemical theory of corrosion.',marks:'5M'},{q:'What are fuels? Classify and explain calorific value.',marks:'5M'}]},
-      {title:'10 Marks',questions:[{q:'Explain polymer classification, addition and condensation polymerization, and applications.',marks:'10M'},{q:'Describe water treatment — sedimentation, filtration, chlorination, and reverse osmosis.',marks:'10M'}]}
-    ]},
-    beee:{title:'Basic Electrical & Electronics Engineering',sections:[
-      {title:'2 Marks',questions:[{q:"State Ohm's law and Kirchhoff's laws.",marks:'2M'},{q:'What is a p-n junction diode? Explain forward and reverse bias.',marks:'2M'},{q:'Define RMS value and peak value of AC voltage.',marks:'2M'},{q:'What is a transformer? State its working principle.',marks:'2M'},{q:'What is a transistor? Name its types.',marks:'2M'},{q:'Define power factor.',marks:'2M'}]},
-      {title:'5 Marks',questions:[{q:'Explain series and parallel RLC circuits. Derive resonance conditions.',marks:'5M'},{q:'Describe construction and working of a single-phase transformer.',marks:'5M'},{q:'Explain half-wave and full-wave rectifiers with diagrams.',marks:'5M'}]},
-      {title:'10 Marks',questions:[{q:'Explain DC motors — types, construction, working, and applications.',marks:'10M'},{q:'Describe BJT as amplifier and switch. Explain CE, CB, CC configurations.',marks:'10M'},{q:'Explain three-phase power — star and delta connections.',marks:'10M'}]}
-    ]},
-    eg:{title:'Engineering Graphics',sections:[
-      {title:'2 Marks',questions:[{q:'Difference between first-angle and third-angle projection?',marks:'2M'},{q:'Define isometric projection.',marks:'2M'},{q:'What are the types of lines in engineering drawing?',marks:'2M'},{q:'Define section views.',marks:'2M'}]},
-      {title:'5 Marks',questions:[{q:'Draw orthographic views of an L-shaped block.',marks:'5M'},{q:'Explain procedure to draw isometric view from orthographic projections.',marks:'5M'},{q:'Draw development of a cylinder (dia 40mm, height 60mm).',marks:'5M'}]},
-      {title:'10 Marks',questions:[{q:'Draw first-angle projection views of a stepped block with section view.',marks:'10M'},{q:'Convert given orthographic views to an isometric drawing.',marks:'10M'}]}
-    ]},
-    pce:{title:'Professional Communication & Ethics',sections:[
-      {title:'2 Marks',questions:[{q:'What is technical communication? Why is it important for engineers?',marks:'2M'},{q:'Define engineering ethics. State its basic principles.',marks:'2M'},{q:'What is a technical report? List its sections.',marks:'2M'},{q:'What is plagiarism? How can it be avoided?',marks:'2M'}]},
-      {title:'5 Marks',questions:[{q:'Explain the seven Cs of effective communication with examples.',marks:'5M'},{q:'What are the ethical responsibilities of a software engineer?',marks:'5M'}]},
-      {title:'10 Marks',questions:[{q:'Explain types and barriers of communication. Discuss strategies to overcome them.',marks:'10M'},{q:'Describe IEEE/ACM code of ethics. Apply it to a software development case study.',marks:'10M'}]}
-    ]},
-    phychemlab:{title:'Physics / Chemistry Labs',sections:[
-      {title:'2 Marks',questions:[{q:'What precautions should be taken while handling chemicals in a lab?',marks:'2M'},{q:'What is the least count of a vernier calliper?',marks:'2M'},{q:'Define titration. What is an indicator?',marks:'2M'}]},
-      {title:'5 Marks',questions:[{q:'Describe experiment to find wavelength of sodium light using diffraction grating.',marks:'5M'},{q:"Explain experiment to find Young's modulus using Searle's apparatus.",marks:'5M'},{q:'Describe procedure to find hardness of water by EDTA titration.',marks:'5M'}]},
-      {title:'10 Marks',questions:[{q:'Describe any two physics experiments — aim, apparatus, procedure, observations, result.',marks:'10M'},{q:'Describe any two chemistry experiments — aim, chemicals, procedure, conclusions.',marks:'10M'}]}
-    ]},
-    math2_1:{title:'Engineering Mathematics II',sections:[
-      {title:'2 Marks',questions:[{q:'Define Laplace transform. State linearity property.',marks:'2M'},{q:'Define divergence and curl of a vector field.',marks:'2M'},{q:"State Green's theorem.",marks:'2M'},{q:'Define beta and gamma functions.',marks:'2M'}]},
-      {title:'5 Marks',questions:[{q:"Find Laplace transform of f(t)=t·e^(at). Use it to solve a DE.",marks:'5M'},{q:"Evaluate a line integral using Stokes' theorem.",marks:'5M'}]},
-      {title:'10 Marks',questions:[{q:"State and prove Stokes' theorem. Apply it to evaluate ∮F·dr.",marks:'10M'},{q:'Explain Fourier transforms. Find transform of a rectangular pulse.',marks:'10M'}]}
-    ]},
-    physics2:{title:'Engineering Physics II',sections:[
-      {title:'2 Marks',questions:[{q:"What is magnetic flux? State Faraday's law.",marks:'2M'},{q:'What is a semiconductor? How does doping change its properties?',marks:'2M'},{q:'Define Hall effect and its applications.',marks:'2M'},{q:"What are Maxwell's equations?",marks:'2M'}]},
-      {title:'5 Marks',questions:[{q:'Explain energy band theory. Distinguish conductors, semiconductors, and insulators.',marks:'5M'},{q:'Describe working of a solar cell and its V-I characteristics.',marks:'5M'}]},
-      {title:'10 Marks',questions:[{q:'Describe nanomaterials — types, properties, synthesis, and engineering applications.',marks:'10M'},{q:'Explain dielectric properties — polarization, dielectric constant, and breakdown.',marks:'10M'}]}
-    ]},
-    chem2:{title:'Engineering Chemistry II',sections:[
-      {title:'2 Marks',questions:[{q:'What is an electrolytic cell? How does it differ from a galvanic cell?',marks:'2M'},{q:'Define electrode potential and standard electrode potential.',marks:'2M'},{q:'What is a lubricant? List types.',marks:'2M'}]},
-      {title:'5 Marks',questions:[{q:'Explain electroplating. Describe copper plating on iron.',marks:'5M'},{q:"What is green chemistry? State its 12 principles.",marks:'5M'}]},
-      {title:'10 Marks',questions:[{q:'Explain batteries — primary, secondary, and fuel cells. Describe lead-acid and Li-ion batteries.',marks:'10M'},{q:'Discuss nanomaterials — synthesis, properties, and applications.',marks:'10M'}]}
-    ]},
-    engmech:{title:'Engineering Mechanics',sections:[
-      {title:'2 Marks',questions:[{q:'Define free body diagram.',marks:'2M'},{q:'State principle of transmissibility of forces.',marks:'2M'},{q:'What is centroid? Difference from centre of gravity?',marks:'2M'},{q:'Define coefficient of friction and angle of friction.',marks:'2M'}]},
-      {title:'5 Marks',questions:[{q:"Find resultant of coplanar concurrent forces using Lami's theorem.",marks:'5M'},{q:'Determine centroid of a T-section using integration.',marks:'5M'},{q:'Analyze forces in a simple truss using method of joints.',marks:'5M'}]},
-      {title:'10 Marks',questions:[{q:'Explain kinematics and kinetics of a particle. Solve projectile motion problems.',marks:'10M'},{q:"State and apply D'Alembert's principle to problems on inclined planes.",marks:'10M'}]}
-    ]},
-    prog_fund:{title:'Programming Fundamentals (C / Python)',sections:[
-      {title:'2 Marks',questions:[{q:'Difference between compiler and interpreter?',marks:'2M'},{q:'What are data types in C? List primitive types.',marks:'2M'},{q:'Compare for, while, and do-while loops.',marks:'2M'},{q:'What is an array? How is it declared in C?',marks:'2M'},{q:'Difference between Python list and tuple?',marks:'2M'}]},
-      {title:'5 Marks',questions:[{q:'Write a C program to implement bubble sort.',marks:'5M'},{q:'Write a Python program to find factorial using recursion and iteration.',marks:'5M'},{q:'Explain pointers in C. Write a program to swap two numbers using pointers.',marks:'5M'}]},
-      {title:'10 Marks',questions:[{q:'Explain arrays and strings in C. Write a student marks system using structures.',marks:'10M'},{q:'Explain OOP in Python — classes, objects, inheritance, and polymorphism — with complete code.',marks:'10M'}]}
-    ]},
-    envstudies:{title:'Environmental Studies',sections:[
-      {title:'2 Marks',questions:[{q:'Define environment. List its components.',marks:'2M'},{q:'What is biodiversity? Why is it important?',marks:'2M'},{q:'What is the greenhouse effect? Name main greenhouse gases.',marks:'2M'}]},
-      {title:'5 Marks',questions:[{q:'Explain air pollution — causes, effects, and control measures.',marks:'5M'},{q:'Describe the water cycle and how human activities affect it.',marks:'5M'}]},
-      {title:'10 Marks',questions:[{q:"Discuss climate change — causes, impacts, India's action plan, and Paris Agreement.",marks:'10M'},{q:'Explain solid waste management — types, treatment methods, and recycling.',marks:'10M'}]}
-    ]},
-    workshop:{title:'Workshop Practice',sections:[
-      {title:'2 Marks',questions:[{q:'What is a fitting operation? Name common fitting tools.',marks:'2M'},{q:'What is welding? Name types.',marks:'2M'},{q:'What is a lathe? What operations are performed on it?',marks:'2M'},{q:'Difference between drilling and boring?',marks:'2M'}]},
-      {title:'5 Marks',questions:[{q:'Explain arc welding — principle and safety precautions.',marks:'5M'},{q:'Describe turning operation on a lathe. Explain tool geometry.',marks:'5M'}]},
-      {title:'10 Marks',questions:[{q:'Describe making a simple fitting job — marking, cutting, filing, drilling, finishing.',marks:'10M'},{q:'Explain milling machine — types, operations, cutters, and applications.',marks:'10M'}]}
-    ]},
-    dsa:{title:'Data Structures & Algorithms',sections:[
-      {title:'2 Marks',questions:[{q:'Define data structure. List types.',marks:'2M'},{q:'What is a stack? State its operations.',marks:'2M'},{q:'Differentiate singly and doubly linked list.',marks:'2M'},{q:'What is hashing? What is a collision?',marks:'2M'}]},
-      {title:'5 Marks',questions:[{q:'Explain stack push/pop. Write a program to implement stack using array.',marks:'5M'},{q:'Write algorithm for binary search and state time complexity.',marks:'5M'},{q:'Explain queue and circular queue with diagrams.',marks:'5M'}]},
-      {title:'10 Marks',questions:[{q:'Explain BST — insertion, deletion, and inorder/preorder/postorder traversal.',marks:'10M'},{q:'What is a graph? Explain BFS and DFS with algorithms.',marks:'10M'},{q:'Compare sorting algorithms — Bubble, Selection, Insertion, Merge, Quick — with time complexity.',marks:'10M'}]}
-    ]},
-    dbms:{title:'Database Management System',sections:[
-      {title:'2 Marks',questions:[{q:'What is a DBMS? How does it differ from a file system?',marks:'2M'},{q:'Define primary key, foreign key, and candidate key.',marks:'2M'},{q:'What is normalization? Name its normal forms.',marks:'2M'},{q:'What is a transaction? State ACID properties.',marks:'2M'}]},
-      {title:'5 Marks',questions:[{q:'Explain 1NF, 2NF, and 3NF with examples.',marks:'5M'},{q:'Write SQL queries for CREATE TABLE, INSERT, and SELECT with JOIN.',marks:'5M'}]},
-      {title:'10 Marks',questions:[{q:'Draw and explain an ER diagram for a Hospital Management System.',marks:'10M'},{q:'Explain concurrency control — lock-based and timestamp-based protocols.',marks:'10M'}]}
-    ]},
-    os:{title:'Operating Systems',sections:[
-      {title:'2 Marks',questions:[{q:'What is an OS? List its functions.',marks:'2M'},{q:'Define deadlock. State its four necessary conditions.',marks:'2M'},{q:'What is virtual memory?',marks:'2M'},{q:'What is a semaphore? What are its types?',marks:'2M'}]},
-      {title:'5 Marks',questions:[{q:'Explain FCFS, SJF, Round Robin, and Priority scheduling with examples.',marks:'5M'},{q:'What is paging? Explain page table mechanism.',marks:'5M'}]},
-      {title:'10 Marks',questions:[{q:"Explain deadlock — prevention, avoidance (Banker's algorithm), detection, recovery.",marks:'10M'},{q:'Describe file system structure and file allocation methods.',marks:'10M'}]}
-    ]},
-    cn:{title:'Computer Networks',sections:[
-      {title:'2 Marks',questions:[{q:'What is the OSI model? List its seven layers.',marks:'2M'},{q:'Differentiate TCP and UDP.',marks:'2M'},{q:'What is DNS? How does it resolve domain names?',marks:'2M'}]},
-      {title:'5 Marks',questions:[{q:'Explain the TCP/IP model with all layers and protocols.',marks:'5M'},{q:'Explain the three-way handshake in TCP.',marks:'5M'}]},
-      {title:'10 Marks',questions:[{q:'Explain the OSI model in detail — role and protocols of each layer.',marks:'10M'},{q:'What is network security? Explain firewalls, VPNs, SSL/TLS.',marks:'10M'}]}
-    ]},
-    oops:{title:'Object Oriented Programming',sections:[
-      {title:'2 Marks',questions:[{q:'What are the four pillars of OOP? Define each.',marks:'2M'},{q:'What is method overloading and method overriding?',marks:'2M'},{q:'Define interface and abstract class in Java.',marks:'2M'}]},
-      {title:'5 Marks',questions:[{q:'Explain inheritance in Java — single, multilevel, hierarchical — with programs.',marks:'5M'},{q:'What is exception handling? Explain try, catch, finally, throw, throws.',marks:'5M'}]},
-      {title:'10 Marks',questions:[{q:'Explain multithreading in Java — creation, synchronization, inter-thread communication.',marks:'10M'},{q:'What are design patterns? Explain Singleton, Factory, Observer with Java code.',marks:'10M'}]}
-    ]},
-    se:{title:'Software Engineering',sections:[
-      {title:'2 Marks',questions:[{q:'What is SDLC? List its phases.',marks:'2M'},{q:'Differentiate verification and validation.',marks:'2M'},{q:'What is cohesion and coupling?',marks:'2M'}]},
-      {title:'5 Marks',questions:[{q:'Compare Waterfall, Agile, and Spiral models.',marks:'5M'},{q:'What is software testing? Explain unit, integration, and system testing.',marks:'5M'}]},
-      {title:'10 Marks',questions:[{q:'Explain Agile/Scrum — roles, ceremonies, and artifacts.',marks:'10M'},{q:'Describe SOLID, DRY, KISS principles with examples.',marks:'10M'}]}
-    ]},
-    ai:{title:'Artificial Intelligence',sections:[
-      {title:'2 Marks',questions:[{q:'Define AI. List applications.',marks:'2M'},{q:'Define heuristic function in A* search.',marks:'2M'},{q:'Difference between supervised and unsupervised learning?',marks:'2M'}]},
-      {title:'5 Marks',questions:[{q:'Explain BFS and DFS in AI with state space search examples.',marks:'5M'},{q:'What is minimax algorithm? Explain with a game tree.',marks:'5M'}]},
-      {title:'10 Marks',questions:[{q:'Explain 8-puzzle problem using BFS, DFS, and A*.',marks:'10M'},{q:'Explain NLP — tokenization, POS tagging, parsing, and applications.',marks:'10M'}]}
-    ]},
-    ml:{title:'Machine Learning',sections:[
-      {title:'2 Marks',questions:[{q:'Define machine learning. What are its types?',marks:'2M'},{q:'What is overfitting? How can it be prevented?',marks:'2M'},{q:'What is gradient descent?',marks:'2M'}]},
-      {title:'5 Marks',questions:[{q:'Explain linear regression with cost function and gradient descent.',marks:'5M'},{q:'What is k-means clustering? Explain the algorithm.',marks:'5M'}]},
-      {title:'10 Marks',questions:[{q:'Explain Random Forest. Compare with decision trees. Describe bagging and boosting.',marks:'10M'},{q:'Explain deep learning — ANN, CNN, RNN — with applications.',marks:'10M'}]}
-    ]},
-    python:{title:'Python Programming',sections:[
-      {title:'2 Marks',questions:[{q:'Difference between list, tuple, and set in Python?',marks:'2M'},{q:'What are lambda functions? Give an example.',marks:'2M'},{q:'What is a decorator in Python?',marks:'2M'}]},
-      {title:'5 Marks',questions:[{q:'Explain list comprehensions and generators with examples.',marks:'5M'},{q:'Explain exception handling — try, except, else, and finally.',marks:'5M'}]},
-      {title:'10 Marks',questions:[{q:'Explain NumPy and Pandas — array creation, indexing, DataFrame operations.',marks:'10M'},{q:'Explain Python modules, packages, pip, and virtual environments.',marks:'10M'}]}
-    ]},
-    cloud:{title:'Cloud Computing',sections:[
-      {title:'2 Marks',questions:[{q:'What is cloud computing? List service models.',marks:'2M'},{q:'Differentiate IaaS, PaaS, SaaS.',marks:'2M'},{q:'What is virtualization?',marks:'2M'}]},
-      {title:'5 Marks',questions:[{q:'Explain public, private, hybrid, and community cloud models.',marks:'5M'},{q:'What is containerization? Explain Docker and Kubernetes.',marks:'5M'}]},
-      {title:'10 Marks',questions:[{q:'Explain cloud security — data encryption, identity management, compliance.',marks:'10M'},{q:'What is DevOps? Explain CI/CD pipeline with Jenkins, Git, Docker, Kubernetes.',marks:'10M'}]}
-    ]},
-    cybersec:{title:'Cyber Security',sections:[
-      {title:'2 Marks',questions:[{q:'Define cyber security. List types.',marks:'2M'},{q:'What is phishing? How can it be prevented?',marks:'2M'},{q:'What is a VPN?',marks:'2M'}]},
-      {title:'5 Marks',questions:[{q:'Explain symmetric and asymmetric encryption — AES and RSA.',marks:'5M'},{q:'What is ethical hacking? Describe the phases of penetration testing.',marks:'5M'}]},
-      {title:'10 Marks',questions:[{q:'Explain network security — IDS/IPS, honeypots, DMZ, and monitoring.',marks:'10M'},{q:'Explain the CIA triad, risk assessment, and ISO 27001 compliance.',marks:'10M'}]}
-    ]},
-    capstone:{title:'Final Year Project / Capstone',sections:[
-      {title:'Project Planning',questions:[{q:'How do you select a final year project topic?',marks:'Concept'},{q:'Write a project proposal — abstract, objectives, scope, methodology.',marks:'Concept'},{q:'Define functional and non-functional requirements.',marks:'Concept'}]},
-      {title:'Design & Implementation',questions:[{q:'Draw the system architecture diagram and explain components.',marks:'Design'},{q:'Explain database schema design with an ER diagram.',marks:'Design'},{q:'What testing strategies will you use? Write test cases for two modules.',marks:'Testing'}]},
-      {title:'Viva / Defense',questions:[{q:'What is the novelty of your project?',marks:'Viva'},{q:'What challenges did you face and how did you resolve them?',marks:'Viva'},{q:'What technologies did you use? Justify your choices.',marks:'Viva'}]}
-    ]}
+  // ── Subject icons map ────────────────────────────────────────────────────
+  const ICONS = {
+    default:'📘', math:'📐', physics:'🔬', chem:'⚗️', prog:'💻',
+    ds:'🗂️', db:'🗄️', os:'🖥️', cn:'🌐', se:'📋', ai:'🤖',
+    ml:'🧠', web:'🌐', security:'🔐', cloud:'☁️', elec:'⚡',
+    mech:'⚙️', civil:'🏗️', lab:'🧪', project:'🎓', intern:'💼'
+  };
+  function iconFor(id) {
+    if (!id) return ICONS.default;
+    const s = id.toLowerCase();
+    if (s.includes('math')) return ICONS.math;
+    if (s.includes('phy')) return ICONS.physics;
+    if (s.includes('chem')) return ICONS.chem;
+    if (s.includes('prog') || s.includes('py') || s.includes('web') || s.includes('wp') || s.includes('ip')) return ICONS.prog;
+    if (s.includes('ds') || s.includes('dsa') || s.includes('dsgt')) return ICONS.ds;
+    if (s.includes('db') || s.includes('dbms') || s.includes('admt') || s.includes('dwm') || s.includes('ads')) return ICONS.db;
+    if (s.includes('os') || s.includes('operating')) return ICONS.os;
+    if (s.includes('cn') || s.includes('network')) return ICONS.cn;
+    if (s.includes('se') || s.includes('software') || s.includes('spcc') || s.includes('tcs') || s.includes('algo') || s.includes('aoa')) return ICONS.se;
+    if (s.includes('ai') || s.includes('ml') || s.includes('dl') || s.includes('nlp') || s.includes('cv') || s.includes('rl') || s.includes('gai') || s.includes('mlops')) return ICONS.ai;
+    if (s.includes('cloud') || s.includes('cc')) return ICONS.cloud;
+    if (s.includes('sec') || s.includes('css') || s.includes('crypt') || s.includes('is')) return ICONS.security;
+    if (s.includes('elec') || s.includes('edc') || s.includes('ee') || s.includes('ac') || s.includes('mc') || s.includes('vlsi') || s.includes('es') || s.includes('dsp') || s.includes('dsd') || s.includes('nt') || s.includes('ei') || s.includes('ss') || s.includes('dc') || s.includes('wc') || s.includes('awp') || s.includes('oc') || s.includes('sat') || s.includes('acs') || s.includes('iot')) return ICONS.elec;
+    if (s.includes('me_') || s.includes('mech') || s.includes('thermo') || s.includes('fm') || s.includes('km') || s.includes('dom') || s.includes('dme') || s.includes('hmt') || s.includes('mqc') || s.includes('cadcam') || s.includes('fea') || s.includes('auto') || s.includes('rac') || s.includes('rob')) return ICONS.mech;
+    if (s.includes('cv_') || s.includes('civil') || s.includes('surv') || s.includes('sa') || s.includes('geo') || s.includes('rcs') || s.includes('te') || s.includes('wre') || s.includes('dss') || s.includes('act') || s.includes('eq') || s.includes('pm') || s.includes('infra')) return ICONS.civil;
+    if (s.includes('lab') || s.includes('phychemlab') || s.includes('workshop')) return ICONS.lab;
+    if (s.includes('proj')) return ICONS.project;
+    if (s.includes('intern')) return ICONS.intern;
+    return ICONS.default;
+  }
+
+  // ── Subject data (same as student-corner.html) ───────────────────────────
+  const S1=[{id:'math1',label:'Engineering Mathematics I'},{id:'physics1',label:'Engineering Physics I'},{id:'chem1',label:'Engineering Chemistry I'},{id:'beee',label:'Basic Electrical & Electronics Engineering'},{id:'eg',label:'Engineering Graphics'},{id:'pce',label:'Professional Communication & Ethics'},{id:'phychemlab',label:'Physics / Chemistry Labs'}];
+  const S2=[{id:'math2_1',label:'Engineering Mathematics II'},{id:'physics2',label:'Engineering Physics II'},{id:'chem2',label:'Engineering Chemistry II'},{id:'engmech',label:'Engineering Mechanics'},{id:'prog_fund',label:'Programming Fundamentals (C / Python)'},{id:'envstudies',label:'Environmental Studies'},{id:'workshop',label:'Workshop Practice'}];
+  const ALL_SUBJECTS={
+    '1st Year':{sem1:{ce:S1,it:S1,aiml:S1,extc:S1,eee:S1,mech:S1,civil:S1,chem:S1},sem2:{ce:S2,it:S2,aiml:S2,extc:S2,eee:S2,mech:S2,civil:S2,chem:S2}},
+    '2nd Year':{
+      sem3:{
+        ce:[{id:'ce_m3',label:'Engineering Mathematics – III'},{id:'ce_dsgt',label:'Discrete Structures and Graph Theory'},{id:'ce_ds',label:'Data Structure'},{id:'ce_dlca',label:'Digital Logic and Computer Architecture'},{id:'ce_cg',label:'Computer Graphics'},{id:'ce_py',label:'Python Programming'}],
+        it:[{id:'it_m3',label:'Engineering Mathematics – III'},{id:'it_ds',label:'Data Structures'},{id:'it_coa',label:'Computer Organization and Architecture'},{id:'it_dm',label:'Discrete Mathematics'},{id:'it_py',label:'Python Programming'}],
+        aiml:[{id:'ai_m3',label:'Engineering Mathematics – III'},{id:'ai_ds',label:'Data Structures'},{id:'ai_py',label:'Python Programming'},{id:'ai_sp',label:'Statistics and Probability'},{id:'ai_co',label:'Computer Organization'}],
+        extc:[{id:'ex_m3',label:'Engineering Mathematics – III'},{id:'ex_edc',label:'Electronic Devices and Circuits'},{id:'ex_nt',label:'Network Theory'},{id:'ex_dsd',label:'Digital System Design'},{id:'ex_ei',label:'Electronic Instrumentation'}],
+        eee:[{id:'ee_m3',label:'Engineering Mathematics – III'},{id:'ee_em1',label:'Electrical Machines – I'},{id:'ee_na',label:'Network Analysis'},{id:'ee_meas',label:'Electrical Measurements'}],
+        mech:[{id:'me_m3',label:'Engineering Mathematics – III'},{id:'me_thermo',label:'Thermodynamics'},{id:'me_som',label:'Strength of Materials'},{id:'me_mat',label:'Engineering Materials and Metallurgy'},{id:'me_mfg',label:'Manufacturing Processes'}],
+        civil:[{id:'cv_m3',label:'Engineering Mathematics – III'},{id:'cv_surv',label:'Surveying'},{id:'cv_bm',label:'Building Materials and Construction Technology'},{id:'cv_sa',label:'Structural Analysis'}],
+        chem:[{id:'ch_m3',label:'Engineering Mathematics – III'},{id:'ch_pcc',label:'Chemical Process Calculations'},{id:'ch_ffo',label:'Fluid Flow Operations'},{id:'ch_mo',label:'Mechanical Operations'},{id:'ch_cet1',label:'Chemical Engineering Thermodynamics – I'}]
+      },
+      sem4:{
+        ce:[{id:'ce_m4',label:'Engineering Mathematics – IV'},{id:'ce_aoa',label:'Analysis of Algorithms'},{id:'ce_dbms',label:'Database Management System'},{id:'ce_os',label:'Operating System'},{id:'ce_mp',label:'Microprocessor'},{id:'ce_wp',label:'Web Programming'}],
+        it:[{id:'it_m4',label:'Engineering Mathematics – IV'},{id:'it_aoa',label:'Analysis of Algorithms'},{id:'it_dbms',label:'Database Management Systems'},{id:'it_os',label:'Operating Systems'},{id:'it_wt',label:'Web Technologies'}],
+        aiml:[{id:'ai_m4',label:'Engineering Mathematics – IV'},{id:'ai_dbms',label:'Database Management Systems'},{id:'ai_os',label:'Operating Systems'},{id:'ai_mlf',label:'Machine Learning Fundamentals'},{id:'ai_da',label:'Data Analytics'}],
+        extc:[{id:'ex_m4',label:'Engineering Mathematics – IV'},{id:'ex_ac',label:'Analog Communication'},{id:'ex_ss',label:'Signals and Systems'},{id:'ex_mc',label:'Microcontrollers'},{id:'ex_ec',label:'Electronic Circuits'}],
+        eee:[{id:'ee_m4',label:'Engineering Mathematics – IV'},{id:'ee_em2',label:'Electrical Machines – II'},{id:'ee_pg',label:'Power Generation'},{id:'ee_ae',label:'Analog Electronics'}],
+        mech:[{id:'me_m4',label:'Engineering Mathematics – IV'},{id:'me_fm',label:'Fluid Mechanics'},{id:'me_km',label:'Kinematics of Machinery'},{id:'me_pp',label:'Production Processes'}],
+        civil:[{id:'cv_m4',label:'Engineering Mathematics – IV'},{id:'cv_geo',label:'Geotechnical Engineering'},{id:'cv_fm',label:'Fluid Mechanics'},{id:'cv_ct',label:'Concrete Technology'}],
+        chem:[{id:'ch_m4',label:'Engineering Mathematics – IV'},{id:'ch_ht',label:'Heat Transfer'},{id:'ch_cet2',label:'Chemical Engineering Thermodynamics – II'},{id:'ch_cht',label:'Chemical Technology'},{id:'ch_ms',label:'Material Science'}]
+      }
+    },
+    '3rd Year':{
+      sem5:{
+        ce:[{id:'ce_tcs',label:'Theoretical Computer Science'},{id:'ce_ip',label:'Internet Programming'},{id:'ce_admt',label:'Advanced Data Management Technologies'},{id:'ce_cn',label:'Computer Network'},{id:'ce_se',label:'Software Engineering'}],
+        it:[{id:'it_cn',label:'Computer Networks'},{id:'it_se',label:'Software Engineering'},{id:'it_iot',label:'Internet of Things'},{id:'it_ads',label:'Advanced Database Systems'}],
+        aiml:[{id:'ai_ai',label:'Artificial Intelligence'},{id:'ai_ml',label:'Machine Learning'},{id:'ai_dwm',label:'Data Warehousing and Mining'},{id:'ai_cn',label:'Computer Network'},{id:'ai_wc',label:'Web Computing'}],
+        extc:[{id:'ex_dc',label:'Digital Communication'},{id:'ex_cs',label:'Control Systems'},{id:'ex_mp',label:'Microprocessors'},{id:'ex_em',label:'Electromagnetic Engineering'}],
+        eee:[{id:'ee_ps1',label:'Power Systems – I'},{id:'ee_ctrl',label:'Control Systems'},{id:'ee_pe',label:'Power Electronics'},{id:'ee_mp',label:'Microprocessors'}],
+        mech:[{id:'me_dom',label:'Dynamics of Machinery'},{id:'me_dme',label:'Design of Machine Elements'},{id:'me_hmt',label:'Heat Transfer'},{id:'me_mqc',label:'Metrology and Quality Control'}],
+        civil:[{id:'cv_rcs',label:'Reinforced Concrete Structures'},{id:'cv_ee',label:'Environmental Engineering'},{id:'cv_te',label:'Transportation Engineering'}],
+        chem:[{id:'ch_mto1',label:'Mass Transfer Operations – I'},{id:'ch_cre1',label:'Chemical Reaction Engineering – I'},{id:'ch_pdc',label:'Process Dynamics and Control'},{id:'ch_ene',label:'Energy Engineering'}]
+      },
+      sem6:{
+        ce:[{id:'ce_spcc',label:'System Programming and Compiler Construction'},{id:'ce_css',label:'Cryptography and System Security'},{id:'ce_mc',label:'Mobile Computing'},{id:'ce_ai',label:'Artificial Intelligence'},{id:'ce_dloc2',label:'Department Level Optional Course II'}],
+        it:[{id:'it_cc',label:'Cloud Computing'},{id:'it_is',label:'Information Security'},{id:'it_mad',label:'Mobile Application Development'},{id:'it_ai',label:'Artificial Intelligence'}],
+        aiml:[{id:'ai_dl',label:'Deep Learning'},{id:'ai_nlp',label:'Natural Language Processing'},{id:'ai_cv',label:'Computer Vision'},{id:'ai_rl',label:'Reinforcement Learning'},{id:'ai_cloud',label:'Cloud Computing'}],
+        extc:[{id:'ex_es',label:'Embedded Systems'},{id:'ex_dsp',label:'Digital Signal Processing'},{id:'ex_wc',label:'Wireless Communication'},{id:'ex_awp',label:'Antenna and Wave Propagation'}],
+        eee:[{id:'ee_ps2',label:'Power Systems – II'},{id:'ee_sgp',label:'Switchgear and Protection'},{id:'ee_uee',label:'Utilization of Electrical Energy'},{id:'ee_ed',label:'Electrical Drives'}],
+        mech:[{id:'me_cadcam',label:'CAD/CAM'},{id:'me_mech',label:'Mechatronics'},{id:'me_fea',label:'Finite Element Analysis'},{id:'me_ie',label:'Industrial Engineering'}],
+        civil:[{id:'cv_wre',label:'Water Resources Engineering'},{id:'cv_dss',label:'Design of Steel Structures'},{id:'cv_qsv',label:'Quantity Surveying and Valuation'}],
+        chem:[{id:'ch_mto2',label:'Mass Transfer Operations – II'},{id:'ch_cre2',label:'Chemical Reaction Engineering – II'},{id:'ch_pms',label:'Process Modeling and Simulation'},{id:'ch_ee',label:'Environmental Engineering'}]
+      }
+    },
+    '4th Year':{
+      sem7:{
+        ce:[{id:'ce_ml',label:'Machine Learning'},{id:'ce_bda',label:'Big Data Analytics'},{id:'ce_elec1',label:'Elective I'},{id:'ce_elec2',label:'Elective II'},{id:'ce_proj1',label:'Project Stage I'}],
+        it:[{id:'it_ml',label:'Machine Learning'},{id:'it_bda',label:'Big Data Analytics'},{id:'it_elec',label:'Electives'},{id:'it_proj1',label:'Project Stage I'}],
+        aiml:[{id:'ai_gai',label:'Generative AI'},{id:'ai_mlops',label:'MLOps'},{id:'ai_eth',label:'AI Ethics'},{id:'ai_proj1',label:'Project Stage I'}],
+        extc:[{id:'ex_vlsi',label:'VLSI Design'},{id:'ex_oc',label:'Optical Communication'},{id:'ex_iot',label:'Internet of Things'},{id:'ex_proj1',label:'Project Stage I'}],
+        eee:[{id:'ee_hv',label:'High Voltage Engineering'},{id:'ee_re',label:'Renewable Energy Systems'},{id:'ee_pq',label:'Power Quality'},{id:'ee_proj1',label:'Project Stage I'}],
+        mech:[{id:'me_auto',label:'Automobile Engineering'},{id:'me_rac',label:'Refrigeration and Air Conditioning'},{id:'me_rob',label:'Robotics'},{id:'me_proj1',label:'Project Stage I'}],
+        civil:[{id:'cv_act',label:'Advanced Construction Technology'},{id:'cv_eq',label:'Earthquake Engineering'},{id:'cv_proj1',label:'Project Stage I'}],
+        chem:[{id:'ch_pde',label:'Plant Design and Economics'},{id:'ch_pt',label:'Polymer Technology'},{id:'ch_ft',label:'Fertilizer Technology'},{id:'ch_proj1',label:'Project Stage I'}]
+      },
+      sem8:{
+        ce:[{id:'ce_dl',label:'Deep Learning'},{id:'ce_pe3',label:'Professional Elective III'},{id:'ce_pe4',label:'Professional Elective IV'},{id:'ce_proj2',label:'Project Stage II'},{id:'ce_intern',label:'Internship'}],
+        it:[{id:'it_dl',label:'Deep Learning'},{id:'it_elec2',label:'Electives'},{id:'it_proj2',label:'Project Stage II'},{id:'it_intern',label:'Internship'}],
+        aiml:[{id:'ai_adv',label:'Advanced AI Applications'},{id:'ai_rm',label:'Research Methodology'},{id:'ai_proj2',label:'Project Stage II'},{id:'ai_intern',label:'Internship'}],
+        extc:[{id:'ex_sat',label:'Satellite Communication'},{id:'ex_acs',label:'Advanced Communication Systems'},{id:'ex_proj2',label:'Project Stage II'},{id:'ex_intern',label:'Internship'}],
+        eee:[{id:'ee_sg',label:'Smart Grid'},{id:'ee_ev',label:'Electric Vehicles'},{id:'ee_proj2',label:'Project Stage II'},{id:'ee_intern',label:'Internship'}],
+        mech:[{id:'me_re',label:'Renewable Energy Systems'},{id:'me_amt',label:'Advanced Manufacturing Technology'},{id:'me_proj2',label:'Project Stage II'},{id:'me_intern',label:'Internship'}],
+        civil:[{id:'cv_pm',label:'Project Management'},{id:'cv_infra',label:'Infrastructure Engineering'},{id:'cv_proj2',label:'Project Stage II'},{id:'cv_intern',label:'Internship'}],
+        chem:[{id:'ch_asp',label:'Advanced Separation Processes'},{id:'ch_im',label:'Industrial Management'},{id:'ch_ret',label:'Renewable Energy Technology'},{id:'ch_proj2',label:'Project Stage II'},{id:'ch_intern',label:'Internship'}]
+      }
+    }
   };
 
-  document.addEventListener('DOMContentLoaded', function() {
-    var p       = new URLSearchParams(window.location.search);
-    var year    = p.get('year')        || '';
-    var branch  = p.get('branch')      || '';
-    var sem     = p.get('sem')         || '';
-    var subject = p.get('subject')     || '';
-    var yearL   = p.get('yearLabel')   || year;
-    var branchL = p.get('branchLabel') || branch;
-    var semL    = p.get('semLabel')    || sem;
-    var subjectL= p.get('subjectLabel')|| subject;
-    var out     = document.getElementById('q-output');
+  // ── Question Bank ─────────────────────────────────────────────────────────
+  const Q = {
+    // Generic questions shown when no specific bank exists
+    _generic: function(label) {
+      return [{sec:'2 Marks',q:[
+        {q:'Define '+label+' and state its importance.',m:'2'},
+        {q:'List the key concepts covered in '+label+'.',m:'2'},
+        {q:'What are the main applications of '+label+'?',m:'2'},
+        {q:'Differentiate between the two primary approaches in '+label+'.',m:'2'},
+      ]},{sec:'5 Marks',q:[
+        {q:'Explain the fundamental principles of '+label+' with suitable examples.',m:'5'},
+        {q:'Describe the main components and working of '+label+'.',m:'5'},
+        {q:'Solve a standard problem related to the core concepts of '+label+'.',m:'5'},
+      ]},{sec:'10 Marks',q:[
+        {q:'Give a comprehensive overview of '+label+' — history, concepts, applications, and future scope.',m:'10'},
+        {q:'Explain all major topics in '+label+' and how they interconnect. Provide examples and diagrams wherever applicable.',m:'10'},
+      ]}];
+    },
+    ce_dsgt:[{sec:'2 Marks',q:[{q:'Define Graph. List types of graphs.',m:'2'},{q:'What is a spanning tree? State its properties.',m:'2'},{q:'Define a lattice. Give an example.',m:'2'},{q:'What is propositional logic?',m:'2'},{q:'State the Pigeon Hole Principle.',m:'2'}]},{sec:'5 Marks',q:[{q:'Explain BFS and DFS graph traversal with examples.',m:'5'},{q:'State and prove Euler\'s formula for planar graphs.',m:'5'},{q:'Explain Hasse diagram with an example of a partial order.',m:'5'},{q:'Describe Kruskal\'s algorithm for minimum spanning tree.',m:'5'}]},{sec:'10 Marks',q:[{q:'Explain graph coloring — chromatic number, applications, and algorithms.',m:'10'},{q:'Discuss Boolean algebra — laws, theorems, and simplification with Karnaugh maps.',m:'10'}]}],
+    ce_ds:[{sec:'2 Marks',q:[{q:'Define stack. State its LIFO principle.',m:'2'},{q:'What is a binary search tree?',m:'2'},{q:'Differentiate array and linked list.',m:'2'},{q:'What is hashing? Define collision.',m:'2'},{q:'Define Big-O notation.',m:'2'}]},{sec:'5 Marks',q:[{q:'Explain circular queue operations with algorithms.',m:'5'},{q:'Write insertion and deletion algorithms for singly linked list.',m:'5'},{q:'Explain AVL tree rotations with examples.',m:'5'},{q:'Explain Dijkstra\'s shortest path algorithm.',m:'5'}]},{sec:'10 Marks',q:[{q:'Explain sorting — Merge Sort and Quick Sort with time complexity analysis.',m:'10'},{q:'Explain BST — insertion, deletion, and inorder/preorder/postorder traversal.',m:'10'}]}],
+    ce_dlca:[{sec:'2 Marks',q:[{q:'What is a flip-flop? Name its types.',m:'2'},{q:'Define pipelining in computer architecture.',m:'2'},{q:'What is cache memory? State its purpose.',m:'2'},{q:'Differentiate RISC and CISC.',m:'2'}]},{sec:'5 Marks',q:[{q:'Explain SR, D, JK, and T flip-flops with truth tables.',m:'5'},{q:'Describe the fetch-decode-execute cycle.',m:'5'},{q:'Explain memory hierarchy with a diagram.',m:'5'}]},{sec:'10 Marks',q:[{q:'Explain pipelining — stages, hazards (structural, data, control), and solutions.',m:'10'},{q:'Explain virtual memory — page tables, TLB, and page replacement algorithms.',m:'10'}]}],
+    ce_dbms:[{sec:'2 Marks',q:[{q:'What is a DBMS? How does it differ from a file system?',m:'2'},{q:'Define primary key, foreign key, and candidate key.',m:'2'},{q:'What is normalization? Name its normal forms.',m:'2'},{q:'What is a transaction? State ACID properties.',m:'2'},{q:'Differentiate DDL, DML, and DCL.',m:'2'}]},{sec:'5 Marks',q:[{q:'Explain 1NF, 2NF, and 3NF with examples.',m:'5'},{q:'Write SQL queries for CREATE TABLE, INSERT, and SELECT with JOIN.',m:'5'},{q:'Explain different types of JOINs with examples.',m:'5'},{q:'What is a view? How does it differ from a table?',m:'5'}]},{sec:'10 Marks',q:[{q:'Draw and explain an ER diagram for a Hospital Management System.',m:'10'},{q:'Explain concurrency control — lock-based and timestamp-based protocols.',m:'10'}]}],
+    ce_os:[{sec:'2 Marks',q:[{q:'What is an OS? List its functions.',m:'2'},{q:'Define deadlock. State its four necessary conditions.',m:'2'},{q:'What is virtual memory?',m:'2'},{q:'What is a semaphore?',m:'2'},{q:'Differentiate internal and external fragmentation.',m:'2'}]},{sec:'5 Marks',q:[{q:'Explain FCFS, SJF, Round Robin, and Priority scheduling.',m:'5'},{q:'What is paging? Explain the page table mechanism.',m:'5'},{q:'Explain the producer-consumer problem using semaphores.',m:'5'}]},{sec:'10 Marks',q:[{q:'Explain deadlock — prevention, avoidance (Banker\'s algorithm), detection, recovery.',m:'10'},{q:'Describe file system structure and file allocation methods.',m:'10'}]}],
+    ce_cn:[{sec:'2 Marks',q:[{q:'What is the OSI model? List its seven layers.',m:'2'},{q:'Differentiate TCP and UDP.',m:'2'},{q:'What is DNS?',m:'2'},{q:'What is subnetting?',m:'2'}]},{sec:'5 Marks',q:[{q:'Explain the TCP/IP model with all layers.',m:'5'},{q:'Explain the three-way handshake in TCP.',m:'5'},{q:'Explain routing algorithms — Distance Vector and Link State.',m:'5'}]},{sec:'10 Marks',q:[{q:'Explain the OSI model — role and protocols of each layer.',m:'10'},{q:'What is network security? Explain firewalls, VPNs, and SSL/TLS.',m:'10'}]}],
+    ce_se:[{sec:'2 Marks',q:[{q:'What is SDLC? List its phases.',m:'2'},{q:'Differentiate verification and validation.',m:'2'},{q:'What is cohesion and coupling?',m:'2'},{q:'What is a use case diagram?',m:'2'}]},{sec:'5 Marks',q:[{q:'Compare Waterfall, Agile, and Spiral models.',m:'5'},{q:'What is software testing? Explain unit, integration, and system testing.',m:'5'},{q:'Explain UML class diagram and sequence diagram.',m:'5'}]},{sec:'10 Marks',q:[{q:'Explain Agile/Scrum — roles, ceremonies, and artifacts.',m:'10'},{q:'Describe SOLID, DRY, KISS principles with examples.',m:'10'}]}],
+    ce_tcs:[{sec:'2 Marks',q:[{q:'Define a DFA. State its components.',m:'2'},{q:'What is a context-free grammar?',m:'2'},{q:'Define the halting problem.',m:'2'},{q:'What is a Turing machine?',m:'2'}]},{sec:'5 Marks',q:[{q:'Convert NFA to DFA with an example.',m:'5'},{q:'Explain pushdown automata with an example.',m:'5'},{q:'State and prove the pumping lemma for regular languages.',m:'5'}]},{sec:'10 Marks',q:[{q:'Explain Chomsky hierarchy — Type 0, 1, 2, 3 grammars with examples.',m:'10'},{q:'Explain NP-completeness — P vs NP, Cook\'s theorem, and examples.',m:'10'}]}],
+    ce_spcc:[{sec:'2 Marks',q:[{q:'What is a compiler? List its phases.',m:'2'},{q:'Define a token, lexeme, and pattern.',m:'2'},{q:'What is an intermediate code?',m:'2'},{q:'Define symbol table and its role.',m:'2'}]},{sec:'5 Marks',q:[{q:'Explain lexical analysis — role of scanner and regular expressions.',m:'5'},{q:'Explain top-down and bottom-up parsing.',m:'5'},{q:'Describe syntax-directed translation with an example.',m:'5'}]},{sec:'10 Marks',q:[{q:'Explain all phases of a compiler with a block diagram.',m:'10'},{q:'Explain code optimization techniques — local and global optimization.',m:'10'}]}],
+    ce_css:[{sec:'2 Marks',q:[{q:'Define cryptography. List its types.',m:'2'},{q:'What is a digital signature?',m:'2'},{q:'Define firewall. List types.',m:'2'},{q:'What is a public key infrastructure (PKI)?',m:'2'}]},{sec:'5 Marks',q:[{q:'Explain symmetric and asymmetric encryption — AES and RSA.',m:'5'},{q:'Explain the Diffie-Hellman key exchange.',m:'5'},{q:'What is ethical hacking? Describe phases of penetration testing.',m:'5'}]},{sec:'10 Marks',q:[{q:'Explain network security — IDS/IPS, honeypots, DMZ, and monitoring.',m:'10'},{q:'Explain the CIA triad, risk assessment, and ISO 27001.',m:'10'}]}],
+    ce_ai:[{sec:'2 Marks',q:[{q:'Define AI. List its applications.',m:'2'},{q:'What is a knowledge base and inference engine?',m:'2'},{q:'Define heuristic. Give an example.',m:'2'}]},{sec:'5 Marks',q:[{q:'Explain BFS and DFS with state space search.',m:'5'},{q:'What is the minimax algorithm?',m:'5'},{q:'Explain backpropagation in neural networks.',m:'5'}]},{sec:'10 Marks',q:[{q:'Explain A* search with the 8-puzzle problem.',m:'10'},{q:'Explain machine learning — supervised, unsupervised, and reinforcement learning with examples.',m:'10'}]}],
+    ce_ml:[{sec:'2 Marks',q:[{q:'Define machine learning. What are its types?',m:'2'},{q:'What is overfitting?',m:'2'},{q:'What is gradient descent?',m:'2'}]},{sec:'5 Marks',q:[{q:'Explain linear regression with cost function.',m:'5'},{q:'What is k-means clustering?',m:'5'},{q:'Explain SVM with kernel functions.',m:'5'}]},{sec:'10 Marks',q:[{q:'Explain Random Forest — bagging, boosting, comparison with decision trees.',m:'10'},{q:'Explain deep learning architectures — ANN, CNN, RNN.',m:'10'}]}],
+    ce_dl:[{sec:'2 Marks',q:[{q:'What is deep learning? How does it differ from ML?',m:'2'},{q:'Define activation function. Name types.',m:'2'},{q:'What is backpropagation?',m:'2'}]},{sec:'5 Marks',q:[{q:'Explain CNN architecture — convolution, pooling, and fully connected layers.',m:'5'},{q:'Explain RNN and LSTM with diagrams.',m:'5'},{q:'What is transfer learning? Give examples.',m:'5'}]},{sec:'10 Marks',q:[{q:'Explain GAN — generator, discriminator, training process, and applications.',m:'10'},{q:'Explain attention mechanism and transformer architecture.',m:'10'}]}],
+    ai_ai:[{sec:'2 Marks',q:[{q:'Define AI. List its applications.',m:'2'},{q:'What is a heuristic function?',m:'2'},{q:'Define expert system.',m:'2'}]},{sec:'5 Marks',q:[{q:'Explain BFS, DFS, A* search with examples.',m:'5'},{q:'What is minimax algorithm with alpha-beta pruning?',m:'5'}]},{sec:'10 Marks',q:[{q:'Explain knowledge representation — semantic nets, frames, and logic.',m:'10'},{q:'Explain natural language processing — tokenization, POS tagging, parsing.',m:'10'}]}],
+    ai_ml:[{sec:'2 Marks',q:[{q:'Define ML. What are its types?',m:'2'},{q:'What is overfitting? How to prevent?',m:'2'},{q:'What is cross-validation?',m:'2'}]},{sec:'5 Marks',q:[{q:'Explain linear and logistic regression.',m:'5'},{q:'Explain decision trees and random forests.',m:'5'}]},{sec:'10 Marks',q:[{q:'Describe a complete ML pipeline.',m:'10'},{q:'Explain neural networks — perceptron, multi-layer, backpropagation.',m:'10'}]}],
+    ai_dl:[{sec:'2 Marks',q:[{q:'What is deep learning?',m:'2'},{q:'Define activation function.',m:'2'},{q:'What is dropout?',m:'2'}]},{sec:'5 Marks',q:[{q:'Explain CNN architecture.',m:'5'},{q:'Explain LSTM for sequence modeling.',m:'5'}]},{sec:'10 Marks',q:[{q:'Explain GAN — architecture, training, and applications.',m:'10'},{q:'Explain attention and transformer architecture.',m:'10'}]}],
+    ai_nlp:[{sec:'2 Marks',q:[{q:'What is NLP? List its applications.',m:'2'},{q:'Define tokenization and stemming.',m:'2'}]},{sec:'5 Marks',q:[{q:'Explain POS tagging and Named Entity Recognition.',m:'5'},{q:'What is word2vec? Explain skip-gram and CBOW.',m:'5'}]},{sec:'10 Marks',q:[{q:'Explain BERT and GPT architectures with applications.',m:'10'},{q:'Explain sentiment analysis pipeline.',m:'10'}]}],
+  };
 
-    if (!year || !branch || !sem || !subject) {
-      out.innerHTML = '<div class="q-empty"><div class="icon">🔍</div><p>No selection found.<br><br><a href="student-corner.html" class="btn btn-primary" style="margin-top:1rem">Go to Student Corner</a></p></div>';
+  // State
+  let p, allSubjects, curSubjectIdx = 0;
+
+  document.addEventListener('DOMContentLoaded', function() {
+    p = new URLSearchParams(window.location.search);
+    const year = p.get('year') || '', branch = p.get('branch') || '',
+          sem  = p.get('sem')  || '', subject = p.get('subject') || '';
+    const yearL = p.get('yearLabel') || year;
+    const branchL = p.get('branchLabel') || branch;
+    const semL = p.get('semLabel') || sem;
+    const subjectL = p.get('subjectLabel') || subject;
+
+    if (!year || !branch || !sem) {
+      document.getElementById('qp-content').innerHTML = '<div class="qp-empty"><div class="icon">🔍</div><p>No selection found.<br><br><a href="student-corner.html" class="btn btn-primary" style="margin-top:1rem">Go to Student Corner</a></p></div>';
       return;
     }
 
-    document.title = subjectL + ' — Important Questions | CODEZZY';
-    var data = QUESTIONS[subject];
+    document.title = branchL + ' ' + semL + ' — Questions | CODEZZY';
+    document.getElementById('qp-tag-year').textContent = '📅 ' + yearL;
+    document.getElementById('qp-tag-branch').textContent = '🏫 ' + branchL;
+    document.getElementById('qp-tag-sem').textContent = '📚 ' + semL;
+    document.getElementById('qp-sem-label').textContent = semL + ' · ' + branchL;
 
-    var html = '<div class="q-header"><div><h1>📝 ' + (data ? data.title : subjectL) + '</h1>'
-      + '<div class="q-breadcrumb-tags">'
-      + '<span class="q-tag">📅 ' + yearL + '</span>'
-      + '<span class="q-tag">🏫 ' + branchL + '</span>'
-      + '<span class="q-tag">📚 ' + semL + '</span>'
-      + '</div></div>'
-      + '<a href="student-corner.html" class="q-back-btn">← Change Selection</a></div>';
-
-    if (!data) {
-      html += '<div class="q-empty"><div class="icon">🛠️</div><p>Questions for <strong>' + subjectL + '</strong> are being prepared. Check back soon!<br><br><a href="student-corner.html" class="btn btn-outline btn-sm">Try Another Subject</a></p></div>';
-    } else {
-      data.sections.forEach(function(sec) {
-        html += '<div class="q-section-title">📋 ' + sec.title + '</div><div class="q-list">';
-        sec.questions.forEach(function(item, i) {
-          html += '<div class="q-item"><div class="q-num">' + (i+1) + '</div>'
-            + '<div class="q-body"><div class="q-text">' + item.q + '</div>'
-            + '<span class="q-marks">' + item.marks + '</span></div></div>';
-        });
-        html += '</div>';
-      });
-      html += '<div style="text-align:center;margin-top:2.5rem"><a href="student-corner.html" class="q-back-btn">← Try Another Subject</a></div>';
+    allSubjects = ((ALL_SUBJECTS[year] || {})[sem] || {})[branch] || [];
+    if (!allSubjects.length) {
+      document.getElementById('qp-content').innerHTML = '<div class="qp-empty"><div class="icon">🛠️</div><p>No subjects found for this selection.<br><a href="student-corner.html" class="btn btn-outline btn-sm" style="margin-top:1rem">Try Again</a></p></div>';
+      return;
     }
-    out.innerHTML = html;
+
+    document.getElementById('qp-prog-tot').textContent = allSubjects.length;
+
+    // Build sidebar
+    const list = document.getElementById('qp-subject-list');
+    allSubjects.forEach(function(sub, i) {
+      const btn = document.createElement('button');
+      btn.className = 'qp-subject-btn' + (i === 0 ? ' active' : '');
+      btn.innerHTML = '<span class="qp-subject-icon">' + iconFor(sub.id) + '</span>' + sub.label;
+      btn.addEventListener('click', function() {
+        selectSubject(i);
+      });
+      btn.id = 'sbtn-' + i;
+      list.appendChild(btn);
+    });
+
+    // Find initial subject: prefer URL param, else first
+    var initIdx = 0;
+    if (subject) {
+      var found = allSubjects.findIndex(function(s){ return s.id === subject; });
+      if (found !== -1) initIdx = found;
+    }
+    selectSubject(initIdx);
   });
+
+  function selectSubject(idx) {
+    curSubjectIdx = idx;
+    document.querySelectorAll('.qp-subject-btn').forEach(function(b, i) {
+      b.classList.toggle('active', i === idx);
+    });
+    // Progress bar
+    var tot = allSubjects.length;
+    document.getElementById('qp-prog-cur').textContent = idx + 1;
+    document.getElementById('qp-prog-fill').style.width = Math.round((idx + 1) / tot * 100) + '%';
+    // Reset filters
+    document.getElementById('qp-type-filter').value = 'all';
+    document.getElementById('qp-search').value = '';
+    // Render
+    renderSubject(allSubjects[idx]);
+    // Scroll panel to top on mobile
+    var panel = document.getElementById('qp-panel');
+    if (panel && window.innerWidth <= 768) panel.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  function renderSubject(sub) {
+    var sections = Q[sub.id] || Q._generic(sub.label);
+    var total = sections.reduce(function(a, s){ return a + s.q.length; }, 0);
+    var html = '<div class="qp-subject-heading">'
+      + '<div class="qp-subject-heading-left">'
+      + '<div class="qp-subject-icon-lg">' + iconFor(sub.id) + '</div>'
+      + '<div><div class="qp-subject-title">' + sub.label + '</div>'
+      + '<div class="qp-subject-sub">Most Important Questions</div></div></div>'
+      + '<span class="qp-count-badge">' + total + ' Questions</span>'
+      + '</div>';
+
+    var qNum = 0;
+    sections.forEach(function(sec) {
+      html += '<div class="qp-section-divider">' + sec.sec + '</div><div class="qp-q-list">';
+      sec.q.forEach(function(item) {
+        qNum++;
+        var badge = badgeFor(item.m);
+        html += '<div class="qp-q-row" data-marks="' + item.m + '" data-text="' + escAttr(item.q) + '">'
+          + '<div class="qp-q-num">' + qNum + '</div>'
+          + '<div class="qp-q-body"><div class="qp-q-text">' + item.q + '</div></div>'
+          + '<div class="qp-q-actions">'
+          + '<span class="qp-marks-badge ' + badge.cls + '">' + badge.label + '</span>'
+          + '</div></div>';
+      });
+      html += '</div>';
+    });
+
+    document.getElementById('qp-content').innerHTML = html;
+  }
+
+  function badgeFor(m) {
+    if (m === '2')  return {cls:'badge-2m',  label:'2 Marks'};
+    if (m === '5')  return {cls:'badge-5m',  label:'5 Marks'};
+    if (m === '10') return {cls:'badge-10m', label:'10 Marks'};
+    return {cls:'badge-misc', label: m};
+  }
+
+  function escAttr(s) { return s.replace(/"/g,'&quot;'); }
+
+  function applyFilters() {
+    var type = document.getElementById('qp-type-filter').value;
+    var q = document.getElementById('qp-search').value.toLowerCase();
+    document.querySelectorAll('.qp-q-row').forEach(function(row) {
+      var mMatch = type === 'all' || row.dataset.marks === type;
+      var qMatch = !q || row.dataset.text.toLowerCase().includes(q) || row.querySelector('.qp-q-text').textContent.toLowerCase().includes(q);
+      row.style.display = (mMatch && qMatch) ? '' : 'none';
+    });
+  }
   </script>
   <script src="js/chatbot.js"></script>
 </body>
