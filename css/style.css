@@ -1859,6 +1859,23 @@ button { cursor: pointer; border: none; background: none; }
   }
   .main-nav, .header-actions .search-box { display: none; }
   .mobile-toggle { display: flex; }
+  /* Hide dark mode button on mobile — use dark mode from settings or menu */
+  #theme-toggle { display: none; }
+  /* Get App button — proper pill style, compact */
+  .header-actions a[aria-label="Download App"] {
+    padding: 8px 14px;
+    font-size: 0.82rem;
+    border-radius: 50px;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: 700;
+    text-decoration: none;
+    background: var(--gradient);
+    color: white;
+    border: none;
+  }
   .hero-grid { grid-template-columns: 1fr; text-align: center; }
   .hero p { margin-left: auto; margin-right: auto; }
   .hero-buttons { justify-content: center; }
@@ -1868,21 +1885,6 @@ button { cursor: pointer; border: none; background: none; }
   .content-sidebar { position: static; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .contact-grid { grid-template-columns: 1fr; }
-  /* Shrink Get App to icon-button size */
-  .header-actions a[aria-label="Download App"] {
-    width: 40px; height: 40px;
-    padding: 0;
-    border-radius: 50%;
-    font-size: 0;
-    background: var(--bg-secondary);
-    border: 1px solid var(--border);
-    color: var(--text-secondary);
-    display: flex; align-items: center; justify-content: center;
-  }
-  .header-actions a[aria-label="Download App"]::after {
-    content: '📱';
-    font-size: 1.1rem;
-  }
 }
 
 @media (max-width: 768px) {
@@ -1922,4 +1924,9 @@ button { cursor: pointer; border: none; background: none; }
   #cz-chat-btn { bottom: 16px; right: 16px; width: 50px; height: 50px; }
   .blog-tabs { gap: 6px; }
   .blog-tab { padding: 6px 14px; font-size: 0.8rem; }
+  /* Tighten Get App on very small screens */
+  .header-actions a[aria-label="Download App"] {
+    padding: 7px 11px;
+    font-size: 0.78rem;
+  }
 }
